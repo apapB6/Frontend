@@ -18,8 +18,6 @@ import {
 	TableRow,
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-
-import mockData from './data';
 import { StatusBullet } from 'components';
 import ComponentService from '../ComponentService'
 
@@ -54,15 +52,27 @@ const LatestOrders = props => {
 	const { className, ...rest } = props;
 
 	const classes = useStyles();
+	const [data, setData] = useState({})
 	const [peminjamanList, setPeminjamanList] = useState([])
+	const [judulBuku, setJudulBuku] = useState([])
+	const [namaPeminjam, setNamaPeminjam] = useState([])
 
 	useEffect(() => refreshPeminjamanList())
 
 	const refreshPeminjamanList = () => {
-		ComponentService.getAllPeminjaman().then(response => {
-			const peminjamanOverdue = response.data.filter(peminjaman => peminjaman.status === 5)
-			console.log(peminjamanOverdue)
-		})
+		ComponentService.getBeranda()
+			.then(response => {
+				setData(response.data)
+				setPeminjamanList(response.data.peminjaman)
+			})
+	}
+
+	const getNamaPeminjam = (index) => {
+		return data.nama_peminjam[index]
+	}
+
+	const getNamaBuku = (index) => {
+		return data.nama_buku[index].judul
 	}
 
 
@@ -93,28 +103,28 @@ const LatestOrders = props => {
 
 							</TableHead>
 							<TableBody>
-								{/* {peminjamanList.map(peminjaman => (
+								{peminjamanList.map(peminjaman => (
 									<TableRow
 										hover
 										key={peminjaman.id}
 									>
 										<TableCell>{peminjamanList.indexOf(peminjaman) + 1}</TableCell>
-										<TableCell>Ani</TableCell>
-										<TableCell>{judul}</TableCell>
+										<TableCell>{getNamaPeminjam(peminjamanList.indexOf(peminjaman))}</TableCell>
+										<TableCell>{getNamaBuku(peminjamanList.indexOf(peminjaman))}</TableCell>
 										<TableCell>
 											<div className={classes.statusContainer}>
 												<StatusBullet
 													className={classes.status}
-													color={statusColors[order.status]}
+													color="danger"
 													size="sm"
 												/>
-												{order.namaStatus}
+												Overdue
 											</div>
 										</TableCell>
-										<TableCell>{order.customer.jumlah_hari}</TableCell>
-										<TableCell>{order.customer.jumlah_denda}</TableCell>
+										<TableCell>{peminjaman.jumlah_hari}</TableCell>
+										<TableCell>Rp {peminjaman.denda}</TableCell>
 									</TableRow>
-								))} */}
+								))}
 							</TableBody>
 						</Table>
 					</div>
