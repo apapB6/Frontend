@@ -7,6 +7,7 @@ import Color from 'theme/palette'
 import { AppBar, Toolbar, Hidden, IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import InputIcon from '@material-ui/icons/Input';
+// import SignOut from '../../../../components'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -29,15 +30,22 @@ const useStyles = makeStyles(theme => ({
 const Topbar = props => {
 	const { className, onSidebarOpen, ...rest } = props;
 
+	// const [signOut, setSignOut] = useState(false)
+
 	const classes = useStyles();
 
 	const [notifications] = useState([]);
+
+	// const buttonSignOut = () => {
+	// 	setSignOut(!signOut)
+	// }
 
 	return (
 		<AppBar
 			{...rest}
 			className={clsx(classes.root, className)}
 		>
+			{/* {signOut && <SignOut toggle={buttonSignOut}/>} */}
 			<Toolbar className={classes.toolbar}>
 				<RouterLink to="/">
 					<Typography variant="h3" className={classes.logo}>
@@ -47,6 +55,7 @@ const Topbar = props => {
 				<div className={classes.flexGrow} />
 				<Hidden mdDown>
 					<IconButton
+						// onClick={buttonSignOut}
 						className={classes.signOutButton}
 						color="inherit"
 					>

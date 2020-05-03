@@ -5,7 +5,6 @@ const TOTALBUKU_API_URL = `${API_URL}/buku/viewall`
 const TOTALPENGADAAN_API_URL = `${API_URL}/pengadaan/viewall`
 const TOTALUSER_API_URL = `${API_URL}/pengguna/viewall`
 const PEMINJAMANLIST_API_URL = `${API_URL}/peminjaman/viewall`
-const BERANDA_API_URL = `${API_URL}/beranda/`
 
 class ComponentService {
 	getAllBuku() {
@@ -19,9 +18,6 @@ class ComponentService {
 	}
 	getAllPeminjaman() {
 		return axios.get(`${PEMINJAMANLIST_API_URL}`)
-	}
-	getBeranda() {
-		return axios.get(`${BERANDA_API_URL}`)
 	}
 }
 

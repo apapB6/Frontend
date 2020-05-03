@@ -54,28 +54,17 @@ const LatestOrders = props => {
 	const { className, ...rest } = props;
 
 	const classes = useStyles();
-	const [data, setData] = useState({})
 	const [peminjamanList, setPeminjamanList] = useState([])
-	const [judulBuku, setJudulBuku] = useState([])
-	const [namaPeminjam, setNamaPeminjam] = useState([])
 
 	useEffect(() => refreshPeminjamanList())
 
 	const refreshPeminjamanList = () => {
-		ComponentService.getBeranda()
-			.then(response => {
-				setData(response.data)
-				setPeminjamanList(response.data.peminjaman)
-			})
+		ComponentService.getAllPeminjaman().then(response => {
+			const peminjamanOverdue = response.data.filter(peminjaman => peminjaman.status === 5)
+			console.log(peminjamanOverdue)
+		})
 	}
 
-	const getNamaPeminjam = (index) => {
-		return data.nama_peminjam[index]
-	}
-
-	const getNamaBuku = (index) => {
-		return data.nama_buku[index].judul
-	}
 
 	return (
 		<Card
@@ -104,28 +93,28 @@ const LatestOrders = props => {
 
 							</TableHead>
 							<TableBody>
-								{peminjamanList.map(peminjaman => (
+								{/* {peminjamanList.map(peminjaman => (
 									<TableRow
 										hover
 										key={peminjaman.id}
 									>
 										<TableCell>{peminjamanList.indexOf(peminjaman) + 1}</TableCell>
-										<TableCell>{getNamaPeminjam(peminjamanList.indexOf(peminjaman))}</TableCell>
-										<TableCell>{getNamaBuku(peminjamanList.indexOf(peminjaman))}</TableCell>
+										<TableCell>Ani</TableCell>
+										<TableCell>{judul}</TableCell>
 										<TableCell>
 											<div className={classes.statusContainer}>
 												<StatusBullet
 													className={classes.status}
-													color="danger"
+													color={statusColors[order.status]}
 													size="sm"
 												/>
-												Overdue
+												{order.namaStatus}
 											</div>
 										</TableCell>
-										<TableCell>{peminjaman.jumlah_hari}</TableCell>
-										<TableCell>{peminjaman.denda}</TableCell>
+										<TableCell>{order.customer.jumlah_hari}</TableCell>
+										<TableCell>{order.customer.jumlah_denda}</TableCell>
 									</TableRow>
-								))}
+								))} */}
 							</TableBody>
 						</Table>
 					</div>

@@ -160,6 +160,12 @@ const SignIn = props => {
 		history.push('/');
 	};
 
+	const validation = () => {
+		// localStorage.setItem('isLogin', true)
+		// window.location.reload()
+		history.push('/dashboard')
+	}
+
 	return (
 		<div className={classes.root}>
 			<Grid
@@ -216,11 +222,12 @@ const SignIn = props => {
 								/>
 								<Button
 									className={classes.signInButton}
-									disabled={!formState.isValid}
+									// disabled={!formState.isValid}
 									fullWidth
 									size="large"
 									type="submit"
 									variant="contained"
+									onClick={validation}
 								>
 									MASUK
                 </Button>
