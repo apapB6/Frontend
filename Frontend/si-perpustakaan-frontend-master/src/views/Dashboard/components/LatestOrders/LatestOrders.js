@@ -57,7 +57,9 @@ const LatestOrders = props => {
 	const [judulBuku, setJudulBuku] = useState([])
 	const [namaPeminjam, setNamaPeminjam] = useState([])
 
-	useEffect(() => refreshPeminjamanList())
+	useEffect(() => {
+		refreshPeminjamanList()
+	})
 
 	const refreshPeminjamanList = () => {
 		ComponentService.getBeranda()
@@ -68,7 +70,7 @@ const LatestOrders = props => {
 	}
 
 	const getNamaPeminjam = (index) => {
-		return data.nama_peminjam[index]
+		return data.nama_peminjam[index].nama
 	}
 
 	const getNamaBuku = (index) => {
