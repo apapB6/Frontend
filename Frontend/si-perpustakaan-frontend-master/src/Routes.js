@@ -80,18 +80,6 @@ const Routes = () => {
 				layout={MinimalLayout}
 				path="/sign-up"
 			/>
-			<RouteWithLayout
-				component={SignInView}
-				exact
-				layout={MinimalLayout}
-				path="/sign-in"
-			/>
-			<RouteWithLayout
-				component={NotFoundView}
-				exact
-				layout={MinimalLayout}
-				path="/not-found"
-			/>
 			<Redirect to="/dashboard" />
 		</Switch>
 	);

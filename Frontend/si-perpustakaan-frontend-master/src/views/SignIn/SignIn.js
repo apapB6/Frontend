@@ -194,8 +194,8 @@ const SignIn = props => {
 	};
 
 	const validation = () => {
-		// localStorage.setItem('isLogin', true)
-		// window.location.reload()
+		localStorage.setItem('isLogin', true)
+		window.location.reload()
 		mainHistory.push('/dashboard')
 	  }
 
