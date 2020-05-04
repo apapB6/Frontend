@@ -161,7 +161,7 @@ const PeminjamanTable = props => {
 										key={peminjaman.id}
 									>
 										<TableCell>{PeminjamanList.indexOf(peminjaman) + 1}</TableCell>
-										<TableCell>tes</TableCell>
+										<TableCell>{peminjaman.nama_buku}</TableCell>
 										<TableCell>{peminjaman.tanggal_peminjaman}</TableCell>
 										<TableCell>{peminjaman.tanggal_pengembalian}</TableCell>
 										<TableCell>{statusOption(PeminjamanList.indexOf(peminjaman))}</TableCell>
