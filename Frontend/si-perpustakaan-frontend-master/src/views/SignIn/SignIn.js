@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link as RouterLink, withRouter } from 'react-router-dom';
+import { Link as RouterLink, withRouter, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import validate from 'validate.js';
 import { makeStyles } from '@material-ui/styles';
@@ -132,7 +132,7 @@ const useStyles = makeStyles(theme => ({
 
 const SignIn = props => {
 	const { history } = props;
-
+	const mainHistory = useHistory()
 	const classes = useStyles();
 
 	const [formState, setFormState] = useState({
@@ -155,10 +155,49 @@ const SignIn = props => {
 		});
 	};
 
+	useEffect(() => {
+		const errors = validate(formState.values, schema);
+	
+		setFormState(formState => ({
+		  ...formState,
+		  isValid: errors ? false : true,
+		  errors: errors || {}
+		}));
+	  }, [formState.values]);
+	
+	  const handleBack = () => {
+		history.goBack();
+	  };
+	
+	  const handleChange = event => {
+		event.persist();
+	
+		setFormState(formState => ({
+		  ...formState,
+		  values: {
+			...formState.values,
+			[event.target.name]:
+			  event.target.type === 'checkbox'
+				? event.target.checked
+				: event.target.value
+		  },
+		  touched: {
+			...formState.touched,
+			[event.target.name]: true
+		  }
+		}));
+	  };
+
 	const handleSignIn = event => {
 		event.preventDefault();
 		history.push('/');
 	};
+
+	const validation = () => {
+		// localStorage.setItem('isLogin', true)
+		// window.location.reload()
+		mainHistory.push('/dashboard')
+	  }
 
 	return (
 		<div className={classes.root}>
@@ -191,7 +230,7 @@ const SignIn = props => {
 									variant="h2"
 								>
 									Selamat Datang!
-                </Typography>
+                				</Typography>
 								<TextField
 									className={classes.textField}
 									fullWidth
@@ -201,6 +240,7 @@ const SignIn = props => {
 									variant="outlined"
 									onFocus={() => onFocus()}
 									onHover={() => onHover()}
+									onChange={handleChange}
 									style={{ outlineColor: formState.outlineColor }}
 								/>
 								<TextField
@@ -209,6 +249,7 @@ const SignIn = props => {
 									label="Kata Sandi"
 									name="password"
 									type="password"
+									onChange={handleChange}
 									variant="outlined"
 									onFocus={() => onFocus()}
 									onHover={() => onHover()}
@@ -216,11 +257,12 @@ const SignIn = props => {
 								/>
 								<Button
 									className={classes.signInButton}
-									disabled={!formState.isValid}
+									// disabled={!formState.isValid}
 									fullWidth
 									size="large"
 									type="submit"
 									variant="contained"
+									onClick={validation}
 								>
 									MASUK
                 </Button>
