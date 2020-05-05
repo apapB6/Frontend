@@ -27,15 +27,6 @@ const BukuForm = props => {
 
 	const classes = useStyles();
 
-	const [values, setValues] = useState({
-		firstName: 'Shen',
-		lastName: 'Zhi',
-		email: 'shen.zhi@devias.io',
-		phone: '',
-		state: 'Alabama',
-		country: 'USA'
-	});
-
 	const handleChange = event => {
 		setValues({
 			...values,
@@ -180,7 +171,7 @@ const BukuForm = props => {
 						className={classes.btn}
 						variant="contained"
 					>
-						Save details
+						SIMPAN
           </Button>
 				</CardActions>
 			</form>
