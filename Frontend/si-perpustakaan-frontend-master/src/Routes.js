@@ -15,7 +15,8 @@ import {
 	Settings as SettingsView,
 	SignUp as SignUpView,
 	SignIn as SignInView,
-	NotFound as NotFoundView
+	NotFound as NotFoundView,
+	InsertBuku as BukuInsertView
 } from './views';
 
 const Routes = () => {
@@ -49,6 +50,12 @@ const Routes = () => {
 				exact
 				layout={MainLayout}
 				path="/buku"
+			/>
+			<RouteWithLayout
+				component={BukuInsertView}
+				exact
+				layout={MainLayout}
+				path="/buku/add"
 			/>
 			<RouteWithLayout
 				component={PeminjamanListView}

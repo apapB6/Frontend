@@ -42,13 +42,13 @@ const BukuToolbar = props => {
 			className={clsx(classes.root, className)}
 		>
 			<div className={classes.row}>
-				<RouterLink to='/buku/add'>
+				<RouterLink to='/buku'>
 					<Button
 						variant="contained"
 						className={classes.btn}
 					>
-						Tambah buku
-        		</Button>
+						Kembali
+        			</Button>
 				</RouterLink>
 			</div>
 		</div>

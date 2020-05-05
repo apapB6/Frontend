@@ -11,3 +11,4 @@ export { default as UserList } from './UserList';
 export { default as PengadaanList } from './PengadaanList';
 export { default as BukuList } from './BukuList';
 export { default as PeminjamanList } from './PeminjamanList';
+export { default as InsertBuku } from './InsertBuku';
