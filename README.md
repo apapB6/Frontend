@@ -16,7 +16,7 @@
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan |
 |-----|--------------|------------------------------|
 | 1806269676 | Dwi Ana Ambar Rofiqoh | <ol><li>Menambah Buku</li> <li>Menampilkan Detail Buku</li> </ol> |
-| 1806269801 | Riska Kurnia Dewi | <ol><li>Mengajukan Peminjaman</li> <li>Menampilkan detail peminjaman</li> </ol> |
+| 1806269801 | Riska Kurnia Dewi | <ol><li>Mengajukan Peminjaman</li> <li>Menampilkan Detail Peminjaman</li> </ol> |
 | 1806269814 | Shafira Fauzia | <ol><li>Mengajukan Pengadaan</li> <li>Menampilkan Detail Pengadaan</li> </ol> |
 
 ## Kontrak Tahap 3 Tugas Akhir
