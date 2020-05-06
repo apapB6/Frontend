@@ -41,12 +41,14 @@ const PengadaanToolbar = props => {
 			className={clsx(classes.root, className)}
 		>
 			<div className={classes.row}>
-				<Button
-					variant="contained"
-					className={classes.btn}
-				>
-					Tambah pengadaan
-        </Button>
+			<RouterLink to='/pengadaan/add'>
+					<Button
+						variant="contained"
+						className={classes.btn}
+					>
+						Tambah Pengadaan
+        		</Button>
+				</RouterLink>
 			</div>
 		</div>
 	);
