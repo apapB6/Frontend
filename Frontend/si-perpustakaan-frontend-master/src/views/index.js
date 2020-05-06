@@ -12,4 +12,4 @@ export { default as PengadaanList } from './PengadaanList';
 export { default as BukuList } from './BukuList';
 export { default as PeminjamanList } from './PeminjamanList';
 export { default as InsertBuku } from './InsertBuku';
-export { default as InsertBuku } from './InsertPengadaan';
+export { default as InsertPengadaan } from './InsertPengadaan';
