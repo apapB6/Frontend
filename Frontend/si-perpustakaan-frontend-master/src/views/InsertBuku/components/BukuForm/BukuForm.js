@@ -11,14 +11,43 @@ import {
 	Grid,
 	Button,
 	TextField,
-	colors
+	Modal
 } from '@material-ui/core';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import ComponentService from '../ComponentService'
 
-const useStyles = makeStyles(() => ({
+
+function getModalStyle() {
+	const top = 50;
+	const left = 50;
+
+	return {
+		top: `${top}%`,
+		left: `${left}%`,
+		transform: `translate(-${top}%, -${left}%)`,
+	};
+}
+
+const useStyles = makeStyles((theme) => ({
 	root: {},
 	btn: {
 		background: '#5E9A78',
 		color: '#FFFFFF'
+	},
+	paper: {
+		position: 'absolute',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: 400,
+		backgroundColor: theme.palette.background.paper,
+		border: 'none',
+		padding: theme.spacing(2, 4, 3),
+	},
+	success: {
+		fontSize: '80px',
+		margin: '0 0 20px'
 	}
 }));
 
@@ -26,6 +55,8 @@ const BukuForm = props => {
 	const { className, ...rest } = props;
 
 	const [values, setValues] = useState({});
+	const [openModal, setOpenModal] = useState(true)
+	const [modalStyle] = useState(getModalStyle);
 
 	const classes = useStyles();
 
@@ -35,6 +66,19 @@ const BukuForm = props => {
 			[event.target.name]: event.target.value
 		});
 	};
+
+	const handleSubmit = event => {
+		event.preventDefault();
+
+		const buku = values
+
+		ComponentService.insertBuku(buku).then(response => setOpenModal(true))
+
+	}
+
+	const handleClose = () => {
+		setOpenModal(false)
+	}
 
 	const jenisBuku = [
 		{
@@ -59,11 +103,28 @@ const BukuForm = props => {
 		}
 	];
 
+	const body = (
+		<div style={modalStyle} className={classes.paper}>
+			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
+			<p id="modal-description">
+				Data berhasil ditambahkan
+			</p>
+		</div>
+	)
+
 	return (
 		<Card
 			{...rest}
 			className={clsx(classes.root, className)}
 		>
+			<Modal
+				open={openModal}
+				onClose={handleClose}
+				aria-labelledby="modal-logo"
+				aria-describedby="modal-description"
+			>
+				{body}
+			</Modal>
 			<form
 				autoComplete="off"
 				noValidate
@@ -172,6 +233,7 @@ const BukuForm = props => {
 					<Button
 						className={classes.btn}
 						variant="contained"
+						onClick={handleSubmit}
 					>
 						SIMPAN
           </Button>
