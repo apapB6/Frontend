@@ -16,7 +16,8 @@ import {
 	SignUp as SignUpView,
 	SignIn as SignInView,
 	NotFound as NotFoundView,
-	InsertBuku as BukuInsertView
+	InsertBuku as BukuInsertView,
+	InsertPengadaan as PengadaanInsertView
 } from './views';
 
 const Routes = () => {
@@ -44,6 +45,12 @@ const Routes = () => {
 				exact
 				layout={MainLayout}
 				path="/pengadaan"
+			/>
+			<RouteWithLayout
+				component={PengadaanInsertView}
+				exact
+				layout={MainLayout}
+				path="/pengadaan/add"
 			/>
 			<RouteWithLayout
 				component={BukuListView}
