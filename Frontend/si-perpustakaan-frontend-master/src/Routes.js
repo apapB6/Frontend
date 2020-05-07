@@ -17,7 +17,8 @@ import {
 	SignIn as SignInView,
 	NotFound as NotFoundView,
 	InsertBuku as BukuInsertView,
-	InsertPengadaan as PengadaanInsertView
+	InsertPengadaan as PengadaanInsertView,
+	InsertPengguna as PenggunaInsertView
 } from './views';
 
 const Routes = () => {
@@ -39,6 +40,12 @@ const Routes = () => {
 				exact
 				layout={MainLayout}
 				path="/users"
+			/>
+			<RouteWithLayout
+				component={PenggunaInsertView}
+				exact
+				layout={MainLayout}
+				path="/pengguna/add"
 			/>
 			<RouteWithLayout
 				component={PengadaanListView}

@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const UsersToolbar = props => {
+const PenggunaToolbar = props => {
 	const { className, ...rest } = props;
 
 	const classes = useStyles();
@@ -42,21 +42,21 @@ const UsersToolbar = props => {
 			className={clsx(classes.root, className)}
 		>
 			<div className={classes.row}>
-				<RouterLink to='/pengguna/add'>
+				<RouterLink to='/pengguna'>
 					<Button
 						variant="contained"
 						className={classes.btn}
 					>
-						Tambah user
-					</Button>
+						Kembali
+        			</Button>
 				</RouterLink>
 			</div>
 		</div>
 	);
 };
 
-UsersToolbar.propTypes = {
+PenggunaToolbar.propTypes = {
 	className: PropTypes.string
 };
 
-export default UsersToolbar;
+export default PenggunaToolbar;

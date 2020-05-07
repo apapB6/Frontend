@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link as RouterLink, withRouter, useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -32,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
 	root: {},
 	btn: {
 		background: '#5E9A78',
-		color: '#FFFFFF'
+		color: '#FFFFFF',
+		marginTop: '10px'
 	},
 	paper: {
 		position: 'absolute',
@@ -52,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BukuForm = props => {
+	const history = useHistory();
 	const { className, ...rest } = props;
 
 	const [values, setValues] = useState({});
@@ -107,8 +110,16 @@ const BukuForm = props => {
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
 			<p id="modal-description">
-				Data berhasil ditambahkan
+				Data buku berhasil ditambahkan
 			</p>
+			<RouterLink to='/buku'>
+				<Button
+					className={classes.btn}
+					variant="contained"
+				>
+					Oke
+					</Button>
+			</RouterLink>
 		</div>
 	)
 
