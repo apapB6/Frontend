@@ -15,7 +15,7 @@ import {
 	Modal
 } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import ComponentService from '../ComponentService'
+
 
 function getModalStyle() {
 	const top = 50;
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const PengadaanForm = props => {
+const PenggunaForm = props => {
 	const history = useHistory();
 	const { className, ...rest } = props;
 
@@ -72,9 +72,6 @@ const PengadaanForm = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		const pengadaan = values
-
-		ComponentService.insertPengadaan(pengadaan).then(response => setOpenModal(true))
 	}
 
 	const handleClose = () => {
@@ -85,9 +82,9 @@ const PengadaanForm = props => {
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
 			<p id="modal-description">
-				Data pengadaan berhasil ditambahkan
+				Data pengguna berhasil ditambahkan
 			</p>
-			<RouterLink to='/pengadaan'>
+			<RouterLink to='/pengguna'>
 				<Button
 					className={classes.btn}
 					variant="contained"
@@ -116,7 +113,7 @@ const PengadaanForm = props => {
 				noValidate
 			>
 				<CardHeader
-					title="Tambah Data Pengadaan"
+					title="Tambah Data Pengguna"
 				/>
 				<Divider />
 				<CardContent>
@@ -131,9 +128,9 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
-								label="Judul Buku"
+								label="Nama"
 								margin="dense"
-								name="judul"
+								name="nama"
 								onChange={handleChange}
 								required
 								variant="outlined"
@@ -146,9 +143,9 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
-								label="Nama Pengarang"
+								label="Username"
 								margin="dense"
-								name="pengarang"
+								name="username"
 								onChange={handleChange}
 								required
 								variant="outlined"
@@ -161,9 +158,9 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
-								label="Nama Penerbit"
+								label="Password"
 								margin="dense"
-								name="penerbit"
+								name="password"
 								onChange={handleChange}
 								required
 								variant="outlined"
@@ -176,12 +173,11 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
-								label="Jumlah"
+								label="No HP"
 								margin="dense"
-								name="jumlah"
+								name="nohp"
 								onChange={handleChange}
 								required
-								type="number"
 								variant="outlined"
 							/>
 						</Grid>
@@ -192,14 +188,19 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
-								label="Harga"
+								label="Jenis Kelamin"
 								margin="dense"
-								name="harga"
+								name="jenis_kelamin"
 								onChange={handleChange}
 								required
-								type="number"
+								select
+								// eslint-disable-next-line react/jsx-sort-props
+								SelectProps={{ native: true }}
 								variant="outlined"
-							/>
+							>
+									<option>Laki-Laki</option>
+									<option>Perempuan</option>
+							</TextField>
 						</Grid>
 					</Grid>
 				</CardContent>
@@ -211,15 +212,15 @@ const PengadaanForm = props => {
 						onClick={handleSubmit}
 					>
 						SIMPAN
-          			</Button>
+          </Button>
 				</CardActions>
 			</form>
 		</Card>
 	);
 };
 
-PengadaanForm.propTypes = {
+PenggunaForm.propTypes = {
 	className: PropTypes.string
 };
 
-export default PengadaanForm;
+export default PenggunaForm;
