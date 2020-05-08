@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080';
+const API_URL = 'http://localhost:8080'
 const INSERTBUKU_API_URL = `${API_URL}/buku/add`;
 
 class ComponentService {
