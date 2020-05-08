@@ -14,3 +14,4 @@ export { default as PeminjamanList } from './PeminjamanList';
 export { default as InsertBuku } from './InsertBuku';
 export { default as InsertPengadaan } from './InsertPengadaan';
 export { default as InsertPengguna } from './InsertPengguna';
+export { default as DetailBuku } from './DetailBuku';
