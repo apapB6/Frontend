@@ -18,7 +18,8 @@ import {
 	NotFound as NotFoundView,
 	InsertBuku as BukuInsertView,
 	InsertPengadaan as PengadaanInsertView,
-	InsertPengguna as PenggunaInsertView
+	InsertPengguna as PenggunaInsertView,
+	DetailBuku as DetailBukuView
 } from './views';
 
 const Routes = () => {
@@ -70,6 +71,12 @@ const Routes = () => {
 				exact
 				layout={MainLayout}
 				path="/buku/add"
+			/>
+			<RouteWithLayout
+				component={DetailBukuView}
+				exact
+				layout={MainLayout}
+				path="/buku/detail"
 			/>
 			<RouteWithLayout
 				component={PeminjamanListView}
