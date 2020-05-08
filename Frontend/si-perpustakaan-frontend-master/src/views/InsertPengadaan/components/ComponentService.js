@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080';
+const API_URL = 'http://localhost:8080'
 const INSERTPENGADAAN_API_URL = `${API_URL}/pengadaan/add`;
 
 class ComponentService {

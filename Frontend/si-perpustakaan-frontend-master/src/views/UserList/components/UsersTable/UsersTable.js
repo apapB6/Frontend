@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -18,7 +18,10 @@ import {
 } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import { getInitials } from 'helpers';
+import { StatusBullet } from 'components';
+import UserListService from './UserListService';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -46,6 +49,15 @@ const UsersTable = props => {
 	const classes = useStyles();
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [page, setPage] = useState(0);
+	const [UserList, setUserList] = useState([]);
+	
+	useEffect(() => {
+		refreshUser()
+	})
+
+	const refreshUser = () => {
+		UserListService.getAllUser().then(response => setUserList(response.data))
+	}
 
 	const handlePageChange = (event, page) => {
 		setPage(page);
@@ -54,6 +66,8 @@ const UsersTable = props => {
 	const handleRowsPerPageChange = event => {
 		setRowsPerPage(event.target.value);
 	};
+
+	const imgUrl = '/images/avatars/social.png'
 
 	return (
 		<Card
@@ -70,34 +84,29 @@ const UsersTable = props => {
 									<TableCell>Foto</TableCell>
 									<TableCell>NIP</TableCell>
 									<TableCell>Nama</TableCell>
-									<TableCell>Nomor HP</TableCell>
+									<TableCell>Nomor Telepon</TableCell>
 									<TableCell>Aksi</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{users.slice(0, rowsPerPage).map(user => (
+							{UserList.slice(0, rowsPerPage).map(user => (
 									<TableRow
 										className={classes.tableRow}
 										hover
 										key={user.id}
 									>
-										<TableCell>{users.indexOf(user) + 1}</TableCell>
+										<TableCell>{UserList.indexOf(user) + 1}</TableCell>
 										<TableCell>
-											<Avatar
-												className={classes.avatar}
-												src={user.avatarUrl}
-											>
-												{getInitials(user.name)}
-											</Avatar>
+										<Avatar 
+											src={imgUrl}
+											className={classes.img}
+										></Avatar>
 										</TableCell>
-										<TableCell>NIP123456</TableCell>
+										<TableCell>{user.nip}</TableCell>
+										<TableCell>{user.nama}</TableCell>
+										<TableCell>{user.telepon}</TableCell>
 										<TableCell>
-											<div className={classes.nameContainer}>
-												<Typography variant="body1">{user.name}</Typography>
-											</div>
-										</TableCell>
-										<TableCell>{user.phone}</TableCell>
-										<TableCell>
+											<VisibilityIcon />
 											<CreateIcon />
 											<DeleteIcon />
 										</TableCell>
@@ -111,7 +120,7 @@ const UsersTable = props => {
 			<CardActions className={classes.actions}>
 				<TablePagination
 					component="div"
-					count={users.length}
+					count={UserList.length}
 					onChangePage={handlePageChange}
 					onChangeRowsPerPage={handleRowsPerPageChange}
 					page={page}
