@@ -47,7 +47,7 @@ const UsersToolbar = props => {
 						variant="contained"
 						className={classes.btn}
 					>
-						Tambah user
+						Tambah Pengguna
 					</Button>
 				</RouterLink>
 			</div>
