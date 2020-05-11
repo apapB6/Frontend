@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -166,7 +167,9 @@ const PeminjamanTable = props => {
 										<TableCell>{peminjaman.tanggal_pengembalian}</TableCell>
 										<TableCell>{statusOption(PeminjamanList.indexOf(peminjaman))}</TableCell>
 										<TableCell>
-											<VisibilityIcon />
+											<RouterLink to={`/peminjaman/${peminjaman.id}`}>
+											<VisibilityIcon style={{ color: '#000000' }} />
+											</RouterLink>
 											<CreateIcon />
 										</TableCell>
 									</TableRow>
