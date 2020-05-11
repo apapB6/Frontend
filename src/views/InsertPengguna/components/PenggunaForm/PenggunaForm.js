@@ -71,6 +71,9 @@ const PenggunaForm = props => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
+		const pengguna = values
+
+		ComponentService.insertPengguna(pengguna).then(response => setOpenModal(true))
 
 	}
 
@@ -143,6 +146,68 @@ const PenggunaForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Tempat Lahir"
+								margin="dense"
+								name="tempat_lahir"
+								onChange={handleChange}
+								required
+								variant="outlined"
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Tanggal Lahir"
+								margin="dense"
+								name="nama"
+								onChange={handleChange}
+								required
+								type="date"
+								variant="outlined"
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Alamat"
+								margin="dense"
+								name="alamat"
+								onChange={handleChange}
+								required
+								variant="outlined"
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Telepon"
+								margin="dense"
+								name="telepon"
+								onChange={handleChange}
+								required
+								type="number"
+								variant="outlined"
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
 								label="Username"
 								margin="dense"
 								name="username"
@@ -166,42 +231,8 @@ const PenggunaForm = props => {
 								variant="outlined"
 							/>
 						</Grid>
-						<Grid
-							item
-							md={12}
-							xs={12}
-						>
-							<TextField
-								fullWidth
-								label="No HP"
-								margin="dense"
-								name="nohp"
-								onChange={handleChange}
-								required
-								variant="outlined"
-							/>
-						</Grid>
-						<Grid
-							item
-							md={12}
-							xs={12}
-						>
-							<TextField
-								fullWidth
-								label="Jenis Kelamin"
-								margin="dense"
-								name="jenis_kelamin"
-								onChange={handleChange}
-								required
-								select
-								// eslint-disable-next-line react/jsx-sort-props
-								SelectProps={{ native: true }}
-								variant="outlined"
-							>
-									<option>Laki-Laki</option>
-									<option>Perempuan</option>
-							</TextField>
-						</Grid>
+
+						
 					</Grid>
 				</CardContent>
 				<Divider />
