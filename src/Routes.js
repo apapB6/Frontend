@@ -66,8 +66,11 @@ const Routes = () => {
 				exact
 				layout={MainLayout}
 				path="/pengadaan/detail"
-th="/pengadaan/add"
-			exact
+			/>
+			<RouteWithLayout
+				component={BukuInsertView}
+				th="/pengadaan/add"
+				exact
 				layout={MainLayout}
 				path="/buku/add"
 			/>
