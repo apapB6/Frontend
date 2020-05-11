@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const BukuForm = props => {
+const BukuDetail = props => {
 	const history = useHistory();
 	const { className, ...rest } = props;
 
@@ -253,8 +253,8 @@ const BukuForm = props => {
 	);
 };
 
-BukuForm.propTypes = {
+BukuDetail.propTypes = {
 	className: PropTypes.string
 };
 
-export default BukuForm;
+export default BukuDetail;
