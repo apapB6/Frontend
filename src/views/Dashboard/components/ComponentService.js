@@ -1,11 +1,11 @@
 import axios from 'axios';
+import { Variable } from 'components'
 
-const API_URL = 'http://localhost:8080'
-const TOTALBUKU_API_URL = `${API_URL}/buku/viewall`
-const TOTALPENGADAAN_API_URL = `${API_URL}/pengadaan/viewall`
-const TOTALUSER_API_URL = `${API_URL}/pengguna/viewall`
-const PEMINJAMANLIST_API_URL = `${API_URL}/peminjaman/viewall`
-const BERANDA_API_URL = `${API_URL}/beranda/`
+const TOTALBUKU_API_URL = `${Variable}/buku/viewall`
+const TOTALPENGADAAN_API_URL = `${Variable}/pengadaan/viewall`
+const TOTALUSER_API_URL = `${Variable}/pengguna/viewall`
+const PEMINJAMANLIST_API_URL = `${Variable}/peminjaman/viewall`
+const BERANDA_API_URL = `${Variable}/beranda/`
 
 class ComponentService {
 	getAllBuku() {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -21,7 +22,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { getInitials } from 'helpers';
 import PengadaanListService from './PengadaanListService';
-import { StatusBullet } from 'components'
+import { StatusBullet } from 'components';
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -148,7 +149,10 @@ const PengadaanTable = props => {
 										<TableCell>Rp {pengadaan.harga}</TableCell>
 										<TableCell>{statusOption(pengadaanList.indexOf(pengadaan))}</TableCell>
 										<TableCell>
-											<VisibilityIcon />
+											<RouterLink to={`/pengadaan/${pengadaan.id}`}>
+											<VisibilityIcon style={{ color: '#000000' }} />
+											</RouterLink>
+											<CreateIcon />
 											<DeleteIcon />
 										</TableCell>
 									</TableRow>

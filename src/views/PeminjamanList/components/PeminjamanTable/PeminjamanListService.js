@@ -1,7 +1,7 @@
 import axios from "axios";
+import { Variable } from 'components'
 
-const API_URL = 'http://localhost:8080'
-const VIEWALL_PEMINJAMAN_URL = `${API_URL}/peminjaman/viewall`
+const VIEWALL_PEMINJAMAN_URL = `${Variable}/peminjaman/viewall`
 
 class PeminjamanListService {
 	getAllPeminjaman() {

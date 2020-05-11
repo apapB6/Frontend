@@ -1,7 +1,7 @@
 import axios from "axios";
+import { Variable } from 'components'
 
-const API_URL = 'http://localhost:8080'
-const VIEWALL_BUKU_URL = `${API_URL}/buku/viewall`
+const VIEWALL_BUKU_URL = `${Variable}/buku/viewall`
 
 class BukuListService {
 	getAllBuku() {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link as RouterLink, withRouter, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link as RouterLink, withRouter, useHistory, useParams } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -15,7 +15,7 @@ import {
 	Modal
 } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-// import ComponentService from '../ComponentService'
+import ComponentService from '../ComponentService'
 
 
 function getModalStyle() {
@@ -61,6 +61,18 @@ const PengadaanForm = props => {
 	const [openModal, setOpenModal] = useState(false)
 	const [modalStyle] = useState(getModalStyle);
 
+	const [pengadaan, setPengadaan] = useState({});
+
+	const { id } = useParams();
+
+	useEffect(() => {
+		refreshPengadaan(id)
+	})
+
+	const refreshPengadaan = id => {
+		ComponentService.detailPengadaan(id).then(response => setPengadaan(response.data))
+	}
+
 	const classes = useStyles();
 
 	const handleChange = event => {
@@ -73,9 +85,9 @@ const PengadaanForm = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		// const pengadaan = values
+		const pengadaan = values
 
-		// ComponentService.insertPengadaan(pengadaan).then(response => setOpenModal(true))
+		ComponentService.insertPengadaan(pengadaan).then(response => setOpenModal(true))
 
 	}
 
@@ -133,11 +145,14 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Nama"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="nama"
 								onChange={handleChange}
 								variant="outlined"
 								disabled="true"
+								value={pengadaan.judul}
 							/>
 						</Grid>
 						<Grid
@@ -147,11 +162,14 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Judul Buku"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="judul"
 								onChange={handleChange}
 								variant="outlined"
 								disabled="true"
+								value={pengadaan.judul}
 							/>
 						</Grid>
 						<Grid
@@ -161,11 +179,14 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Pengarang"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="pengarang"
 								onChange={handleChange}
 								variant="outlined"
 								disabled="true"
+								value={pengadaan.pengarang}
 							/>
 						</Grid>
 						<Grid
@@ -175,11 +196,14 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Penerbit"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="penerbit"
 								onChange={handleChange}
 								variant="outlined"
 								disabled="true"
+								value={pengadaan.penerbit}
 							/>
 						</Grid>
 						<Grid
@@ -189,12 +213,15 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Jumlah Buku"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="jumlah"
 								onChange={handleChange}
 								type="number"
 								variant="outlined"
 								disabled="true"
+								value={pengadaan.jumlah}
 							/>
 						</Grid>
 					</Grid>

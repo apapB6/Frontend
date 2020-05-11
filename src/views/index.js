@@ -16,3 +16,4 @@ export { default as InsertPengadaan } from './InsertPengadaan';
 export { default as InsertPengguna } from './InsertPengguna';
 export { default as DetailBuku } from './DetailBuku';
 export { default as DetailPengadaan } from './DetailPengadaan';
+export { default as DetailPengguna } from './DetailPengguna';

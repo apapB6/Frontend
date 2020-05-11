@@ -1,7 +1,7 @@
 import axios from "axios";
+import { Variable } from 'components'
 
-const API_URL = 'http://localhost:8080'
-const VIEWALL_PENGADAAN_URL = `${API_URL}/pengadaan/viewall`
+const VIEWALL_PENGADAAN_URL = `${Variable}/pengadaan/viewall`
 
 class PengadaanListService {
 	getAllPengadaan() {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -106,7 +107,9 @@ const UsersTable = props => {
 										<TableCell>{user.nama}</TableCell>
 										<TableCell>{user.telepon}</TableCell>
 										<TableCell>
-											<VisibilityIcon />
+											<RouterLink to={`/pengguna/${user.id}`}>
+											<VisibilityIcon style={{ color: '#000000' }} />
+											</RouterLink>
 											<CreateIcon />
 											<DeleteIcon />
 										</TableCell>
