@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { Variable } from 'components'
 
-const API_URL = 'http://localhost:8080'
-const INSERTPENGGUNA_API_URL = `${API_URL}/pengguna/add`;
+const INSERTPENGGUNA_API_URL = `${Variable}/pengguna/add`;
 
 class ComponentService {
 	insertPengguna(pengguna) {

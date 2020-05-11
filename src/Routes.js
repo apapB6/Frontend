@@ -20,7 +20,8 @@ import {
 	InsertPengadaan as PengadaanInsertView,
 	InsertPengguna as PenggunaInsertView,
 	DetailBuku as DetailBukuView,
-	DetailPengadaan as DetailPengadaanView
+	DetailPengadaan as DetailPengadaanView,
+	DetailPengguna as DetailPenggunaView
 } from './views';
 
 const Routes = () => {
@@ -44,6 +45,12 @@ const Routes = () => {
 				path="/users"
 			/>
 			<RouteWithLayout
+				component={DetailPenggunaView}
+				exact
+				layout={MainLayout}
+				path="/pengguna/:id"
+			/>
+			<RouteWithLayout
 				component={PenggunaInsertView}
 				exact
 				layout={MainLayout}
@@ -56,16 +63,16 @@ const Routes = () => {
 				path="/pengadaan"
 			/>
 			<RouteWithLayout
+				component={DetailPengadaanView}
+				exact
+				layout={MainLayout}
+				path="/pengadaan/:id"
+			/>
+			<RouteWithLayout
 				component={PengadaanInsertView}
 				exact
 				layout={MainLayout}
 				path="/pengadaan/add"
-			/>
-			<RouteWithLayout
-				component={DetailPengadaanView}
-				exact
-				layout={MainLayout}
-				path="/pengadaan/detail"
 			/>
 			<RouteWithLayout
 				component={BukuInsertView}
