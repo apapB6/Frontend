@@ -149,7 +149,7 @@ const PengadaanTable = props => {
 										<TableCell>Rp {pengadaan.harga}</TableCell>
 										<TableCell>{statusOption(pengadaanList.indexOf(pengadaan))}</TableCell>
 										<TableCell>
-											<RouterLink to={`/pengadaan/${pengadaan.id}`}>
+											<RouterLink to={`/pengadaan/detail/${pengadaan.id}`}>
 											<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
 											<CreateIcon />

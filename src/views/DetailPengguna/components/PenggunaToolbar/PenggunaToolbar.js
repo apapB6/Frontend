@@ -42,7 +42,7 @@ const PenggunaToolbar = props => {
 			className={clsx(classes.root, className)}
 		>
 			<div className={classes.row}>
-				<RouterLink to='/pengguna'>
+				<RouterLink to='/users'>
 					<Button
 						variant="contained"
 						className={classes.btn}

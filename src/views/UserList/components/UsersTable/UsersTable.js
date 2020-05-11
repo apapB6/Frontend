@@ -107,7 +107,7 @@ const UsersTable = props => {
 										<TableCell>{user.nama}</TableCell>
 										<TableCell>{user.telepon}</TableCell>
 										<TableCell>
-											<RouterLink to={`/pengguna/${user.id}`}>
+											<RouterLink to={`/pengguna/detail/${user.id}`}>
 											<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
 											<CreateIcon />

@@ -49,7 +49,7 @@ const Routes = () => {
 				component={DetailPenggunaView}
 				exact
 				layout={MainLayout}
-				path="/pengguna/:id"
+				path="/pengguna/detail/:id"
 			/>
 			<RouteWithLayout
 				component={PenggunaInsertView}
@@ -67,7 +67,7 @@ const Routes = () => {
 				component={DetailPengadaanView}
 				exact
 				layout={MainLayout}
-				path="/pengadaan/:id"
+				path="/pengadaan/detail/:id"
 			/>
 			<RouteWithLayout
 				component={PengadaanInsertView}
@@ -77,7 +77,6 @@ const Routes = () => {
 			/>
 			<RouteWithLayout
 				component={BukuInsertView}
-				th="/pengadaan/add"
 				exact
 				layout={MainLayout}
 				path="/buku/add"

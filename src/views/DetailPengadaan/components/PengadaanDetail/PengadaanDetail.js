@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const PengadaanForm = props => {
+const PengadaanDetail = props => {
 	const history = useHistory();
 	const { className, ...rest } = props;
 
@@ -232,8 +232,8 @@ const PengadaanForm = props => {
 	);
 };
 
-PengadaanForm.propTypes = {
+PengadaanDetail.propTypes = {
 	className: PropTypes.string
 };
 
-export default PengadaanForm;
+export default PengadaanDetail;
