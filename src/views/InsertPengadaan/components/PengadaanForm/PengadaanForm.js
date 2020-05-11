@@ -131,7 +131,7 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
-								label="Judul"
+								label="Judul Buku"
 								margin="dense"
 								name="judul"
 								onChange={handleChange}

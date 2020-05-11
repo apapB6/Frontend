@@ -162,7 +162,7 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
-								label="Judul Pengadaan"
+								label="Judul Buku"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="judul"

@@ -83,7 +83,7 @@ const BukuTable = props => {
 	};
 
 	const statusOption = (index) => {
-		if (BukuList[index].jumlah === 0) {
+		if (BukuList[index].jumlah < 1) {
 			return (<div>
 				<StatusBullet
 					className={classes.status}
