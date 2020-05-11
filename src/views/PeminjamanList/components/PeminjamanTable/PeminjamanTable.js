@@ -168,7 +168,6 @@ const PeminjamanTable = props => {
 										<TableCell>
 											<VisibilityIcon />
 											<CreateIcon />
-											<DeleteIcon />
 										</TableCell>
 									</TableRow>
 								))}

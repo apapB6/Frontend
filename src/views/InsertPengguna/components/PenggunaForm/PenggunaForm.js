@@ -3,6 +3,7 @@ import { Link as RouterLink, withRouter, useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import { InputLabel } from '@material-ui/core';
 import {
 	Card,
 	CardHeader,
@@ -15,7 +16,7 @@ import {
 	Modal
 } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-
+import ComponentService from '../ComponentService'
 
 function getModalStyle() {
 	const top = 50;
@@ -71,6 +72,7 @@ const PenggunaForm = props => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
+		
 		const pengguna = values
 
 		ComponentService.insertPengguna(pengguna).then(response => setOpenModal(true))
@@ -160,6 +162,7 @@ const PenggunaForm = props => {
 							xs={12}
 						>
 							<TextField
+								InputLabel={{shrink:true}}
 								fullWidth
 								label="Tanggal Lahir"
 								margin="dense"
@@ -167,6 +170,7 @@ const PenggunaForm = props => {
 								onChange={handleChange}
 								required
 								type="date"
+								placeholder=""
 								variant="outlined"
 							/>
 						</Grid>
