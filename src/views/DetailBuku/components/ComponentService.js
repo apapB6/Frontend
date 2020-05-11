@@ -1,11 +1,11 @@
 import axios from 'axios';
+import { Variable } from 'components'
 
-const API_URL = 'http://localhost:8080'
-const DETAILBUKU_API_URL = `${API_URL}/buku/detail`;
+const DETAILBUKU_API_URL = `${Variable}/buku/detail/`;
 
 class ComponentService {
-	detailBuku(buku) {
-		return axios.post(`${DETAILBUKU_API_URL}`, buku)
+	detailBuku(bukuId) {
+		return axios.get(`${DETAILBUKU_API_URL}` + bukuId)
 	}
 }
 

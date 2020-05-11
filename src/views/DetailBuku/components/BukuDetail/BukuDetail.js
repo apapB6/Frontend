@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link as RouterLink, withRouter, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link as RouterLink, withRouter, useHistory, useParams } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -61,6 +61,18 @@ const BukuForm = props => {
 	const [openModal, setOpenModal] = useState(false)
 	const [modalStyle] = useState(getModalStyle);
 
+	const [buku, setBuku] = useState({});
+
+	const { id } = useParams();
+
+	useEffect(() => {
+		refreshBuku(id)
+	})
+
+	const refreshBuku = id => {
+		ComponentService.detailBuku(id).then(response => setBuku(response.data))
+	}
+
 	const classes = useStyles();
 
 	const handleChange = event => {
@@ -81,6 +93,20 @@ const BukuForm = props => {
 
 	const handleClose = () => {
 		setOpenModal(false)
+	}
+
+	const getJenisBuku = () => {
+		if (buku.id_jenis_buku === 1) {
+			return 'Karya Tulis'
+		} else if (buku.id_jenis_buku === 2) {
+			return 'Majalah/Koran'
+		} else if (buku.id_jenis_buku === 3) {
+			return 'Cerita/Novel'
+		} else if (buku.id_jenis_buku === 4) {
+			return 'Buku Ajar'
+		} else if (buku.id_jenis_buku === 5) {
+			return 'Lainnya'
+		}
 	}
 
 	const body = (
@@ -137,7 +163,8 @@ const BukuForm = props => {
 								name="judul"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
+								value={buku.judul}
 							/>
 						</Grid>
 						<Grid
@@ -151,7 +178,8 @@ const BukuForm = props => {
 								name="pengarang"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
+								value={buku.pengarang}
 							/>
 						</Grid>
 						<Grid
@@ -165,7 +193,8 @@ const BukuForm = props => {
 								name="penerbit"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
+								value={buku.penerbit}
 							/>
 						</Grid>
 						<Grid
@@ -180,7 +209,8 @@ const BukuForm = props => {
 								onChange={handleChange}
 								type="number"
 								variant="outlined"
-								disabled="true"
+								disabled={true}
+								value={buku.jumlah}
 							/>
 						</Grid>
 						<Grid
@@ -194,7 +224,8 @@ const BukuForm = props => {
 								name="id_jenis_buku"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
+								value={getJenisBuku()}
 							/>
 						</Grid>
 					</Grid>

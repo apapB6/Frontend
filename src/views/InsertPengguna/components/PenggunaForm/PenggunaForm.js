@@ -3,7 +3,6 @@ import { Link as RouterLink, withRouter, useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { InputLabel } from '@material-ui/core';
 import {
 	Card,
 	CardHeader,
@@ -13,7 +12,8 @@ import {
 	Grid,
 	Button,
 	TextField,
-	Modal
+	Modal,
+	InputLabel
 } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import ComponentService from '../ComponentService'
@@ -72,7 +72,7 @@ const PenggunaForm = props => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		
+
 		const pengguna = values
 
 		ComponentService.insertPengguna(pengguna).then(response => setOpenModal(true))
@@ -89,7 +89,7 @@ const PenggunaForm = props => {
 			<p id="modal-description">
 				Data pengguna berhasil ditambahkan
 			</p>
-			<RouterLink to='/pengguna'>
+			<RouterLink to='/users'>
 				<Button
 					className={classes.btn}
 					variant="contained"
@@ -162,11 +162,11 @@ const PenggunaForm = props => {
 							xs={12}
 						>
 							<TextField
-								InputLabel={{shrink:true}}
+								InputLabelProps={{ shrink: true }}
 								fullWidth
 								label="Tanggal Lahir"
 								margin="dense"
-								name="nama"
+								name="tanggal_lahir"
 								onChange={handleChange}
 								required
 								type="date"
@@ -236,7 +236,7 @@ const PenggunaForm = props => {
 							/>
 						</Grid>
 
-						
+
 					</Grid>
 				</CardContent>
 				<Divider />

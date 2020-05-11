@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -123,7 +124,7 @@ const BukuTable = props => {
 									<TableCell>Penerbit</TableCell>
 									<TableCell>Status</TableCell>
 									<TableCell>Aksi</TableCell>
-									</TableRow>
+								</TableRow>
 							</TableHead>
 							<TableBody>
 								{BukuList.slice(0, rowsPerPage).map(buku => (
@@ -134,17 +135,19 @@ const BukuTable = props => {
 									>
 										<TableCell>{BukuList.indexOf(buku) + 1}</TableCell>
 										<TableCell>
-										<img 
-											src={imgUrl}
-											className={classes.img}
-										></img>
+											<img
+												src={imgUrl}
+												className={classes.img}
+											></img>
 										</TableCell>
 										<TableCell>{buku.judul}</TableCell>
 										<TableCell>{buku.pengarang}</TableCell>
 										<TableCell>{buku.penerbit}</TableCell>
 										<TableCell>{statusOption(BukuList.indexOf(buku))}</TableCell>
 										<TableCell>
-											<VisibilityIcon />
+											<RouterLink to={`/buku/${buku.id}`}>
+												<VisibilityIcon style={{ color: '#000000' }} />
+											</RouterLink>
 											<CreateIcon />
 											<DeleteIcon />
 										</TableCell>

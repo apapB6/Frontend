@@ -78,7 +78,7 @@ const Routes = () => {
 				component={DetailBukuView}
 				exact
 				layout={MainLayout}
-				path="/buku/detail"
+				path="/buku/:id"
 			/>
 			<RouteWithLayout
 				component={PeminjamanListView}
