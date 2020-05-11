@@ -159,6 +159,8 @@ const BukuForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Judul Buku"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="judul"
 								onChange={handleChange}
@@ -174,6 +176,8 @@ const BukuForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Pengarang"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="pengarang"
 								onChange={handleChange}
@@ -189,6 +193,8 @@ const BukuForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Penerbit"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="penerbit"
 								onChange={handleChange}
@@ -204,6 +210,8 @@ const BukuForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Jumlah Buku"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="jumlah"
 								onChange={handleChange}
@@ -220,6 +228,8 @@ const BukuForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="Jenis Buku"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="id_jenis_buku"
 								onChange={handleChange}

@@ -75,6 +75,12 @@ const Routes = () => {
 				path="/buku/add"
 			/>
 			<RouteWithLayout
+				component={BukuListView}
+				exact
+				layout={MainLayout}
+				path="/buku"
+			/>
+			<RouteWithLayout
 				component={DetailBukuView}
 				exact
 				layout={MainLayout}
