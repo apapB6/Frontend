@@ -152,7 +152,7 @@ const PengadaanForm = props => {
 								onChange={handleChange}
 								variant="outlined"
 								disabled="true"
-								value={pengadaan.judul}
+								value={pengadaan.nama}
 							/>
 						</Grid>
 						<Grid
@@ -162,7 +162,7 @@ const PengadaanForm = props => {
 						>
 							<TextField
 								fullWidth
-								label="Judul Buku"
+								label="Judul Pengadaan"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="judul"

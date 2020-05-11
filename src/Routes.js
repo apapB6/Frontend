@@ -21,7 +21,8 @@ import {
 	InsertPengguna as PenggunaInsertView,
 	DetailBuku as DetailBukuView,
 	DetailPengadaan as DetailPengadaanView,
-	DetailPengguna as DetailPenggunaView
+	DetailPengguna as DetailPenggunaView,
+	DetailPeminjaman as DetailPeminjamanView
 } from './views';
 
 const Routes = () => {
@@ -98,6 +99,12 @@ const Routes = () => {
 				exact
 				layout={MainLayout}
 				path="/peminjaman"
+			/>
+			<RouteWithLayout
+				component={DetailPeminjamanView}
+				exact
+				layout={MainLayout}
+				path="/peminjaman/:id"
 			/>
 			<RouteWithLayout
 				component={IconsView}
