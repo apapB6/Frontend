@@ -85,9 +85,7 @@ const BukuForm = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		const buku = values
-
-		ComponentService.insertBuku(buku).then(response => setOpenModal(true))
+		ComponentService.addPeminjaman(id).then(response => setOpenModal(true))
 
 	}
 
@@ -113,9 +111,9 @@ const BukuForm = props => {
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
 			<p id="modal-description">
-				Data buku berhasil ditambahkan
+				Data peminjaman berhasil ditambahkan
 			</p>
-			<RouterLink to='/buku'>
+			<RouterLink to='/peminjaman'>
 				<Button
 					className={classes.btn}
 					variant="contained"
@@ -248,7 +246,7 @@ const BukuForm = props => {
 						onClick={handleSubmit}
 					>
 						PINJAM
-          </Button>
+				</Button>		  
 				</CardActions>
 			</form>
 		</Card>
