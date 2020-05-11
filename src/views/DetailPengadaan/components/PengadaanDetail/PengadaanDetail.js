@@ -200,15 +200,6 @@ const PengadaanForm = props => {
 					</Grid>
 				</CardContent>
 				<Divider />
-				<CardActions>
-					<Button
-						className={classes.btn}
-						variant="contained"
-						onClick={handleSubmit}
-					>
-						PINJAM
-          </Button>
-				</CardActions>
 			</form>
 		</Card>
 	);
