@@ -18,4 +18,4 @@ export { default as DetailBuku } from './DetailBuku';
 export { default as DetailPengadaan } from './DetailPengadaan';
 export { default as DetailPengguna } from './DetailPengguna';
 export { default as DetailPeminjaman } from './DetailPeminjaman';
-export { default as EditPengadaan } from './EditPengadaan';
+export { default as EditPeminjaman } from './EditPeminjaman';
