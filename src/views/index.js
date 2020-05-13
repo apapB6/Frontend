@@ -19,3 +19,4 @@ export { default as DetailPengadaan } from './DetailPengadaan';
 export { default as DetailPengguna } from './DetailPengguna';
 export { default as DetailPeminjaman } from './DetailPeminjaman';
 export { default as EditPeminjaman } from './EditPeminjaman';
+export { default as EditBuku } from './EditBuku';
