@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const PengadaanDetail = props => {
+const PengadaanEdit = props => {
 	const history = useHistory();
 	const { className, ...rest } = props;
 
@@ -95,17 +95,24 @@ const PengadaanDetail = props => {
 		setOpenModal(false)
 	}
 
-	const statusOption = () => {
-		if (pengadaan.status === 0) {
-			return "Usulan Pengguna"
-		} else if (pengadaan.status === 1) {
-			return "Menunggu Persetujuan"
-		} else if (pengadaan.status === 2) {
-			return "Ditolak"
-		} else {
-			return "Disetujui"
+	const jenisStatus = [
+		{
+			value: 0,
+			label: 'Usulan Pengguna'
+		},
+		{
+			value: 1,
+			label: 'Menunggu Persetujuan'
+		},
+		{
+			value: 2,
+			label: 'Ditolak'
+		},
+		{
+			value: 3,
+			label: 'Disetujui'
 		}
-	}
+	];
 
 	const body = (
 		<div style={modalStyle} className={classes.paper}>
@@ -262,25 +269,42 @@ const PengadaanDetail = props => {
 							<TextField
 								fullWidth
 								label="Status"
-								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="status"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
-								value={statusOption}
+								required
+								select
+								SelectProps={{ native: true }}
 							/>
+								{jenisStatus.map(option => (
+									<option
+										key={option.value}
+										value={option.value}
+									>
+										{option.label}
+									</option>
+								))}
 						</Grid>
 					</Grid>
 				</CardContent>
 				<Divider />
+				<CardActions>
+					<Button
+						className={classes.btn}
+						variant="contained"
+						onClick={handleSubmit}
+					>
+						UBAH
+					</Button>		  
+				</CardActions>
 			</form>
 		</Card>
 	);
 };
 
-PengadaanDetail.propTypes = {
+PengadaanEdit.propTypes = {
 	className: PropTypes.string
 };
 
-export default PengadaanDetail;
+export default PengadaanEdit;

@@ -22,7 +22,8 @@ import {
 	DetailBuku as DetailBukuView,
 	DetailPengadaan as DetailPengadaanView,
 	DetailPengguna as DetailPenggunaView,
-	DetailPeminjaman as DetailPeminjamanView
+	DetailPeminjaman as DetailPeminjamanView,
+	EditPengadaan as EditPengadaanView
 } from './views';
 
 const Routes = () => {
@@ -74,6 +75,12 @@ const Routes = () => {
 				exact
 				layout={MainLayout}
 				path="/pengadaan/add"
+			/>
+			<RouteWithLayout
+				component={EditPengadaanView}
+				exact
+				layout={MainLayout}
+				path="/pengadaan/edit/:id"
 			/>
 			<RouteWithLayout
 				component={BukuInsertView}
