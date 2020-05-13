@@ -163,7 +163,7 @@ const PengadaanDetail = props => {
 								name="nama"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={pengadaan.nama}
 							/>
 						</Grid>
@@ -180,7 +180,7 @@ const PengadaanDetail = props => {
 								name="judul"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={pengadaan.judul}
 							/>
 						</Grid>
@@ -197,7 +197,7 @@ const PengadaanDetail = props => {
 								name="pengarang"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={pengadaan.pengarang}
 							/>
 						</Grid>
@@ -214,7 +214,7 @@ const PengadaanDetail = props => {
 								name="penerbit"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={pengadaan.penerbit}
 							/>
 						</Grid>
@@ -232,7 +232,7 @@ const PengadaanDetail = props => {
 								onChange={handleChange}
 								type="number"
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={pengadaan.jumlah}
 							/>
 						</Grid>
@@ -250,7 +250,7 @@ const PengadaanDetail = props => {
 								onChange={handleChange}
 								type="number"
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={pengadaan.harga}
 							/>
 						</Grid>
@@ -267,8 +267,8 @@ const PengadaanDetail = props => {
 								name="status"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
-								value={statusOption}
+								disabled={true}
+								value={statusOption()}
 							/>
 						</Grid>
 					</Grid>

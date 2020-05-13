@@ -60,6 +60,7 @@ const BukuDetail = props => {
 	const [values, setValues] = useState({});
 	const [openModal, setOpenModal] = useState(false)
 	const [modalStyle] = useState(getModalStyle);
+	const [outOfStock, setOutOfStock] = useState(false)
 
 	const [buku, setBuku] = useState({});
 
@@ -67,6 +68,7 @@ const BukuDetail = props => {
 
 	useEffect(() => {
 		refreshBuku(id)
+		cannotBorrow()
 	})
 
 	const refreshBuku = id => {
@@ -104,6 +106,14 @@ const BukuDetail = props => {
 			return 'Buku Ajar'
 		} else if (buku.id_jenis_buku === 5) {
 			return 'Lainnya'
+		}
+	}
+
+	const cannotBorrow = () => {
+		if (buku.jumlah === 0) {
+			setOutOfStock(true)
+		} else {
+			setOutOfStock(false)
 		}
 	}
 
@@ -244,9 +254,10 @@ const BukuDetail = props => {
 						className={classes.btn}
 						variant="contained"
 						onClick={handleSubmit}
+						disabled={outOfStock === true}
 					>
 						PINJAM
-					</Button>		  
+					</Button>
 				</CardActions>
 			</form>
 		</Card>

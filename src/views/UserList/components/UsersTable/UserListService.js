@@ -1,7 +1,7 @@
 import axios from "axios";
+import { Variable } from 'components'
 
-const API_URL = 'http://localhost:8080'
-const VIEWALL_USER_URL = `${API_URL}/pengguna/viewall`
+const VIEWALL_USER_URL = `${Variable}/pengguna/viewall`
 
 class UserListService {
 	getAllUser() {
