@@ -150,9 +150,11 @@ const PengadaanTable = props => {
 										<TableCell>{statusOption(pengadaanList.indexOf(pengadaan))}</TableCell>
 										<TableCell>
 											<RouterLink to={`/pengadaan/detail/${pengadaan.id}`}>
-											<VisibilityIcon style={{ color: '#000000' }} />
+												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
-											<CreateIcon />
+											<RouterLink to={`/pengadaan/edit/${pengadaan.id}`}>
+												<CreateIcon style={{ color: '#000000' }} />
+											</RouterLink>
 											<DeleteIcon />
 										</TableCell>
 									</TableRow>

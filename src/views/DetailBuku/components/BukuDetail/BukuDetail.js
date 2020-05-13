@@ -246,7 +246,7 @@ const BukuDetail = props => {
 						onClick={handleSubmit}
 					>
 						PINJAM
-				</Button>		  
+					</Button>		  
 				</CardActions>
 			</form>
 		</Card>
