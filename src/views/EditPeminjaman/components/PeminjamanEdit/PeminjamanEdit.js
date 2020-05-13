@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const PeminjamanDetail = props => {
+const PeminjamanEdit = props => {
 	const history = useHistory();
 	const { className, ...rest } = props;
 
@@ -85,9 +85,9 @@ const PeminjamanDetail = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		const peminjaman = values
+		// const peminjaman = values
 
-		ComponentService.insertPeminjaman(peminjaman).then(response => setOpenModal(true))
+		// ComponentService.insertPeminjaman(peminjaman).then(response => setOpenModal(true))
 
 	}
 
@@ -104,12 +104,39 @@ const PeminjamanDetail = props => {
 			return "Disetujui"
 		} else if (peminjaman.status === 3) {
 			return "Sudah Diambil"
-		}else if (peminjaman.status === 4) {
+		}else if (peminjaman.status === 5) {
 			return "Sudah Dikembalikan"
 		}else {
 			return "Overdue"
 		}
 	}
+
+	const jenisStatus = [
+		{
+			value: 0,
+			label: 'Menunggu Persetujuan'
+		},
+		{
+			value: 1,
+			label: 'Ditolak'
+		},
+		{
+			value: 2,
+			label: 'Disetujui'
+		},
+		{
+			value: 3,
+			label: 'Sudah Diambil'
+		},
+		{
+			value: 4,
+			label: 'Sudah Dikembalikan'
+		},
+		{
+			value: 5,
+			label: 'Overdue'
+		}
+	];
 
 	const body = (
 		<div style={modalStyle} className={classes.paper}>
@@ -146,7 +173,7 @@ const PeminjamanDetail = props => {
 				noValidate
 			>
 				<CardHeader
-					title="Data Detail Peminjaman"
+					title="Ubah Data Peminjaman"
 				/>
 				<Divider />
 				<CardContent>
@@ -239,7 +266,7 @@ const PeminjamanDetail = props => {
 								value={peminjaman.denda}
 							/>
 						</Grid>
-						<Grid
+						{/* <Grid
 							item
 							md={12}
 							xs={12}
@@ -252,20 +279,57 @@ const PeminjamanDetail = props => {
 								name="status"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
 								value={statusOption()}
 							/>
+						</Grid> */}
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Status"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="status"
+								onChange={handleChange}
+								required
+								select
+								// eslint-disable-next-line react/jsx-sort-props
+								SelectProps={{ native: true }}
+								variant="outlined"
+								value={peminjaman.status}
+							>
+								{jenisStatus.map(option => (
+									<option
+										key={option.value}
+										value={option.value}
+									>
+										{option.label}
+									</option>
+								))}
+							</TextField>
 						</Grid>
 					</Grid>
 				</CardContent>
 				<Divider />
+				<CardActions>
+					<Button
+						className={classes.btn}
+						variant="contained"
+						onClick={handleSubmit}
+					>
+						UBAH
+          			</Button>
+				</CardActions>
 			</form>
 		</Card>
 	);
 };
 
-PeminjamanDetail.propTypes = {
+PeminjamanEdit.propTypes = {
 	className: PropTypes.string
 };
 
-export default PeminjamanDetail;
+export default PeminjamanEdit;

@@ -152,9 +152,6 @@ const PengadaanTable = props => {
 											<RouterLink to={`/pengadaan/detail/${pengadaan.id}`}>
 												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
-											<RouterLink to={`/pengadaan/edit/${pengadaan.id}`}>
-												<CreateIcon style={{ color: '#000000' }} />
-											</RouterLink>
 											<DeleteIcon />
 										</TableCell>
 									</TableRow>

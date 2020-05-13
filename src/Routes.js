@@ -23,7 +23,7 @@ import {
 	DetailPengadaan as DetailPengadaanView,
 	DetailPengguna as DetailPenggunaView,
 	DetailPeminjaman as DetailPeminjamanView,
-	EditPengadaan as EditPengadaanView
+	EditPeminjaman as EditPeminjamanView
 } from './views';
 
 const Routes = () => {
@@ -77,12 +77,6 @@ const Routes = () => {
 				path="/pengadaan/add"
 			/>
 			<RouteWithLayout
-				component={EditPengadaanView}
-				exact
-				layout={MainLayout}
-				path="/pengadaan/edit/:id"
-			/>
-			<RouteWithLayout
 				component={BukuInsertView}
 				exact
 				layout={MainLayout}
@@ -111,6 +105,12 @@ const Routes = () => {
 				exact
 				layout={MainLayout}
 				path="/peminjaman/:id"
+			/>
+			<RouteWithLayout
+				component={EditPeminjamanView}
+				exact
+				layout={MainLayout}
+				path="/peminjaman/edit/:id"
 			/>
 			<RouteWithLayout
 				component={IconsView}

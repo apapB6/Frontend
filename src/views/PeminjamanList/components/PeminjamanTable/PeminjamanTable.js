@@ -168,9 +168,11 @@ const PeminjamanTable = props => {
 										<TableCell>{statusOption(PeminjamanList.indexOf(peminjaman))}</TableCell>
 										<TableCell>
 											<RouterLink to={`/peminjaman/${peminjaman.id}`}>
-											<VisibilityIcon style={{ color: '#000000' }} />
+												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
-											<CreateIcon />
+											<RouterLink to={`/peminjaman/edit/${peminjaman.id}`}>
+												<CreateIcon style={{ color: '#000000' }} />
+											</RouterLink>
 										</TableCell>
 									</TableRow>
 								))}
