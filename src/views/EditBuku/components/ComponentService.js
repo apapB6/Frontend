@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Variable } from 'components'
 
-const EDITBUKU_API_URL = `${Variable}/buku/ubah/`;
+const EDITBUKU_API_URL = `${Variable}/buku/edit/`;
 
 class ComponentService {
 	editBuku(bukuId) {

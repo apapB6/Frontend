@@ -24,7 +24,8 @@ import {
 	DetailPengguna as DetailPenggunaView,
 	DetailPeminjaman as DetailPeminjamanView,
 	EditPeminjaman as EditPeminjamanView,
-	EditBuku as EditBukuView
+	EditBuku as EditBukuView,
+	DeleteBuku as DeleteBukuView
 } from './views';
 
 const Routes = () => {
@@ -99,7 +100,13 @@ const Routes = () => {
 				component={EditBukuView}
 				exact
 				layout={MainLayout}
-				path="/buku/ubah/:id"
+				path="/buku/edit/:id"
+			/>
+			<RouteWithLayout
+				component={DeleteBukuView}
+				exact
+				layout={MainLayout}
+				path="/buku/delete/:id"
 			/>
 			<RouteWithLayout
 				component={PeminjamanListView}
@@ -117,7 +124,7 @@ const Routes = () => {
 				component={EditPeminjamanView}
 				exact
 				layout={MainLayout}
-				path="/peminjaman/ubah/:id"
+				path="/peminjaman/edit/:id"
 			/>
 			<RouteWithLayout
 				component={IconsView}
