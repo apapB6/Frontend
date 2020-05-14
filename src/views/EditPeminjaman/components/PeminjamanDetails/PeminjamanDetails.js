@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const PeminjamanEdit = props => {
+const PeminjamanDetails = props => {
 	const history = useHistory();
 	const { className, ...rest } = props;
 
@@ -173,7 +173,7 @@ const PeminjamanEdit = props => {
 				noValidate
 			>
 				<CardHeader
-					title="Ubah Status Peminjaman"
+					title="Data Detail Peminjaman"
 				/>
 				<Divider />
 				<CardContent>
@@ -188,47 +188,94 @@ const PeminjamanEdit = props => {
 						>
 							<TextField
 								fullWidth
-								label="Status"
+								label="Nama Peminjam"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
-								name="status"
+								name="nama_peminjam"
 								onChange={handleChange}
-								required
-								select
-								// eslint-disable-next-line react/jsx-sort-props
-								SelectProps={{ native: true }}
 								variant="outlined"
-								value={peminjaman.status}
-							>
-								{jenisStatus.map(option => (
-									<option
-										key={option.value}
-										value={option.value}
-									>
-										{option.label}
-									</option>
-								))}
-							</TextField>
+								disabled="true"
+								value={peminjaman.nama_peminjam}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Judul Buku"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="nama_buku"
+								onChange={handleChange}
+								variant="outlined"
+								disabled="true"
+								value={peminjaman.nama_buku}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Tanggal Peminjaman"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="tanggal_peminjaman"
+								onChange={handleChange}
+								variant="outlined"
+								disabled="true"
+								value={peminjaman.tanggal_peminjaman}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Tanggal Pengembalian"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="tanggal_pengembalian"
+								onChange={handleChange}
+								variant="outlined"
+								disabled="true"
+								value={peminjaman.tanggal_pengembalian}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Denda"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="denda"
+								onChange={handleChange}
+								variant="outlined"
+								disabled="true"
+								value={peminjaman.denda}
+							/>
 						</Grid>
 					</Grid>
 				</CardContent>
 				<Divider />
-				<CardActions>
-					<Button
-						className={classes.btn}
-						variant="contained"
-						onClick={handleSubmit}
-					>
-						UBAH
-          			</Button>
-				</CardActions>
 			</form>
 		</Card>
 	);
 };
 
-PeminjamanEdit.propTypes = {
+PeminjamanDetails.propTypes = {
 	className: PropTypes.string
 };
 
-export default PeminjamanEdit;
+export default PeminjamanDetails;

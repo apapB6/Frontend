@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { Variable } from 'components'
 
-const DETAILPEMINJAMAN_API_URL = `${Variable}/peminjaman/detail/`;
+const DETAILPEMINJAMAN_API_URL = `${Variable}/peminjaman/edit/`;
 
 class ComponentService {
-	detailPeminjaman(peminjamanId) {
+	editPeminjaman(peminjamanId) {
 		return axios.get(`${DETAILPEMINJAMAN_API_URL}` + peminjamanId)
 	}
 }
