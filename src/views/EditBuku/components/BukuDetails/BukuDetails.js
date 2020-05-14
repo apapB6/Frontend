@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const BukuEdit = props => {
+const BukuDetails = props => {
 	const history = useHistory();
 	const { className, ...rest } = props;
 
@@ -143,7 +143,7 @@ const BukuEdit = props => {
 				noValidate
 			>
 				<CardHeader
-					title="Ubah Jumlah Buku"
+					title="Data Detail Buku"
 				/>
 				<Divider />
 				<CardContent>
@@ -158,35 +158,77 @@ const BukuEdit = props => {
 						>
 							<TextField
 								fullWidth
-								label="Jumlah Buku"
+								label="Judul Buku"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
-								name="jumlah"
+								name="judul"
 								onChange={handleChange}
-								type="number"
 								variant="outlined"
-								value={buku.jumlah}
+								disabled={true}
+								value={buku.judul}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Pengarang"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="pengarang"
+								onChange={handleChange}
+								variant="outlined"
+								disabled={true}
+								value={buku.pengarang}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Penerbit"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="penerbit"
+								onChange={handleChange}
+								variant="outlined"
+								disabled={true}
+								value={buku.penerbit}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Jenis Buku"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="id_jenis_buku"
+								onChange={handleChange}
+								variant="outlined"
+								disabled={true}
+								value={getJenisBuku()}
 							/>
 						</Grid>
 					</Grid>
 				</CardContent>
 				<Divider />
-				<CardActions>
-					<Button
-						className={classes.btn}
-						variant="contained"
-						onClick={handleSubmit}
-					>
-						UBAH
-					</Button>
-				</CardActions>
 			</form>
 		</Card>
 	);
 };
 
-BukuEdit.propTypes = {
+BukuDetails.propTypes = {
 	className: PropTypes.string
 };
 
-export default BukuEdit;
+export default BukuDetails;
