@@ -104,9 +104,9 @@ const PeminjamanEdit = props => {
 			return "Disetujui"
 		} else if (peminjaman.status === 3) {
 			return "Sudah Diambil"
-		}else if (peminjaman.status === 5) {
+		} else if (peminjaman.status === 5) {
 			return "Sudah Dikembalikan"
-		}else {
+		} else {
 			return "Overdue"
 		}
 	}

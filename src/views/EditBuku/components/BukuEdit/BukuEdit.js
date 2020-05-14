@@ -30,7 +30,9 @@ function getModalStyle() {
 }
 
 const useStyles = makeStyles((theme) => ({
-	root: {},
+	root: {
+		minHeight: '100%'
+	},
 	btn: {
 		background: '#5E9A78',
 		color: '#FFFFFF',

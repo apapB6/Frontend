@@ -31,26 +31,24 @@ const EditPeminjaman = () => {
 				>
 					<PeminjamanToolbar />
 				</Grid>
-					<Grid
-						item
-						lg={12}
-						md={6}
-						xl={4}
-						xs={12}
-					>
-						<div className={classes.content}>
-							<PeminjamanEdit />
-						</div>
-					</Grid>
-					<Grid
-						item
-						lg={12}
-						md={6}
-						xl={8}
-						xs={12}
-					>
-						<PeminjamanDetails />
-					</Grid>
+				<Grid
+					item
+					lg={4}
+					md={4}
+					xl={4}
+					xs={12}
+				>
+					<PeminjamanEdit />
+				</Grid>
+				<Grid
+					item
+					lg={8}
+					md={8}
+					xl={8}
+					xs={12}
+				>
+					<PeminjamanDetails />
+				</Grid>
 			</Grid>
 		</div>
 	);

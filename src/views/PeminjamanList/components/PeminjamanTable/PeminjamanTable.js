@@ -151,7 +151,7 @@ const PeminjamanTable = props => {
 									<TableCell>Tanggal Peminjaman</TableCell>
 									<TableCell>Tanggal Pengembalian</TableCell>
 									<TableCell>Status</TableCell>
-									<TableCell>Aksi</TableCell>
+									<TableCell style={{ textAlign: 'center' }}>Aksi</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
@@ -166,7 +166,7 @@ const PeminjamanTable = props => {
 										<TableCell>{peminjaman.tanggal_peminjaman}</TableCell>
 										<TableCell>{peminjaman.tanggal_pengembalian}</TableCell>
 										<TableCell>{statusOption(PeminjamanList.indexOf(peminjaman))}</TableCell>
-										<TableCell>
+										<TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
 											<RouterLink to={`/peminjaman/${peminjaman.id}`}>
 												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>

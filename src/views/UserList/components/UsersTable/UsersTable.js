@@ -51,7 +51,7 @@ const UsersTable = props => {
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [page, setPage] = useState(0);
 	const [UserList, setUserList] = useState([]);
-	
+
 	useEffect(() => {
 		refreshUser()
 	})
@@ -86,11 +86,11 @@ const UsersTable = props => {
 									<TableCell>NIP</TableCell>
 									<TableCell>Nama</TableCell>
 									<TableCell>Nomor Telepon</TableCell>
-									<TableCell>Aksi</TableCell>
+									<TableCell style={{ textAlign: 'center' }}>Aksi</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
-							{UserList.slice(0, rowsPerPage).map(user => (
+								{UserList.slice(0, rowsPerPage).map(user => (
 									<TableRow
 										className={classes.tableRow}
 										hover
@@ -98,17 +98,17 @@ const UsersTable = props => {
 									>
 										<TableCell>{UserList.indexOf(user) + 1}</TableCell>
 										<TableCell>
-										<Avatar 
-											src={imgUrl}
-											className={classes.img}
-										></Avatar>
+											<Avatar
+												src={imgUrl}
+												className={classes.img}
+											></Avatar>
 										</TableCell>
 										<TableCell>{user.nip}</TableCell>
 										<TableCell>{user.nama}</TableCell>
 										<TableCell>{user.telepon}</TableCell>
-										<TableCell>
+										<TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
 											<RouterLink to={`/pengguna/detail/${user.id}`}>
-											<VisibilityIcon style={{ color: '#000000' }} />
+												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
 											<CreateIcon />
 											<DeleteIcon />

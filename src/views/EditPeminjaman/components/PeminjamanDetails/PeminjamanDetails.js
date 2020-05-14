@@ -104,9 +104,9 @@ const PeminjamanDetails = props => {
 			return "Disetujui"
 		} else if (peminjaman.status === 3) {
 			return "Sudah Diambil"
-		}else if (peminjaman.status === 5) {
+		} else if (peminjaman.status === 5) {
 			return "Sudah Dikembalikan"
-		}else {
+		} else {
 			return "Overdue"
 		}
 	}
@@ -263,7 +263,7 @@ const PeminjamanDetails = props => {
 								onChange={handleChange}
 								variant="outlined"
 								disabled="true"
-								value={peminjaman.denda}
+								value={'Rp ' + peminjaman.denda}
 							/>
 						</Grid>
 					</Grid>

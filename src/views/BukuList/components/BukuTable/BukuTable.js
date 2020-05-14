@@ -123,7 +123,7 @@ const BukuTable = props => {
 									<TableCell>Pengarang</TableCell>
 									<TableCell>Penerbit</TableCell>
 									<TableCell>Status</TableCell>
-									<TableCell>Aksi</TableCell>
+									<TableCell style={{ textAlign: 'center' }}>Aksi</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
@@ -144,7 +144,7 @@ const BukuTable = props => {
 										<TableCell>{buku.pengarang}</TableCell>
 										<TableCell>{buku.penerbit}</TableCell>
 										<TableCell>{statusOption(BukuList.indexOf(buku))}</TableCell>
-										<TableCell>
+										<TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
 											<RouterLink to={`/buku/${buku.id}`}>
 												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>

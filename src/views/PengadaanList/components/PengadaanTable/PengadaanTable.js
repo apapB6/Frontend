@@ -131,7 +131,7 @@ const PengadaanTable = props => {
 									<TableCell>Jumlah</TableCell>
 									<TableCell>Harga</TableCell>
 									<TableCell>Status</TableCell>
-									<TableCell>Aksi</TableCell>
+									<TableCell style={{ textAlign: "center" }}>Aksi</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
@@ -148,7 +148,7 @@ const PengadaanTable = props => {
 										</TableCell>
 										<TableCell>Rp {pengadaan.harga}</TableCell>
 										<TableCell>{statusOption(pengadaanList.indexOf(pengadaan))}</TableCell>
-										<TableCell>
+										<TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
 											<RouterLink to={`/pengadaan/detail/${pengadaan.id}`}>
 												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>

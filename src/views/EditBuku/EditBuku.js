@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(3)
 	},
 	content: {
-		marginTop: theme.spacing(2)
+		height: '100%',
+		alignItems: 'stretch'
 	}
 }));
 
@@ -21,6 +22,7 @@ const EditBuku = () => {
 			<Grid
 				container
 				spacing={4}
+				alignItems="stretch"
 			>
 				<Grid
 					item
@@ -33,19 +35,18 @@ const EditBuku = () => {
 				</Grid>
 				<Grid
 					item
-					lg={12}
-					md={6}
+					lg={4}
+					md={4}
 					xl={4}
 					xs={12}
+					style={{ height: '100%' }}
 				>
-					<div className={classes.content}>
-						<BukuEdit />
-					</div>
+					<BukuEdit className={classes.content} />
 				</Grid>
 				<Grid
 					item
 					lg={8}
-					md={6}
+					md={8}
 					xl={8}
 					xs={12}
 				>
