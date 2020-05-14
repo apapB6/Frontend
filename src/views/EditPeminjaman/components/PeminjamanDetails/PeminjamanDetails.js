@@ -70,7 +70,7 @@ const PeminjamanDetails = props => {
 	})
 
 	const refreshPeminjaman = id => {
-		ComponentService.detailPeminjaman(id).then(response => setPeminjaman(response.data))
+		ComponentService.editPeminjaman(id).then(response => setPeminjaman(response.data))
 	}
 
 	const classes = useStyles();
