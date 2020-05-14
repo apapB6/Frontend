@@ -53,26 +53,24 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const PeminjamanDetail = props => {
+const BukuDelete = props => {
 	const history = useHistory();
 	const { className, ...rest } = props;
 
 	const [values, setValues] = useState({});
 	const [openModal, setOpenModal] = useState(false)
 	const [modalStyle] = useState(getModalStyle);
-	const [isOverdue, setisOverdue] = useState(false)
 
-	const [peminjaman, setPeminjaman] = useState({});
+	const [buku, setBuku] = useState({});
 
 	const { id } = useParams();
 
 	useEffect(() => {
-		refreshPeminjaman(id)
-		cannotCreate()
+		refreshBuku(id)
 	})
 
-	const refreshPeminjaman = id => {
-		ComponentService.detailPeminjaman(id).then(response => setPeminjaman(response.data))
+	const refreshBuku = id => {
+		ComponentService.deleteBuku(id).then(response => setBuku(response.data))
 	}
 
 	const classes = useStyles();
@@ -87,9 +85,7 @@ const PeminjamanDetail = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		const peminjaman = values
-
-		ComponentService.insertPeminjaman(peminjaman).then(response => setOpenModal(true))
+		ComponentService.deleteBukuPost(id).then(response => setOpenModal(true))
 
 	}
 
@@ -97,27 +93,17 @@ const PeminjamanDetail = props => {
 		setOpenModal(false)
 	}
 
-	const statusOption = () => {
-		if (peminjaman.status === 0) {
-			return "Menunggu Persetujuan"
-		} else if (peminjaman.status === 1) {
-			return "Ditolak"
-		} else if (peminjaman.status === 2) {
-			return "Disetujui"
-		} else if (peminjaman.status === 3) {
-			return "Sudah Diambil"
-		}else if (peminjaman.status === 4) {
-			return "Sudah Dikembalikan"
-		}else {
-			return "Overdue"
-		}
-	}
-	
-	const cannotCreate = () => {
-		if (peminjaman.status === 5) {
-			setisOverdue(true)
-		} else {
-			setisOverdue(false)
+	const getJenisBuku = () => {
+		if (buku.id_jenis_buku === 1) {
+			return 'Karya Tulis'
+		} else if (buku.id_jenis_buku === 2) {
+			return 'Majalah/Koran'
+		} else if (buku.id_jenis_buku === 3) {
+			return 'Cerita/Novel'
+		} else if (buku.id_jenis_buku === 4) {
+			return 'Buku Ajar'
+		} else if (buku.id_jenis_buku === 5) {
+			return 'Lainnya'
 		}
 	}
 
@@ -155,9 +141,12 @@ const PeminjamanDetail = props => {
 				autoComplete="off"
 				noValidate
 			>
+				<Alert color="danger">
 				<CardHeader
-					title="Data Detail Peminjaman"
+					title="Apakah Anda yakin untuk menghapus data ini?"
+					style={{ textAlign: 'center' }}
 				/>
+				</Alert>
 				<Divider />
 				<CardContent>
 					<Grid
@@ -171,31 +160,14 @@ const PeminjamanDetail = props => {
 						>
 							<TextField
 								fullWidth
-								label="Nama Peminjam"
-								InputLabelProps={{ shrink: true }}
-								margin="dense"
-								name="nama_peminjam"
-								onChange={handleChange}
-								variant="outlined"
-								disabled="true"
-								value={peminjaman.nama_peminjam}
-							/>
-						</Grid>
-						<Grid
-							item
-							md={12}
-							xs={12}
-						>
-							<TextField
-								fullWidth
 								label="Judul Buku"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
-								name="nama_buku"
+								name="judul"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
-								value={peminjaman.nama_buku}
+								disabled={true}
+								value={buku.judul}
 							/>
 						</Grid>
 						<Grid
@@ -205,14 +177,14 @@ const PeminjamanDetail = props => {
 						>
 							<TextField
 								fullWidth
-								label="Tanggal Peminjaman"
+								label="Pengarang"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
-								name="tanggal_peminjaman"
+								name="pengarang"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
-								value={peminjaman.tanggal_peminjaman}
+								disabled={true}
+								value={buku.pengarang}
 							/>
 						</Grid>
 						<Grid
@@ -222,14 +194,14 @@ const PeminjamanDetail = props => {
 						>
 							<TextField
 								fullWidth
-								label="Tanggal Pengembalian"
+								label="Penerbit"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
-								name="tanggal_pengembalian"
+								name="penerbit"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
-								value={peminjaman.tanggal_pengembalian}
+								disabled={true}
+								value={buku.penerbit}
 							/>
 						</Grid>
 						<Grid
@@ -239,14 +211,15 @@ const PeminjamanDetail = props => {
 						>
 							<TextField
 								fullWidth
-								label="Denda"
+								label="Jumlah Buku"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
-								name="denda"
+								name="jumlah"
 								onChange={handleChange}
+								type="number"
 								variant="outlined"
-								disabled="true"
-								value={peminjaman.denda}
+								disabled={true}
+								value={buku.jumlah}
 							/>
 						</Grid>
 						<Grid
@@ -256,14 +229,14 @@ const PeminjamanDetail = props => {
 						>
 							<TextField
 								fullWidth
-								label="Status"
+								label="Jenis Buku"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
-								name="status"
+								name="id_jenis_buku"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
-								value={statusOption()}
+								disabled={true}
+								value={getJenisBuku()}
 							/>
 						</Grid>
 					</Grid>
@@ -274,9 +247,8 @@ const PeminjamanDetail = props => {
 						className={classes.btn}
 						variant="contained"
 						onClick={handleSubmit}
-						disabled={outOfStock === true}
 					>
-						BUAT SURAT
+						HAPUS
 					</Button>
 				</CardActions>
 			</form>
@@ -284,8 +256,8 @@ const PeminjamanDetail = props => {
 	);
 };
 
-PeminjamanDetail.propTypes = {
+BukuDelete.propTypes = {
 	className: PropTypes.string
 };
 
-export default PeminjamanDetail;
+export default BukuDelete;
