@@ -143,9 +143,9 @@ const BukuDelete = props => {
 				noValidate
 			>
 				<CardHeader
-				<Alert color="danger">
+				//<Alert color="danger">
 					title="Apakah Anda yakin untuk menghapus data ini?"
-				</Alert>
+				//</Alert>
 				/>
 				<Divider />
 				<CardContent>

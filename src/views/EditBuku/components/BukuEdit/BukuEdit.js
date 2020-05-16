@@ -69,7 +69,7 @@ const BukuEdit = props => {
 
 	useEffect(() => {
 		refreshBuku(id)
-	})
+	}, [id])
 
 	const refreshBuku = id => {
 		ComponentService.editBuku(id).then(response => setBuku(response.data))
@@ -78,8 +78,8 @@ const BukuEdit = props => {
 	const classes = useStyles();
 
 	const handleChange = event => {
-		setValues({
-			...values,
+		setBuku({
+			...buku,
 			[event.target.name]: event.target.value
 		});
 	};
