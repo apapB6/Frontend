@@ -85,6 +85,10 @@ const BukuForm = props => {
 
 	const jenisBuku = [
 		{
+			value: 0,
+			label: '-Pilih Jenis Buku-'
+		},
+		{
 			value: 1,
 			label: 'Karya Tulis'
 		},
