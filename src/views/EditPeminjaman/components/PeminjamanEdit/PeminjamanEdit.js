@@ -67,7 +67,7 @@ const PeminjamanEdit = props => {
 
 	useEffect(() => {
 		refreshPeminjaman(id)
-	})
+	}, [id])
 
 	const refreshPeminjaman = id => {
 		ComponentService.editPeminjaman(id).then(response => setPeminjaman(response.data))
@@ -76,8 +76,8 @@ const PeminjamanEdit = props => {
 	const classes = useStyles();
 
 	const handleChange = event => {
-		setValues({
-			...values,
+		setPeminjaman({
+			...peminjaman,
 			[event.target.name]: event.target.value
 		});
 	};
