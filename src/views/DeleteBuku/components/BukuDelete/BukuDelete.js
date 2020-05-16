@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, withRouter, useHistory, useParams } from 'react-router-dom';
 import clsx from 'clsx';
+import { Alert } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import {
@@ -111,9 +112,9 @@ const BukuDelete = props => {
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
 			<p id="modal-description">
-				Data peminjaman berhasil ditambahkan
+				Data buku berhasil dihapus
 			</p>
-			<RouterLink to='/peminjaman'>
+			<RouterLink to='/buku'>
 				<Button
 					className={classes.btn}
 					variant="contained"
@@ -142,8 +143,9 @@ const BukuDelete = props => {
 				noValidate
 			>
 				<CardHeader
+				<Alert color="danger">
 					title="Apakah Anda yakin untuk menghapus data ini?"
-					style={{ textAlign: 'center', color: '#FF0000' }}
+				</Alert>
 				/>
 				<Divider />
 				<CardContent>
