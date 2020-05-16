@@ -274,7 +274,7 @@ const PeminjamanDetail = props => {
 						className={classes.btn}
 						variant="contained"
 						onClick={handleSubmit}
-						disabled={outOfStock === true}
+						disabled={isOverdue === false}
 					>
 						BUAT SURAT
 					</Button>
