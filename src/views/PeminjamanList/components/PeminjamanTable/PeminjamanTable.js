@@ -54,10 +54,22 @@ const PeminjamanTable = props => {
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [page, setPage] = useState(0);
 	const [PeminjamanList, setPeminjamanList] = useState([]);
+	const [isDisabled, setisDisabled] = useState(false)
 
 	useEffect(() => {
 		refreshPeminjaman()
+		cannotEdit()
 	})
+	
+	const cannotEdit = () => {
+		if (peminjaman.status === 1) {
+			setisDisabled(true)
+		} else if (peminjaman.status === 4) {
+			setisDisabled(true)
+		else {
+			setisDisabled(false)
+		}
+	}
 
 	const refreshPeminjaman = () => {
 		PeminjamanListService.getAllPeminjaman().then(response => setPeminjamanList(response.data))
@@ -172,6 +184,7 @@ const PeminjamanTable = props => {
 											</RouterLink>
 											<RouterLink to={`/peminjaman/edit/${peminjaman.id}`}>
 												<CreateIcon style={{ color: '#000000' }} />
+												disabled={isDisabled === true}
 											</RouterLink>
 										</TableCell>
 									</TableRow>
