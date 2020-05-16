@@ -78,8 +78,8 @@ const BukuEdit = props => {
 	const classes = useStyles();
 
 	const handleChange = event => {
-		setValues({
-			...values,
+		setBuku({
+			...buku,
 			[event.target.name]: event.target.value
 		});
 	};
