@@ -85,30 +85,12 @@ const PeminjamanEdit = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		// const peminjaman = values
-
-		// ComponentService.insertPeminjaman(peminjaman).then(response => setOpenModal(true))
+		ComponentService.editPeminjamanPost(id).then(response => setOpenModal(true))
 
 	}
 
 	const handleClose = () => {
 		setOpenModal(false)
-	}
-
-	const statusOption = () => {
-		if (peminjaman.status === 0) {
-			return "Menunggu Persetujuan"
-		} else if (peminjaman.status === 1) {
-			return "Ditolak"
-		} else if (peminjaman.status === 2) {
-			return "Disetujui"
-		} else if (peminjaman.status === 3) {
-			return "Sudah Diambil"
-		} else if (peminjaman.status === 5) {
-			return "Sudah Dikembalikan"
-		} else {
-			return "Overdue"
-		}
 	}
 
 	const jenisStatus = [
@@ -142,7 +124,7 @@ const PeminjamanEdit = props => {
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
 			<p id="modal-description">
-				Data peminjaman berhasil ditambahkan
+				Data peminjaman berhasil diubah
 			</p>
 			<RouterLink to='/peminjaman'>
 				<Button
