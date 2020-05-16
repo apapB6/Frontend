@@ -89,7 +89,7 @@ const PeminjamanDetail = props => {
 
 		const peminjaman = values
 
-		ComponentService.insertPeminjaman(peminjaman).then(response => setOpenModal(true))
+		ComponentService.insertSurat(peminjaman).then(response => setOpenModal(true))
 
 	}
 
