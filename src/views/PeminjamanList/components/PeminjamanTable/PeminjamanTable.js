@@ -62,9 +62,9 @@ const PeminjamanTable = props => {
 	})
 	
 	const cannotEdit = () => {
-		if (peminjaman.status === 1) {
+		if (PeminjamanList[index].status === 1) {
 			setisDisabled(true)
-		} else if (peminjaman.status === 4) {
+		} else if (PeminjamanList[index].status === 4) {
 			setisDisabled(true)
 		}else {
 			setisDisabled(false)
