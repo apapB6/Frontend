@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, withRouter, useHistory, useParams } from 'react-router-dom';
 import clsx from 'clsx';
+import { Alert } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import {
@@ -142,8 +143,9 @@ const BukuDelete = props => {
 				noValidate
 			>
 				<CardHeader
+				<Alert color="danger">
 					title="Apakah Anda yakin untuk menghapus data ini?"
-					style={{ textAlign: 'center', color: '#FF0000' }}
+				</Alert>
 				/>
 				<Divider />
 				<CardContent>
