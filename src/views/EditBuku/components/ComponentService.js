@@ -8,7 +8,7 @@ class ComponentService {
 		return axios.get(`${EDITBUKU_API_URL}` + bukuId)
 	}
 	editBukuPost(bukuId){
-		return axios.post(`${EDITBUKU_API_URL}` + bukuId)
+		return axios.post(`${EDITBUKU_API_URL}` + bukuId, buku)
 	}
 }
 
