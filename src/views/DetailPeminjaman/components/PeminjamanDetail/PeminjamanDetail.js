@@ -125,7 +125,7 @@ const PeminjamanDetail = props => {
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
 			<p id="modal-description">
-				Data peminjaman berhasil ditambahkan
+				Data surat berhasil diajukan
 			</p>
 			<RouterLink to='/peminjaman'>
 				<Button
