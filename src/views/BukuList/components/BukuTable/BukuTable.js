@@ -148,7 +148,7 @@ const BukuTable = props => {
 											<RouterLink to={`/buku/${buku.id}`}>
 												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
-											<RouterLink to={`/buku/ubah/${buku.id}`}>
+											<RouterLink to={`/buku/edit/${buku.id}`}>
 												<CreateIcon style={{ color: '#000000' }} />
 											</RouterLink>
 											<RouterLink to={`/buku/delete/${buku.id}`}>
