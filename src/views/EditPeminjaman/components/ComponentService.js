@@ -7,8 +7,8 @@ class ComponentService {
 	editPeminjaman(peminjamanId) {
 		return axios.get(`${EDITPEMINJAMAN_API_URL}` + peminjamanId)
 	}
-	editPeminjamanPost(peminjamanId){
-		return axios.post(`${EDITPEMINJAMAN_API_URL}` + peminjamanId)
+	editPeminjamanPost(peminjamanId, peminjaman){
+		return axios.post(`${EDITPEMINJAMAN_API_URL}` + peminjamanId, peminjaman)
 	}
 }
 

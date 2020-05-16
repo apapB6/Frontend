@@ -85,7 +85,7 @@ const PeminjamanEdit = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		ComponentService.editPeminjamanPost(id).then(response => setOpenModal(true))
+		ComponentService.editPeminjamanPost(id, peminjaman).then(response => setOpenModal(true))
 
 	}
 
