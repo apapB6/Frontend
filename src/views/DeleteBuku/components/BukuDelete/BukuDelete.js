@@ -141,12 +141,10 @@ const BukuDelete = props => {
 				autoComplete="off"
 				noValidate
 			>
-				<Alert color="danger">
 				<CardHeader
 					title="Apakah Anda yakin untuk menghapus data ini?"
-					style={{ textAlign: 'center' }}
+					style={{ textAlign: 'center', color: '#FF0000' }}
 				/>
-				</Alert>
 				<Divider />
 				<CardContent>
 					<Grid
