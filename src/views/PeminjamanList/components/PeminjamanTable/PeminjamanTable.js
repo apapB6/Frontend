@@ -66,7 +66,7 @@ const PeminjamanTable = props => {
 			setisDisabled(true)
 		} else if (peminjaman.status === 4) {
 			setisDisabled(true)
-		else {
+		}else {
 			setisDisabled(false)
 		}
 	}
