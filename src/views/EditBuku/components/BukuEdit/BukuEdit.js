@@ -87,7 +87,7 @@ const BukuEdit = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		ComponentService.editBukuPost(id).then(response => setOpenModal(true))
+		ComponentService.editBukuPost(id, buku).then(response => setOpenModal(true))
 
 	}
 
