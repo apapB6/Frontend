@@ -20,3 +20,4 @@ export { default as DetailPengguna } from './DetailPengguna';
 export { default as DetailPeminjaman } from './DetailPeminjaman';
 export { default as EditPeminjaman } from './EditPeminjaman';
 export { default as EditBuku } from './EditBuku';
+export { default as DeleteBuku } from './DeleteBuku';
