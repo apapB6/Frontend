@@ -55,13 +55,13 @@ const PeminjamanTable = props => {
 	const [page, setPage] = useState(0);
 	const [PeminjamanList, setPeminjamanList] = useState([]);
 	const [isDisabled, setisDisabled] = useState(false)
-
+	
 	useEffect(() => {
 		refreshPeminjaman()
-		cannotEdit()
+		//cannotEdit(index)
 	})
 	
-	const cannotEdit = () => {
+	const cannotEdit = (index) => {
 		if (PeminjamanList[index].status === 1) {
 			setisDisabled(true)
 		} else if (PeminjamanList[index].status === 4) {
@@ -183,8 +183,10 @@ const PeminjamanTable = props => {
 												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
 											<RouterLink to={`/peminjaman/edit/${peminjaman.id}`}>
-												<CreateIcon style={{ color: '#000000' }} />
-												disabled={isDisabled === true}
+												<CreateIcon 
+												style={{ color: '#000000' }} 
+												disabled={isDisabled === true} 
+												/>
 											</RouterLink>
 										</TableCell>
 									</TableRow>
