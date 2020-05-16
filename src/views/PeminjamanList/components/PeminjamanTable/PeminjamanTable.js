@@ -170,7 +170,7 @@ const PeminjamanTable = props => {
 											<RouterLink to={`/peminjaman/${peminjaman.id}`}>
 												<VisibilityIcon style={{ color: '#000000' }} />
 											</RouterLink>
-											<RouterLink to={`/peminjaman/ubah/${peminjaman.id}`}>
+											<RouterLink to={`/peminjaman/edit/${peminjaman.id}`}>
 												<CreateIcon style={{ color: '#000000' }} />
 											</RouterLink>
 										</TableCell>
