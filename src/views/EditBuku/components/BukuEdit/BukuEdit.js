@@ -69,7 +69,7 @@ const BukuEdit = props => {
 
 	useEffect(() => {
 		refreshBuku(id)
-	})
+	}, [id])
 
 	const refreshBuku = id => {
 		ComponentService.editBuku(id).then(response => setBuku(response.data))
