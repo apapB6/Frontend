@@ -162,6 +162,23 @@ const PenggunaForm = props => {
 						>
 							<TextField
 								fullWidth
+								label="NIP"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="nip"
+								onChange={handleChange}
+								variant="outlined"
+								disabled="true"
+								value={pengguna.nip}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
 								label="Tempat Lahir"
 								InputLabelProps={{ shrink: true }}
 								margin="dense"
