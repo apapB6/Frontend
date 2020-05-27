@@ -111,8 +111,6 @@ const UsersTable = props => {
 												<RouterLink to={`/pengguna/detail/${user.id}`}>
 													<VisibilityIcon style={{ color: '#000000' }} />
 												</RouterLink>
-												<CreateIcon />
-												<DeleteIcon />
 											</div>
 										</TableCell>
 									</TableRow>
