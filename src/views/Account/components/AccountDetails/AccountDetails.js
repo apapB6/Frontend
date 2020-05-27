@@ -1,204 +1,216 @@
 import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-  Divider,
-  Grid,
-  Button,
-  TextField
+	Card,
+	Avatar,
+	CardContent,
+	CardActions,
+	Divider,
+	Grid,
+	Button,
+	TextField,
+	Typography
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+	root: {
+	},
+	avatar: {
+		position: "relative",
+		width: "80px",
+		height: "80px",
+		left: "50%",
+		transform: "translateX(-50%)",
+		marginBottom: "10px"
+	},
+	username: {
+		textAlign: "center",
+		marginBottom: "25px"
+	},
+	header: {
+		padding: "10px 0"
+	}
 }));
 
 const AccountDetails = props => {
-  const { className, ...rest } = props;
+	const { className, ...rest } = props;
 
-  const classes = useStyles();
+	const classes = useStyles();
 
-  const [values, setValues] = useState({
-    firstName: 'Shen',
-    lastName: 'Zhi',
-    email: 'shen.zhi@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
-  });
+	const [values, setValues] = useState({
+		nama: 'Ira',
+		nip: '1806269801',
+		tempat_lahir: 'Jakarta',
+		tanggal_lahir: '1996-02-01',
+		alamat: 'Serang',
+		telepon: '081234567890',
+		username: 'irakuyz',
+		avatar: '/images/avatars/avatar_11.png'
+	});
 
-  const handleChange = event => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
-    });
-  };
+	const handleChange = event => {
+		setValues({
+			...values,
+			[event.target.name]: event.target.value
+		});
+	};
 
-  const states = [
-    {
-      value: 'alabama',
-      label: 'Alabama'
-    },
-    {
-      value: 'new-york',
-      label: 'New York'
-    },
-    {
-      value: 'san-francisco',
-      label: 'San Francisco'
-    }
-  ];
+	const states = [
+		{
+			value: 'alabama',
+			label: 'Alabama'
+		},
+		{
+			value: 'new-york',
+			label: 'New York'
+		},
+		{
+			value: 'san-francisco',
+			label: 'San Francisco'
+		}
+	];
 
-  return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
-      <form
-        autoComplete="off"
-        noValidate
-      >
-        <CardHeader
-          subheader="The information can be edited"
-          title="Profile"
-        />
-        <Divider />
-        <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                margin="dense"
-                name="firstName"
-                onChange={handleChange}
-                required
-                value={values.firstName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Last name"
-                margin="dense"
-                name="lastName"
-                onChange={handleChange}
-                required
-                value={values.lastName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Email Address"
-                margin="dense"
-                name="email"
-                onChange={handleChange}
-                required
-                value={values.email}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Phone Number"
-                margin="dense"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Select State"
-                margin="dense"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                // eslint-disable-next-line react/jsx-sort-props
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-              >
-                {states.map(option => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Country"
-                margin="dense"
-                name="country"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-          </Grid>
-        </CardContent>
-        <Divider />
-        <CardActions>
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Save details
-          </Button>
-        </CardActions>
-      </form>
-    </Card>
-  );
+	return (
+		<Card
+			{...rest}
+			className={clsx(classes.root, className)}
+		>
+			<form
+				autoComplete="off"
+				noValidate
+			>
+				<CardContent>
+					<Avatar
+						className={classes.avatar}
+						src={values.avatar}
+					/>
+					<Typography variant="h4" className={classes.username}>
+						{values.username}
+					</Typography>
+					<Grid
+						container
+						spacing={3}
+					>
+						<Grid
+							item
+							md={6}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Nama"
+								margin="dense"
+								name="nama"
+								onChange={handleChange}
+								value={values.nama}
+								variant="outlined"
+								disabled={true}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={6}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="NIP"
+								margin="dense"
+								name="nip"
+								onChange={handleChange}
+								value={values.nip}
+								variant="outlined"
+								disabled={true}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={6}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Tempat Lahir"
+								margin="dense"
+								name="tempat_lahir"
+								onChange={handleChange}
+								value={values.tempat_lahir}
+								variant="outlined"
+								disabled={true}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={6}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Tanggal Lahir"
+								margin="dense"
+								name="tanggal_lahir"
+								onChange={handleChange}
+								type="date"
+								value={values.tanggal_lahir}
+								variant="outlined"
+								disabled={true}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={6}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Alamat"
+								margin="dense"
+								name="alamat"
+								onChange={handleChange}
+								value={values.alamat}
+								variant="outlined"
+								disabled={true}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={6}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Telepon"
+								margin="dense"
+								name="telepon"
+								onChange={handleChange}
+								value={values.telepon}
+								variant="outlined"
+								disabled={true}
+							/>
+						</Grid>
+					</Grid>
+				</CardContent>
+				<Divider />
+				<CardActions>
+					<RouterLink to="/">
+						<Button
+							style={{ backgroundColor: '#6C987B', color: '#FFFFFF' }}
+							variant="contained"
+						>
+							Kembali
+          			</Button>
+					</RouterLink>
+				</CardActions>
+			</form>
+		</Card>
+	);
 };
 
 AccountDetails.propTypes = {
-  className: PropTypes.string
+	className: PropTypes.string
 };
 
 export default AccountDetails;

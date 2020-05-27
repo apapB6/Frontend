@@ -134,22 +134,10 @@ const Routes = () => {
 				path="/peminjaman/edit/:id"
 			/>
 			<RouteWithLayout
-				component={IconsView}
-				exact
-				layout={MainLayout}
-				path="/icons"
-			/>
-			<RouteWithLayout
 				component={AccountView}
 				exact
 				layout={MainLayout}
 				path="/account"
-			/>
-			<RouteWithLayout
-				component={SettingsView}
-				exact
-				layout={MainLayout}
-				path="/settings"
 			/>
 			<RouteWithLayout
 				component={SignUpView}

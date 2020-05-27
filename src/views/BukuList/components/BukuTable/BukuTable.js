@@ -144,16 +144,18 @@ const BukuTable = props => {
 										<TableCell>{buku.pengarang}</TableCell>
 										<TableCell>{buku.penerbit}</TableCell>
 										<TableCell>{statusOption(BukuList.indexOf(buku))}</TableCell>
-										<TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-											<RouterLink to={`/buku/${buku.id}`}>
-												<VisibilityIcon style={{ color: '#000000' }} />
-											</RouterLink>
-											<RouterLink to={`/buku/edit/${buku.id}`}>
-												<CreateIcon style={{ color: '#000000' }} />
-											</RouterLink>
-											<RouterLink to={`/buku/delete/${buku.id}`}>
-												<DeleteIcon style={{ color: '#000000' }} />
-											</RouterLink>
+										<TableCell>
+											<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+												<RouterLink to={`/buku/${buku.id}`}>
+													<VisibilityIcon style={{ color: '#000000' }} />
+												</RouterLink>
+												<RouterLink to={`/buku/edit/${buku.id}`}>
+													<CreateIcon style={{ color: '#000000' }} />
+												</RouterLink>
+												<RouterLink to={`/buku/delete/${buku.id}`}>
+													<DeleteIcon style={{ color: '#000000' }} />
+												</RouterLink>
+											</div>
 										</TableCell>
 									</TableRow>
 								))}

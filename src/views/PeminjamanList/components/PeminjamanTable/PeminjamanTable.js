@@ -55,18 +55,18 @@ const PeminjamanTable = props => {
 	const [page, setPage] = useState(0);
 	const [PeminjamanList, setPeminjamanList] = useState([]);
 	const [isDisabled, setisDisabled] = useState(false)
-	
+
 	useEffect(() => {
 		refreshPeminjaman()
 		//cannotEdit(index)
 	})
-	
+
 	const cannotEdit = (index) => {
 		if (PeminjamanList[index].status === 1) {
 			setisDisabled(true)
 		} else if (PeminjamanList[index].status === 4) {
 			setisDisabled(true)
-		}else {
+		} else {
 			setisDisabled(false)
 		}
 	}
@@ -178,16 +178,18 @@ const PeminjamanTable = props => {
 										<TableCell>{peminjaman.tanggal_peminjaman}</TableCell>
 										<TableCell>{peminjaman.tanggal_pengembalian}</TableCell>
 										<TableCell>{statusOption(PeminjamanList.indexOf(peminjaman))}</TableCell>
-										<TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-											<RouterLink to={`/peminjaman/${peminjaman.id}`}>
-												<VisibilityIcon style={{ color: '#000000' }} />
-											</RouterLink>
-											<RouterLink to={`/peminjaman/edit/${peminjaman.id}`}>
-												<CreateIcon 
-												style={{ color: '#000000' }} 
-												disabled={isDisabled === true} 
-												/>
-											</RouterLink>
+										<TableCell>
+											<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+												<RouterLink to={`/peminjaman/${peminjaman.id}`}>
+													<VisibilityIcon style={{ color: '#000000' }} />
+												</RouterLink>
+												<RouterLink to={`/peminjaman/edit/${peminjaman.id}`}>
+													<CreateIcon
+														style={{ color: '#000000' }}
+														disabled={isDisabled === true}
+													/>
+												</RouterLink>
+											</div>
 										</TableCell>
 									</TableRow>
 								))}

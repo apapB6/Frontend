@@ -16,6 +16,7 @@ import {
 	InputLabel
 } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import CancelIcon from '@material-ui/icons/Cancel';
 import ComponentService from '../ComponentService'
 
 function getModalStyle() {
@@ -50,6 +51,10 @@ const useStyles = makeStyles((theme) => ({
 	success: {
 		fontSize: '80px',
 		margin: '0 0 20px'
+	},
+	failed: {
+		fontSize: '80px',
+		margin: '0 0 20px'
 	}
 }));
 
@@ -58,7 +63,8 @@ const PenggunaForm = props => {
 	const { className, ...rest } = props;
 
 	const [values, setValues] = useState({});
-	const [openModal, setOpenModal] = useState(false)
+	const [openModalSuccess, setOpenModalSuccess] = useState(false)
+	const [openModalFailed, setOpenModalFailed] = useState(false)
 	const [modalStyle] = useState(getModalStyle);
 
 	const classes = useStyles();
@@ -75,12 +81,22 @@ const PenggunaForm = props => {
 
 		const pengguna = values
 
-		ComponentService.insertPengguna(pengguna).then(response => setOpenModal(true))
+		ComponentService.insertPengguna(pengguna).then(response => {
+			if (response.data === true) {
+				setOpenModalSuccess(true)
+			} else {
+				setOpenModalFailed(true)
+			}
+		}
+		)
 
 	}
 
-	const handleClose = () => {
-		setOpenModal(false)
+	const handleCloseSuccess = () => {
+		setOpenModalSuccess(false)
+	}
+	const handleCloseFailed = () => {
+		setOpenModalFailed(false)
 	}
 
 	const body = (
@@ -100,22 +116,48 @@ const PenggunaForm = props => {
 		</div>
 	)
 
+	const bodyFailed = (
+		<div style={modalStyle} className={classes.paper}>
+			<CancelIcon style={{ color: '#FF0000' }} id="modal-logo" className={classes.failed} />
+			<p id="modal-description">
+				Username sudah terpakai
+			</p>
+			<RouterLink to='/users'>
+				<Button
+					className={classes.btn}
+					variant="contained"
+				>
+					Oke
+			</Button>
+			</RouterLink>
+		</div>
+	)
+
 	return (
 		<Card
 			{...rest}
 			className={clsx(classes.root, className)}
 		>
 			<Modal
-				open={openModal}
-				onClose={handleClose}
+				open={openModalSuccess}
+				onClose={handleCloseSuccess}
 				aria-labelledby="modal-logo"
 				aria-describedby="modal-description"
 			>
 				{body}
 			</Modal>
+			<Modal
+				open={openModalFailed}
+				onClose={handleCloseFailed}
+				aria-labelledby="modal-logo"
+				aria-describedby="modal-description"
+			>
+				{bodyFailed}
+			</Modal>
 			<form
 				autoComplete="off"
 				noValidate
+				onSubmit={handleSubmit}
 			>
 				<CardHeader
 					title="Tambah Data Pengguna"
@@ -244,7 +286,8 @@ const PenggunaForm = props => {
 					<Button
 						className={classes.btn}
 						variant="contained"
-						onClick={handleSubmit}
+						// onClick={handleSubmit}
+						type="submit"
 					>
 						SIMPAN
           </Button>

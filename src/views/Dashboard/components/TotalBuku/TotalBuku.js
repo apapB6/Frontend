@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -90,14 +91,14 @@ const TotalBuku = props => {
 				</Grid>
 				<div className={classes.difference}>
 					<NavigateNextIcon className={classes.differenceIcon} />
-					<a href="/buku">
+					<RouterLink to="/buku">
 						<Typography
 							className={classes.caption}
 							variant="caption"
 						>
 							Lihat Selengkapnya
-          			</Typography>
-					</a>
+          				</Typography>
+					</RouterLink>
 				</div>
 			</CardContent>
 		</Card>

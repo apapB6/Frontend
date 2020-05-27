@@ -106,12 +106,14 @@ const UsersTable = props => {
 										<TableCell>{user.nip}</TableCell>
 										<TableCell>{user.nama}</TableCell>
 										<TableCell>{user.telepon}</TableCell>
-										<TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-											<RouterLink to={`/pengguna/detail/${user.id}`}>
-												<VisibilityIcon style={{ color: '#000000' }} />
-											</RouterLink>
-											<CreateIcon />
-											<DeleteIcon />
+										<TableCell>
+											<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+												<RouterLink to={`/pengguna/detail/${user.id}`}>
+													<VisibilityIcon style={{ color: '#000000' }} />
+												</RouterLink>
+												<CreateIcon />
+												<DeleteIcon />
+											</div>
 										</TableCell>
 									</TableRow>
 								))}

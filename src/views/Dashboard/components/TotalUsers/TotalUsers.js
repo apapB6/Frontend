@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -87,14 +87,14 @@ const TotalUsers = props => {
 				</Grid>
 				<div className={classes.difference}>
 					<NavigateNextIcon className={classes.differenceIcon} />
-					<a href="users">
+					<RouterLink to="/users">
 						<Typography
 							className={classes.caption}
 							variant="caption"
 						>
 							Lihat Selengkapnya
 						</Typography>
-					</a>
+					</RouterLink>
 				</div>
 			</CardContent>
 		</Card>

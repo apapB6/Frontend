@@ -148,13 +148,15 @@ const PengadaanTable = props => {
 										</TableCell>
 										<TableCell>Rp {pengadaan.harga}</TableCell>
 										<TableCell>{statusOption(pengadaanList.indexOf(pengadaan))}</TableCell>
-										<TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-											<RouterLink to={`/pengadaan/detail/${pengadaan.id}`}>
-												<VisibilityIcon style={{ color: '#000000' }} />
-											</RouterLink>
-											<RouterLink to={`/pengadaan/delete/${pengadaan.id}`}>
-												<DeleteIcon style={{ color: '#000000' }} />
-											</RouterLink>
+										<TableCell>
+											<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+												<RouterLink to={`/pengadaan/detail/${pengadaan.id}`}>
+													<VisibilityIcon style={{ color: '#000000' }} />
+												</RouterLink>
+												<RouterLink to={`/pengadaan/delete/${pengadaan.id}`}>
+													<DeleteIcon style={{ color: '#000000' }} />
+												</RouterLink>
+											</div>
 										</TableCell>
 									</TableRow>
 								))}
