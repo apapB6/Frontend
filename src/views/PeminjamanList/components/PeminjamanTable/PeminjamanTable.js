@@ -147,6 +147,26 @@ const PeminjamanTable = props => {
 		}
 	}
 
+	const disableEdit = (status, id) => {
+		if (status === 4 || status === 1) {
+			return (
+				<CreateIcon
+					style={{ color: '#A9A9A9' }}
+					disabled={isDisabled === true}
+				/>
+			)
+		} else {
+			return (
+				<RouterLink to={`/peminjaman/edit/${id}`}>
+					<CreateIcon
+						style={{ color: '#000000' }}
+						disabled={isDisabled === true}
+					/>
+				</RouterLink>
+			)
+		}
+	}
+
 	return (
 		<Card
 			{...rest}
@@ -183,12 +203,7 @@ const PeminjamanTable = props => {
 												<RouterLink to={`/peminjaman/${peminjaman.id}`}>
 													<VisibilityIcon style={{ color: '#000000' }} />
 												</RouterLink>
-												<RouterLink to={`/peminjaman/edit/${peminjaman.id}`}>
-													<CreateIcon
-														style={{ color: '#000000' }}
-														disabled={isDisabled === true}
-													/>
-												</RouterLink>
+												{disableEdit(peminjaman.status, peminjaman.id)}
 											</div>
 										</TableCell>
 									</TableRow>
