@@ -122,7 +122,7 @@ const PenggunaForm = props => {
 			<p id="modal-description">
 				Username sudah terpakai
 			</p>
-			<RouterLink>
+			<RouterLink to='/pengguna/add'>
 				<Button
 					className={classes.btn}
 					variant="contained"
