@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Avatar, Typography } from '@material-ui/core';
+import { withCookies } from 'react-cookie';
+import { getRole } from '../../../../../../utils'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Profile = props => {
-	const { className, ...rest } = props;
+	const { className, allCookies, ...rest } = props;
 
 	const classes = useStyles();
 
@@ -48,9 +50,9 @@ const Profile = props => {
 				className={classes.name}
 				variant="h4"
 			>
-				{user.name}
+				{allCookies.user.name}
 			</Typography>
-			<Typography variant="body2">{user.bio}</Typography>
+			{/* <Typography variant="body2">{getRole.find(dt => dt.id === allCookies.user.id).nama}</Typography> */}
 		</div>
 	);
 };
@@ -59,4 +61,4 @@ Profile.propTypes = {
 	className: PropTypes.string
 };
 
-export default Profile;
+export default withCookies(Profile);

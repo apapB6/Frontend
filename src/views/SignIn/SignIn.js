@@ -12,6 +12,10 @@ import {
 	Typography
 } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { useCookies } from 'react-cookie';
+import axios from 'axios'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import ComponentService from './ComponentService'
 
 import { Facebook as FacebookIcon, Google as GoogleIcon } from 'icons';
 
@@ -134,6 +138,21 @@ const SignIn = props => {
 	const { history } = props;
 	const mainHistory = useHistory()
 	const classes = useStyles();
+	const [postLoading, setPostLoading] = useState(false)
+
+	const [user, setUser] = useCookies(['user']);
+
+	const [dataState, setDataState] = useState({
+		username: '',
+		password: ''
+	})
+	
+	const [error, setError] = useState({
+		isValid: false,
+		username: false,
+		password: false,
+		message: ''
+	})
 
 	const [formState, setFormState] = useState({
 		isValid: false,
@@ -155,48 +174,55 @@ const SignIn = props => {
 		});
 	};
 
-	useEffect(() => {
-		const errors = validate(formState.values, schema);
+	// useEffect(() => {
+	// 	const errors = validate(formState.values, schema);
 	
-		setFormState(formState => ({
-		  ...formState,
-		  isValid: errors ? false : true,
-		  errors: errors || {}
-		}));
-	  }, [formState.values]);
+	// 	setFormState(formState => ({
+	// 	  ...formState,
+	// 	  isValid: errors ? false : true,
+	// 	  errors: errors || {}
+	// 	}));
+	//   }, [formState.values]);
 	
-	  const handleBack = () => {
-		history.goBack();
-	  };
-	
-	  const handleChange = event => {
-		event.persist();
-	
-		setFormState(formState => ({
-		  ...formState,
-		  values: {
-			...formState.values,
-			[event.target.name]:
-			  event.target.type === 'checkbox'
-				? event.target.checked
-				: event.target.value
-		  },
-		  touched: {
-			...formState.touched,
-			[event.target.name]: true
-		  }
-		}));
-	  };
+	const handleBack = () => {
+	history.goBack();
+	};
 
-	const handleSignIn = event => {
-		event.preventDefault();
-		history.push('/');
+	const handleChange = (field, event) => {
+	setDataState({
+		...dataState,
+		[field]: event.target.value
+	})
+	setError({
+		...error,
+		username: false,
+		password: false,
+		isValid: error.password !== '' && error.username !== '' ? true : false
+	})
 	};
 
 	const validation = () => {
-		localStorage.setItem('isLogin', true)
-		window.location.reload()
-		mainHistory.push('/dashboard')
+		// localStorage.setItem('isLogin', true)
+		// window.location.reload()
+		// mainHistory.push('/dashboard')
+		setPostLoading(true)
+		axios.post(ComponentService.getAuth(), {
+			username: dataState.username,
+			password: dataState.password
+		}).then(response => {
+			setPostLoading(false)
+			setUser('user', response.data, { path: '/' })
+			window.location.reload()
+			mainHistory.push('/dashboard')
+		}).catch(err => {
+			setPostLoading(false)
+			setError({
+			  username: true,
+			  password: true,
+			  message: 'Username or Password is not correct',
+			  isValid: false
+			})
+		})
 	  }
 
 	return (
@@ -223,7 +249,7 @@ const SignIn = props => {
 						<div className={classes.contentBody}>
 							<form
 								className={classes.form}
-								onSubmit={handleSignIn}
+								// onSubmit={handleSignIn}
 							>
 								<Typography
 									className={classes.title}
@@ -240,32 +266,38 @@ const SignIn = props => {
 									variant="outlined"
 									onFocus={() => onFocus()}
 									onHover={() => onHover()}
-									onChange={handleChange}
+									onChange={e => handleChange('username', e)}
+									value={dataState.username|| ''}
 									style={{ outlineColor: formState.outlineColor }}
 								/>
 								<TextField
 									className={classes.textField}
 									fullWidth
+									error={error.password}
+									helperText={
+										error.message !== '' && !error.isValid ? error.message : ''
+									}
 									label="Kata Sandi"
 									name="password"
 									type="password"
-									onChange={handleChange}
+									onChange={e => handleChange('password', e)}
 									variant="outlined"
+									value={dataState.password || ''}
 									onFocus={() => onFocus()}
 									onHover={() => onHover()}
 									style={{ outlineColor: formState.outlineColor }}
 								/>
 								<Button
 									className={classes.signInButton}
-									// disabled={!formState.isValid}
 									fullWidth
+									disabled={!error.isValid || postLoading}
 									size="large"
 									type="submit"
 									variant="contained"
 									onClick={validation}
 								>
-									MASUK
-                </Button>
+									{postLoading ? <CircularProgress color="inherit" size={20}/> : 'MASUK'}
+                				</Button>
 							</form>
 						</div>
 					</div>

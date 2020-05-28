@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -7,6 +8,7 @@ import Color from 'theme/palette'
 import { AppBar, Toolbar, Hidden, IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import InputIcon from '@material-ui/icons/Input';
+import { useCookies, withCookies } from 'react-cookie';
 // import { SignOut } from 'components'
 
 const useStyles = makeStyles(theme => ({
@@ -31,6 +33,8 @@ const Topbar = props => {
 	const { className, onSidebarOpen, ...rest } = props;
 	const [signOut, setSignOut] = useState(false)
 	const classes = useStyles();
+	const [user, setUser] = useCookies(['user']);
+	const history = useHistory()
 
 	const [notifications] = useState([]);
 
@@ -39,8 +43,9 @@ const Topbar = props => {
 	// }
 	
 	const handleLogout = () => {
-		localStorage.removeItem("isLogin")
+		setUser('user', {}, { path: '/'})
 		window.location.reload()
+		history.push('/sign-in')
 	  }
 
 	return (
@@ -83,4 +88,4 @@ Topbar.propTypes = {
 	onSidebarOpen: PropTypes.func
 };
 
-export default Topbar;
+export default withCookies(Topbar);

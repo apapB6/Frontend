@@ -1,6 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
+import { getAxios } from 'utils';
+import { withCookies } from 'react-cookie';
+import useAxios from "axios-hooks";
+import ComponentService from './components/ComponentService'
 
 import {
 	TotalPengadaan,
@@ -15,8 +19,13 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 	const classes = useStyles();
+	const { allCookies } = props;
+	
+	const [{ data: dashboardData, loading, error }, refetch] = useAxios(
+		getAxios(ComponentService.getBeranda(), allCookies.user.jwttoken)
+	);
 
 	return (
 		<div className={classes.root}>
@@ -94,11 +103,15 @@ const Dashboard = () => {
 					xl={12}
 					xs={12}
 				>
-					<LatestOrders />
+					<LatestOrders 
+						refetch={refetch}
+						dashboardData={dashboardData}
+						loading={loading}
+					/>
 				</Grid>
 			</Grid>
 		</div>
 	);
 };
 
-export default Dashboard;
+export default withCookies(Dashboard);

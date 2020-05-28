@@ -5,7 +5,7 @@ const TOTALBUKU_API_URL = `${Variable}/buku/viewall`
 const TOTALPENGADAAN_API_URL = `${Variable}/pengadaan/viewall`
 const TOTALUSER_API_URL = `${Variable}/pengguna/viewall`
 const PEMINJAMANLIST_API_URL = `${Variable}/peminjaman/viewall`
-const BERANDA_API_URL = `${Variable}/beranda/`
+const BERANDA_API_URL = `${Variable}/beranda`
 
 class ComponentService {
 	getAllBuku() {
