@@ -69,7 +69,7 @@ const PeminjamanDetail = props => {
 	useEffect(() => {
 		refreshPeminjaman(id)
 		cannotCreate()
-	})
+	}, [id])
 
 	const refreshPeminjaman = id => {
 		ComponentService.detailPeminjaman(id).then(response => setPeminjaman(response.data))
@@ -106,13 +106,13 @@ const PeminjamanDetail = props => {
 			return "Disetujui"
 		} else if (peminjaman.status === 3) {
 			return "Sudah Diambil"
-		}else if (peminjaman.status === 4) {
+		} else if (peminjaman.status === 4) {
 			return "Sudah Dikembalikan"
-		}else {
+		} else {
 			return "Overdue"
 		}
 	}
-	
+
 	const cannotCreate = () => {
 		if (peminjaman.status === 5) {
 			setisOverdue(true)

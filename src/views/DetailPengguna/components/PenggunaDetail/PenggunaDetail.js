@@ -67,7 +67,7 @@ const PenggunaForm = props => {
 
 	useEffect(() => {
 		refreshPengguna(id)
-	})
+	}, [id])
 
 	const refreshPengguna = id => {
 		ComponentService.detailPengguna(id).then(response => setPengguna(response.data))

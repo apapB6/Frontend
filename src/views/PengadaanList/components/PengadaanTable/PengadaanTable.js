@@ -57,7 +57,7 @@ const PengadaanTable = props => {
 
 	useEffect(() => {
 		refreshPengadaan()
-	})
+	}, [])
 
 	const refreshPengadaan = () => {
 		PengadaanListService.getAllPengadaan().then(response => setPengadaanList(response.data))

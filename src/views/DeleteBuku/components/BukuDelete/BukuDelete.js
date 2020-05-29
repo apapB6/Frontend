@@ -68,7 +68,7 @@ const BukuDelete = props => {
 
 	useEffect(() => {
 		refreshBuku(id)
-	})
+	}, [id])
 
 	const refreshBuku = id => {
 		ComponentService.deleteBuku(id).then(response => setBuku(response.data))
@@ -143,7 +143,7 @@ const BukuDelete = props => {
 				noValidate
 			>
 				<CardHeader
-				//<Alert color="danger">
+					//<Alert color="danger">
 					title="Apakah Anda yakin untuk menghapus data ini?"
 				//</Alert>
 				/>

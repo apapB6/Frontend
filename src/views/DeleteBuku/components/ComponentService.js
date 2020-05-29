@@ -12,8 +12,8 @@ class ComponentService {
 			}
 		})
 	}
-	deleteBukuPost(bukuId){
-		return axios.post(`${DELETEBUKU_API_URL}` + bukuId, {
+	deleteBukuPost(bukuId) {
+		return axios.post(`${DELETEBUKU_API_URL}` + bukuId, null, {
 			headers: {
 				'Authorization': 'Bearer ' + JSON.parse(Cookies.get('user')).token
 			}

@@ -68,7 +68,7 @@ const PengadaanDelete = props => {
 
 	useEffect(() => {
 		refreshPengadaan(id)
-	})
+	}, [id])
 
 	const refreshPengadaan = id => {
 		ComponentService.deletePengadaan(id).then(response => setPengadaan(response.data))
@@ -141,7 +141,7 @@ const PengadaanDelete = props => {
 				noValidate
 			>
 				<CardHeader
-				//<Alert color="danger">
+					//<Alert color="danger">
 					title="Apakah Anda yakin untuk menghapus data ini?"
 				//</Alert>
 				/>

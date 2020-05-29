@@ -53,7 +53,7 @@ const TotalPeminjaman = props => {
 
 	const [totalPeminjaman, setTotalPeminjaman] = useState(0);
 
-	useEffect(() => refreshTotalPeminjaman())
+	useEffect(() => { refreshTotalPeminjaman() }, [])
 
 	const refreshTotalPeminjaman = () => {
 		ComponentService.getAllPeminjaman().then(response => setTotalPeminjaman(response.data.length))
@@ -88,7 +88,7 @@ const TotalPeminjaman = props => {
 				</Grid>
 				<div className={classes.difference}>
 					<NavigateNextIcon className={classes.differenceIcon} />
-					<RouterLink to="/users">
+					<RouterLink to="/peminjaman">
 						<Typography
 							className={classes.caption}
 							variant="caption"

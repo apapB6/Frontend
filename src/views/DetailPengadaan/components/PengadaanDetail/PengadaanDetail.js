@@ -67,7 +67,7 @@ const PengadaanDetail = props => {
 
 	useEffect(() => {
 		refreshPengadaan(id)
-	})
+	}, [id])
 
 	const refreshPengadaan = id => {
 		ComponentService.detailPengadaan(id).then(response => setPengadaan(response.data))

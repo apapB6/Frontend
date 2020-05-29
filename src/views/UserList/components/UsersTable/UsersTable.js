@@ -54,7 +54,7 @@ const UsersTable = props => {
 
 	useEffect(() => {
 		refreshUser()
-	})
+	}, [])
 
 	const refreshUser = () => {
 		UserListService.getAllUser().then(response => setUserList(response.data))

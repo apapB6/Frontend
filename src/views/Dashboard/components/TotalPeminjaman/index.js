@@ -1,1 +1,1 @@
-export { default } from './TotalPengadaan';
+export { default } from './TotalPeminjaman';

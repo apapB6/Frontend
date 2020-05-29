@@ -56,7 +56,7 @@ const TotalBuku = props => {
 
 	const [totalBuku, setTotalBuku] = useState(0);
 
-	useEffect(() => refreshTotalBuku())
+	useEffect(() => { refreshTotalBuku() }, [])
 
 	const refreshTotalBuku = () => {
 		ComponentService.getAllBuku().then(response => setTotalBuku(response.data.length))

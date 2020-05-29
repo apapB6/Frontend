@@ -52,7 +52,7 @@ const TotalUsers = props => {
 
 	const [totalUser, setTotalUser] = useState(0);
 
-	useEffect(() => refreshTotalUser())
+	useEffect(() => { refreshTotalUser() }, [])
 
 	const refreshTotalUser = () => {
 		ComponentService.getAllUser().then(response => setTotalUser(response.data.length))

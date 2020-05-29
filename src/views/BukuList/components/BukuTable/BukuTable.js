@@ -68,7 +68,7 @@ const BukuTable = props => {
 
 	useEffect(() => {
 		refreshBuku()
-	})
+	}, [])
 
 	const refreshBuku = () => {
 		BukuListService.getAllBuku().then(response => setBukuList(response.data))

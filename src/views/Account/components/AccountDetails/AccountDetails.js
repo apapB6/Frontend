@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -14,6 +14,7 @@ import {
 	TextField,
 	Typography
 } from '@material-ui/core';
+import ComponentService from '../ComponentService'
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -40,38 +41,17 @@ const AccountDetails = props => {
 
 	const classes = useStyles();
 
-	const [values, setValues] = useState({
-		nama: 'Ira',
-		nip: '1806269801',
-		tempat_lahir: 'Jakarta',
-		tanggal_lahir: '1996-02-01',
-		alamat: 'Serang',
-		telepon: '081234567890',
-		username: 'irakuyz',
-		avatar: '/images/avatars/avatar_11.png'
-	});
+	const [values, setValues] = useState({});
 
-	const handleChange = event => {
-		setValues({
-			...values,
-			[event.target.name]: event.target.value
-		});
-	};
+	const [avatar, setAvatar] = useState('/images/avatars/avatar_11.png')
 
-	const states = [
-		{
-			value: 'alabama',
-			label: 'Alabama'
-		},
-		{
-			value: 'new-york',
-			label: 'New York'
-		},
-		{
-			value: 'san-francisco',
-			label: 'San Francisco'
-		}
-	];
+	useEffect(() => {
+		refreshProfile()
+	}, [])
+
+	const refreshProfile = () => {
+		ComponentService.getProfile().then(response => setValues(response.data))
+	}
 
 	return (
 		<Card
@@ -85,7 +65,7 @@ const AccountDetails = props => {
 				<CardContent>
 					<Avatar
 						className={classes.avatar}
-						src={values.avatar}
+						src={avatar}
 					/>
 					<Typography variant="h4" className={classes.username}>
 						{values.username}
@@ -102,9 +82,9 @@ const AccountDetails = props => {
 							<TextField
 								fullWidth
 								label="Nama"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="nama"
-								onChange={handleChange}
 								value={values.nama}
 								variant="outlined"
 								disabled={true}
@@ -118,9 +98,9 @@ const AccountDetails = props => {
 							<TextField
 								fullWidth
 								label="NIP"
+								InputLabelProps={{ shrink: true }}
 								margin="dense"
 								name="nip"
-								onChange={handleChange}
 								value={values.nip}
 								variant="outlined"
 								disabled={true}
@@ -135,8 +115,8 @@ const AccountDetails = props => {
 								fullWidth
 								label="Tempat Lahir"
 								margin="dense"
+								InputLabelProps={{ shrink: true }}
 								name="tempat_lahir"
-								onChange={handleChange}
 								value={values.tempat_lahir}
 								variant="outlined"
 								disabled={true}
@@ -151,8 +131,8 @@ const AccountDetails = props => {
 								fullWidth
 								label="Tanggal Lahir"
 								margin="dense"
+								InputLabelProps={{ shrink: true }}
 								name="tanggal_lahir"
-								onChange={handleChange}
 								type="date"
 								value={values.tanggal_lahir}
 								variant="outlined"
@@ -168,8 +148,8 @@ const AccountDetails = props => {
 								fullWidth
 								label="Alamat"
 								margin="dense"
+								InputLabelProps={{ shrink: true }}
 								name="alamat"
-								onChange={handleChange}
 								value={values.alamat}
 								variant="outlined"
 								disabled={true}
@@ -185,7 +165,7 @@ const AccountDetails = props => {
 								label="Telepon"
 								margin="dense"
 								name="telepon"
-								onChange={handleChange}
+								InputLabelProps={{ shrink: true }}
 								value={values.telepon}
 								variant="outlined"
 								disabled={true}

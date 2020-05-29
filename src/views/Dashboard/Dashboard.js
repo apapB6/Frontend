@@ -1,12 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
-import { getAxios } from 'utils';
-// import useAxios from "axios-hooks";
-import ComponentService from './components/ComponentService'
+import Cookies from 'js-cookie'
 
 import {
 	TotalPengadaan,
+	TotalPeminjaman,
 	TotalUsers,
 	TotalBuku,
 	LatestOrders
@@ -21,9 +20,33 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = (props) => {
 	const classes = useStyles();
 
-	// const [{ data: dashboardData, loading, error }, refetch] = useAxios(
-	// 	getAxios(ComponentService.getBeranda(), allCookies.user.jwttoken)
-	// );
+	const viewAccess = () => {
+		if (JSON.parse(Cookies.get('user')).role === 5) {
+			return (
+				<Grid
+					item
+					lg={4}
+					sm={12}
+					xl={4}
+					xs={12}
+				>
+					<TotalPengadaan />
+				</Grid>
+			)
+		} else {
+			return (
+				<Grid
+					item
+					lg={4}
+					sm={12}
+					xl={4}
+					xs={12}
+				>
+					<TotalPeminjaman />
+				</Grid>
+			)
+		}
+	}
 
 	return (
 		<div className={classes.root}>
@@ -40,15 +63,7 @@ const Dashboard = (props) => {
 				>
 					<TotalUsers />
 				</Grid>
-				<Grid
-					item
-					lg={4}
-					sm={12}
-					xl={4}
-					xs={12}
-				>
-					<TotalPengadaan />
-				</Grid>
+				{viewAccess()}
 				<Grid
 					item
 					lg={4}
@@ -58,42 +73,6 @@ const Dashboard = (props) => {
 				>
 					<TotalBuku />
 				</Grid>
-				{/* <Grid
-          item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
-          <TotalProfit />
-        </Grid>
-        <Grid
-          item
-          lg={8}
-          md={12}
-          xl={9}
-          xs={12}
-        >
-          <LatestSales />
-        </Grid>
-        <Grid
-          item
-          lg={4}
-          md={6}
-          xl={3}
-          xs={12}
-        >
-          <UsersByDevice />
-        </Grid>
-        <Grid
-          item
-          lg={4}
-          md={6}
-          xl={3}
-          xs={12}
-        >
-          <LatestProducts />
-        </Grid> */}
 				<Grid
 					item
 					lg={12}
@@ -101,11 +80,7 @@ const Dashboard = (props) => {
 					xl={12}
 					xs={12}
 				>
-					<LatestOrders
-					// refetch={refetch}
-					// dashboardData={dashboardData}
-					// loading={loading}
-					/>
+					<LatestOrders />
 				</Grid>
 			</Grid>
 		</div>

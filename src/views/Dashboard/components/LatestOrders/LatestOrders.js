@@ -59,7 +59,7 @@ const LatestOrders = props => {
 
 	useEffect(() => {
 		refreshPeminjamanList()
-	})
+	}, [])
 
 	const refreshPeminjamanList = () => {
 		ComponentService.getBeranda()

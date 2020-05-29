@@ -53,7 +53,7 @@ const TotalPengadaan = props => {
 
 	const [totalPengadaan, setTotalPengadaan] = useState(0);
 
-	useEffect(() => refreshTotalPengadaan())
+	useEffect(() => { refreshTotalPengadaan() }, [])
 
 	const refreshTotalPengadaan = () => {
 		ComponentService.getAllPengadaan().then(response => setTotalPengadaan(response.data.length))
@@ -88,7 +88,7 @@ const TotalPengadaan = props => {
 				</Grid>
 				<div className={classes.difference}>
 					<NavigateNextIcon className={classes.differenceIcon} />
-					<RouterLink to="/users">
+					<RouterLink to="/pengadaan">
 						<Typography
 							className={classes.caption}
 							variant="caption"
