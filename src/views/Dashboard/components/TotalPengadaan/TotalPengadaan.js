@@ -82,7 +82,7 @@ const TotalPengadaan = props => {
 					</Grid>
 					<Grid item>
 						<Avatar className={classes.avatar}>
-							<PostAddIcon className={classes.icon} />
+							<ShoppingCartIcon className={classes.icon} />
 						</Avatar>
 					</Grid>
 				</Grid>

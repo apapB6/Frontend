@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const imgUrl = '/images/avatars/buku.jpg'
+const imgUrl = '/images/avatars/buku.png'
 
 const statusColors = {
 	tersedia: 'success',
