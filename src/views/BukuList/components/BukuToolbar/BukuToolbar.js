@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
+import Cookies from 'js-cookie'
 
 import { SearchInput } from 'components';
 
@@ -36,21 +37,29 @@ const BukuToolbar = props => {
 
 	const classes = useStyles();
 
+	const btnAdd = () => {
+		if (JSON.parse(Cookies.get('user')).role === 5){
+			return (
+				<div className={classes.row}>
+					<RouterLink to='/buku/add'>
+						<Button
+							variant="contained"
+							className={classes.btn}
+						>
+							Tambah buku
+						</Button>
+					</RouterLink>
+				</div>
+			)
+		}
+	}
+
 	return (
 		<div
 			{...rest}
 			className={clsx(classes.root, className)}
 		>
-			<div className={classes.row}>
-				<RouterLink to='/buku/add'>
-					<Button
-						variant="contained"
-						className={classes.btn}
-					>
-						Tambah buku
-        		</Button>
-				</RouterLink>
-			</div>
+			{btnAdd()}
 		</div>
 	);
 };
