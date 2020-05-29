@@ -43,9 +43,10 @@ const AccountDetails = props => {
 
 	const [values, setValues] = useState({});
 
-	const [avatar, setAvatar] = useState('/images/avatars/avatar_11.png')
+	//const [avatar, setAvatar] = useState('/images/avatars/avatar_11.png')
 	
-	const imgUrl = '/images/avatars/buku.jpg'
+	const ambar = '/images/avatars/ambar.jpg'
+	const imgUrl = '/images/avatars/social.png'
 	
 	useEffect(() => {
 		refreshProfile()
@@ -65,10 +66,17 @@ const AccountDetails = props => {
 				noValidate
 			>
 				<CardContent>
+				if(values.id === 2){
 					<Avatar
 						className={classes.avatar}
-						src={avatar}
+						src={ambar}
 					/>
+				} else{
+					<Avatar
+						className={classes.avatar}
+						src={imgUrl}
+					/>
+				}
 					<Typography variant="h4" className={classes.username}>
 						{values.username}
 					</Typography>

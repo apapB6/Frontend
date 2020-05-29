@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 700
 	},
 	avatar: {
-		backgroundColor: theme.palette.error.main,
+		backgroundColor: theme.palette.warning.main,
 		height: 56,
 		width: 56
 	},
