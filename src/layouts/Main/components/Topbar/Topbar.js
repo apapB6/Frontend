@@ -8,7 +8,8 @@ import Color from 'theme/palette'
 import { AppBar, Toolbar, Hidden, IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import InputIcon from '@material-ui/icons/Input';
-import { useCookies, withCookies } from 'react-cookie';
+// import { useCookies, withCookies } from 'react-cookie';
+import Cookies from 'js-cookie'
 // import { SignOut } from 'components'
 
 const useStyles = makeStyles(theme => ({
@@ -33,7 +34,7 @@ const Topbar = props => {
 	const { className, onSidebarOpen, ...rest } = props;
 	const [signOut, setSignOut] = useState(false)
 	const classes = useStyles();
-	const [user, setUser] = useCookies(['user']);
+	// const [user, setUser] = useCookies(['user']);
 	const history = useHistory()
 
 	const [notifications] = useState([]);
@@ -41,12 +42,13 @@ const Topbar = props => {
 	// const buttonSignOut = () => {
 	// 	setSignOut(!signOut)
 	// }
-	
+
 	const handleLogout = () => {
-		setUser('user', {}, { path: '/'})
+		// setUser('user', {}, { path: '/'})
+		Cookies.remove('user')
 		window.location.reload()
 		history.push('/sign-in')
-	  }
+	}
 
 	return (
 		<AppBar
@@ -88,4 +90,4 @@ Topbar.propTypes = {
 	onSidebarOpen: PropTypes.func
 };
 
-export default withCookies(Topbar);
+export default Topbar;

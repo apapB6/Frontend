@@ -12,7 +12,8 @@ import {
 	Typography
 } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { useCookies } from 'react-cookie';
+// import { useCookies } from 'react-cookie';
+import Cookies from 'js-cookie'
 import axios from 'axios'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ComponentService from './ComponentService'
@@ -140,13 +141,13 @@ const SignIn = props => {
 	const classes = useStyles();
 	const [postLoading, setPostLoading] = useState(false)
 
-	const [user, setUser] = useCookies(['user']);
+	// const [user, setUser] = useCookies(['user']);
 
 	const [dataState, setDataState] = useState({
 		username: '',
 		password: ''
 	})
-	
+
 	const [error, setError] = useState({
 		isValid: false,
 		username: false,
@@ -176,29 +177,29 @@ const SignIn = props => {
 
 	// useEffect(() => {
 	// 	const errors = validate(formState.values, schema);
-	
+
 	// 	setFormState(formState => ({
 	// 	  ...formState,
 	// 	  isValid: errors ? false : true,
 	// 	  errors: errors || {}
 	// 	}));
 	//   }, [formState.values]);
-	
+
 	const handleBack = () => {
-	history.goBack();
+		history.goBack();
 	};
 
 	const handleChange = (field, event) => {
-	setDataState({
-		...dataState,
-		[field]: event.target.value
-	})
-	setError({
-		...error,
-		username: false,
-		password: false,
-		isValid: error.password !== '' && error.username !== '' ? true : false
-	})
+		setDataState({
+			...dataState,
+			[field]: event.target.value
+		})
+		setError({
+			...error,
+			username: false,
+			password: false,
+			isValid: error.password !== '' && error.username !== '' ? true : false
+		})
 	};
 
 	const validation = () => {
@@ -211,19 +212,20 @@ const SignIn = props => {
 			password: dataState.password
 		}).then(response => {
 			setPostLoading(false)
-			setUser('user', response.data, { path: '/' })
+			// setUser('user', response.data, { path: '/' })
+			Cookies.set('user', response.data, { expires: 7, path: '/' })
 			window.location.reload()
 			mainHistory.push('/dashboard')
 		}).catch(err => {
 			setPostLoading(false)
 			setError({
-			  username: true,
-			  password: true,
-			  message: 'Username or Password is not correct',
-			  isValid: false
+				username: true,
+				password: true,
+				message: 'Username atau Password salah',
+				isValid: false
 			})
 		})
-	  }
+	}
 
 	return (
 		<div className={classes.root}>
@@ -249,7 +251,7 @@ const SignIn = props => {
 						<div className={classes.contentBody}>
 							<form
 								className={classes.form}
-								// onSubmit={handleSignIn}
+							// onSubmit={handleSignIn}
 							>
 								<Typography
 									className={classes.title}
@@ -267,7 +269,7 @@ const SignIn = props => {
 									onFocus={() => onFocus()}
 									onHover={() => onHover()}
 									onChange={e => handleChange('username', e)}
-									value={dataState.username|| ''}
+									value={dataState.username || ''}
 									style={{ outlineColor: formState.outlineColor }}
 								/>
 								<TextField
@@ -296,8 +298,8 @@ const SignIn = props => {
 									variant="contained"
 									onClick={validation}
 								>
-									{postLoading ? <CircularProgress color="inherit" size={20}/> : 'MASUK'}
-                				</Button>
+									{postLoading ? <CircularProgress color="inherit" size={20} /> : 'MASUK'}
+								</Button>
 							</form>
 						</div>
 					</div>

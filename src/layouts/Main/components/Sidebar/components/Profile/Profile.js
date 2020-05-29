@@ -4,8 +4,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Avatar, Typography } from '@material-ui/core';
-import { withCookies } from 'react-cookie';
-import { getRole } from '../../../../../../utils'
+import Cookies from 'js-cookie'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -34,6 +33,24 @@ const Profile = props => {
 		bio: 'Pustakawan'
 	};
 
+	const getRole = (id) => {
+		if (id === 1) {
+			return 'Kepala Sekolah'
+		} else if (id === 2) {
+			return 'Admin TU'
+		} else if (id === 3) {
+			return 'Guru'
+		} else if (id === 4) {
+			return 'Siswa'
+		} else if (id === 5) {
+			return 'Pustakawan'
+		} else if (id === 6) {
+			return 'Pengurus Koperasi'
+		} else if (id === 7) {
+			return 'Anggota Koperasi'
+		}
+	}
+
 	return (
 		<div
 			{...rest}
@@ -50,9 +67,9 @@ const Profile = props => {
 				className={classes.name}
 				variant="h4"
 			>
-				{allCookies.user.name}
+				{JSON.parse(Cookies.get('user')).name}
 			</Typography>
-			{/* <Typography variant="body2">{getRole.find(dt => dt.id === allCookies.user.id).nama}</Typography> */}
+			<Typography variant="body2">{getRole(JSON.parse(Cookies.get('user')).role)}</Typography>
 		</div>
 	);
 };
@@ -61,4 +78,4 @@ Profile.propTypes = {
 	className: PropTypes.string
 };
 
-export default withCookies(Profile);
+export default Profile;

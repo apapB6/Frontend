@@ -2,8 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 import { getAxios } from 'utils';
-import { withCookies } from 'react-cookie';
-import useAxios from "axios-hooks";
+// import useAxios from "axios-hooks";
 import ComponentService from './components/ComponentService'
 
 import {
@@ -21,11 +20,10 @@ const useStyles = makeStyles(theme => ({
 
 const Dashboard = (props) => {
 	const classes = useStyles();
-	const { allCookies } = props;
-	
-	const [{ data: dashboardData, loading, error }, refetch] = useAxios(
-		getAxios(ComponentService.getBeranda(), allCookies.user.jwttoken)
-	);
+
+	// const [{ data: dashboardData, loading, error }, refetch] = useAxios(
+	// 	getAxios(ComponentService.getBeranda(), allCookies.user.jwttoken)
+	// );
 
 	return (
 		<div className={classes.root}>
@@ -103,10 +101,10 @@ const Dashboard = (props) => {
 					xl={12}
 					xs={12}
 				>
-					<LatestOrders 
-						refetch={refetch}
-						dashboardData={dashboardData}
-						loading={loading}
+					<LatestOrders
+					// refetch={refetch}
+					// dashboardData={dashboardData}
+					// loading={loading}
 					/>
 				</Grid>
 			</Grid>
@@ -114,4 +112,4 @@ const Dashboard = (props) => {
 	);
 };
 
-export default withCookies(Dashboard);
+export default Dashboard;
