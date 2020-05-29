@@ -10,7 +10,7 @@ import {
 	Typography,
 	Avatar
 } from '@material-ui/core';
-import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ComponentService from '../ComponentService'
 

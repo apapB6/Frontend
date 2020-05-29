@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import PostAddIcon from '@material-ui/icons/PostAdd';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ComponentService from '../ComponentService'
 
