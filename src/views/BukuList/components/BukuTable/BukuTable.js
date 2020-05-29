@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 		marginRight: theme.spacing(1)
 	},
 	img: {
-		maxWidth: 30,
+		maxWidth: 40,
 		height: 'auto'
 	}
 }));

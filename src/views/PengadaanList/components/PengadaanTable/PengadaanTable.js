@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 		marginRight: theme.spacing(1)
 	}
 }));
-
+	
 const PengadaanTable = props => {
 	const { className, users, ...rest } = props;
 
