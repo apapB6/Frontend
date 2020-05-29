@@ -45,16 +45,6 @@ const AccountDetails = props => {
 	
 	const [avatar, setAvatar] = useState('/images/avatars/social.png')
 	
-	const cannotEdit = (index) => {
-		if (PeminjamanList[index].status === 1) {
-			setisDisabled(true)
-		} else if (PeminjamanList[index].status === 4) {
-			setisDisabled(true)
-		} else {
-			setisDisabled(false)
-		}
-	}
-	
 	const img = () => {
 		if (value.id === 2) {
 			setAvatar('/images/avatars/ambar.jpg')
