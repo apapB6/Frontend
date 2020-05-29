@@ -16,6 +16,7 @@ import {
 } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import ComponentService from '../ComponentService'
+import Cookies from 'js-cookie'
 
 function getModalStyle() {
 	const top = 50;
@@ -72,7 +73,7 @@ const PengadaanForm = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		const pengadaan = values
+		const pengadaan = { ...values, 'uuid_user': JSON.parse(Cookies.get('user')).uuid }
 
 		ComponentService.insertPengadaan(pengadaan).then(response => setOpenModal(true))
 	}

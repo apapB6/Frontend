@@ -19,6 +19,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { StatusBullet } from 'components';
 import PeminjamanListService from './PeminjamanListService';
+import Cookies from 'js-cookie'
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -67,7 +68,14 @@ const PeminjamanTable = props => {
 	}
 
 	const refreshPeminjaman = () => {
-		PeminjamanListService.getAllPeminjaman().then(response => setPeminjamanList(response.data))
+		PeminjamanListService.getAllPeminjaman().then(response => {
+			if (JSON.parse(Cookies.get('user')).role === 5) {
+				setPeminjamanList(response.data)
+			} else {
+				const filteredList = response.data.filter(x => x.uuid_user === JSON.parse(Cookies.get('user')).uuid)
+				setPeminjamanList(filteredList)
+			}
+		})
 	}
 
 	const handlePageChange = (event, page) => {

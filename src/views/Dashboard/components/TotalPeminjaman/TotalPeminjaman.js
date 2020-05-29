@@ -7,6 +7,7 @@ import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ComponentService from '../ComponentService'
+import Cookies from 'js-cookie'
 
 
 const useStyles = makeStyles(theme => ({
@@ -56,7 +57,14 @@ const TotalPeminjaman = props => {
 	useEffect(() => { refreshTotalPeminjaman() }, [])
 
 	const refreshTotalPeminjaman = () => {
-		ComponentService.getAllPeminjaman().then(response => setTotalPeminjaman(response.data.length))
+		ComponentService.getAllPeminjaman().then(response => {
+			if (JSON.parse(Cookies.get('user')).role === 5) {
+				setTotalPeminjaman(response.data.length)
+			} else {
+				const filteredList = response.data.filter(x => x.uuid_user === JSON.parse(Cookies.get('user')).uuid)
+				setTotalPeminjaman(filteredList.length)
+			}
+		})
 	}
 
 	return (

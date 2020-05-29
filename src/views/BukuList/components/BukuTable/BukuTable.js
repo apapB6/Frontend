@@ -116,9 +116,9 @@ const BukuTable = props => {
 								<TableRow>
 									<TableCell>No</TableCell>
 									<TableCell>Gambar</TableCell>
-									<TableCell>Judul</TableCell>
+									<TableCell width="20%">Judul</TableCell>
 									<TableCell>Pengarang</TableCell>
-									<TableCell>Penerbit</TableCell>
+									<TableCell width="20%">Penerbit</TableCell>
 									<TableCell>Status</TableCell>
 									<TableCell style={{ textAlign: 'center' }}>Aksi</TableCell>
 								</TableRow>
@@ -137,9 +137,9 @@ const BukuTable = props => {
 												className={classes.img}
 											></img>
 										</TableCell>
-										<TableCell>{buku.judul}</TableCell>
+										<TableCell width="20%">{buku.judul}</TableCell>
 										<TableCell>{buku.pengarang}</TableCell>
-										<TableCell>{buku.penerbit}</TableCell>
+										<TableCell width="20%">{buku.penerbit}</TableCell>
 										<TableCell>{statusOption(BukuList.indexOf(buku))}</TableCell>
 										<TableCell>
 											<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>

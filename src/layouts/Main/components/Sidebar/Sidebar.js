@@ -8,6 +8,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import BookIcon from '@material-ui/icons/Book';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import Cookies from 'js-cookie'
 
 import { Profile, SidebarNav } from './components';
 
@@ -39,7 +40,7 @@ const Sidebar = props => {
 
 	const classes = useStyles();
 
-	const pages = [
+	const otherPages = [
 		{
 			title: 'Beranda',
 			href: '/dashboard',
@@ -59,13 +60,25 @@ const Sidebar = props => {
 			title: 'Pengadaan',
 			href: '/pengadaan',
 			icon: <PostAddIcon />
-		},
+		}
+	]
+
+	const pustakawanPages = [
+		...otherPages,
 		{
 			title: 'Pengguna',
 			href: '/users',
 			icon: <PeopleIcon />
 		}
 	];
+
+	const getPages = () => {
+		if (JSON.parse(Cookies.get('user')).role === 5) {
+			return pustakawanPages
+		} else {
+			return otherPages
+		}
+	}
 
 	return (
 		<Drawer
@@ -83,7 +96,7 @@ const Sidebar = props => {
 				<Divider className={classes.divider} />
 				<SidebarNav
 					className={classes.nav}
-					pages={pages}
+					pages={getPages()}
 				/>
 			</div>
 		</Drawer>

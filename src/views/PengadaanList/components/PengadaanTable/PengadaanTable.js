@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 		marginRight: theme.spacing(1)
 	}
 }));
-	
+
 const PengadaanTable = props => {
 	const { className, users, ...rest } = props;
 
@@ -58,7 +58,14 @@ const PengadaanTable = props => {
 	}, [])
 
 	const refreshPengadaan = () => {
-		PengadaanListService.getAllPengadaan().then(response => setPengadaanList(response.data))
+		PengadaanListService.getAllPengadaan().then(response => {
+			if (JSON.parse(Cookies.get('user')).role === 5) {
+				setPengadaanList(response.data)
+			} else {
+				const filteredList = response.data.filter(x => x.uuid_user === JSON.parse(Cookies.get('user')).uuid)
+				setPengadaanList(filteredList)
+			}
+		})
 	}
 
 	const handlePageChange = (event, page) => {
@@ -68,60 +75,38 @@ const PengadaanTable = props => {
 	const handleRowsPerPageChange = event => {
 		setRowsPerPage(event.target.value);
 	};
-	
-	const cannotDelete = (index) => {
-		if (JSON.parse(Cookies.get('user')).role === 5) {
-			if (pengadaanList[index].status === 0) {
-				setisDisabled(true)
-			} else if (pengadaanList[index].status === 1) {
-				setisDisabled(true)
-			} else {
-				setisDisabled(false)
-			}
-		} else{
-			if (pengadaanList[index].status === 0) {
-				setisDisabled(true)
-			} else {
-				setisDisabled(false)
-			}
-		}
-	}
-	
+
 	const disableDelete = (status, id) => {
 		if (JSON.parse(Cookies.get('user')).role === 5) {
 			if (status === 0 || status === 1) {
 				return (
-					<DeleteIcon
-						style={{ color: '#A9A9A9' }}
-						disabled={isDisabled === true}
-					/>
-				)
-			} else {
-				return (
 					<RouterLink to={`/pengadaan/delete/${id}`}>
 						<DeleteIcon
 							style={{ color: '#000000' }}
-							disabled={isDisabled === false}
 						/>
 					</RouterLink>
+				)
+			} else {
+				return (
+					<DeleteIcon
+						style={{ color: '#A9A9A9' }}
+					/>
 				)
 			}
 		} else {
 			if (status === 0) {
 				return (
-					<DeleteIcon
-						style={{ color: '#A9A9A9' }}
-						disabled={isDisabled === true}
-					/>
-				)
-			} else {
-				return (
 					<RouterLink to={`/pengadaan/delete/${id}`}>
 						<DeleteIcon
 							style={{ color: '#000000' }}
-							disabled={isDisabled === false}
 						/>
 					</RouterLink>
+				)
+			} else {
+				return (
+					<DeleteIcon
+						style={{ color: '#A9A9A9' }}
+					/>
 				)
 			}
 		}
