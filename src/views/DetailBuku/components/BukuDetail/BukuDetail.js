@@ -3,6 +3,7 @@ import { Link as RouterLink, withRouter, useHistory, useParams } from 'react-rou
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import Cookies from 'js-cookie'
 import {
 	Card,
 	CardHeader,
@@ -117,6 +118,23 @@ const BukuDetail = props => {
 		}
 	}
 
+	const btnBorrow = () => {
+		if(JSON.parse(Cookies.get('user')).role === (3 || 4)){
+			return(
+				<CardActions>
+					<Button
+						className={classes.btn}
+						variant="contained"
+						onClick={handleSubmit}
+						disabled={outOfStock === true}
+					>
+						PINJAM
+					</Button>
+				</CardActions>
+			)
+		}
+	}
+
 	const body = (
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
@@ -155,110 +173,101 @@ const BukuDetail = props => {
 					title="Data Detail Buku"
 				/>
 				<Divider />
-				<CardContent>
-					<Grid
-						container
-						spacing={3}
-					>
+					<CardContent>
 						<Grid
-							item
-							md={12}
-							xs={12}
+							container
+							spacing={3}
 						>
-							<TextField
-								fullWidth
-								label="Judul Buku"
-								InputLabelProps={{ shrink: true }}
-								margin="dense"
-								name="judul"
-								onChange={handleChange}
-								variant="outlined"
-								disabled={true}
-								value={buku.judul}
-							/>
+							<Grid
+								item
+								md={12}
+								xs={12}
+							>
+								<TextField
+									fullWidth
+									label="Judul Buku"
+									InputLabelProps={{ shrink: true }}
+									margin="dense"
+									name="judul"
+									onChange={handleChange}
+									variant="outlined"
+									disabled={true}
+									value={buku.judul}
+								/>
+							</Grid>
+							<Grid
+								item
+								md={12}
+								xs={12}
+							>
+								<TextField
+									fullWidth
+									label="Pengarang"
+									InputLabelProps={{ shrink: true }}
+									margin="dense"
+									name="pengarang"
+									onChange={handleChange}
+									variant="outlined"
+									disabled={true}
+									value={buku.pengarang}
+								/>
+							</Grid>
+							<Grid
+								item
+								md={12}
+								xs={12}
+							>
+								<TextField
+									fullWidth
+									label="Penerbit"
+									InputLabelProps={{ shrink: true }}
+									margin="dense"
+									name="penerbit"
+									onChange={handleChange}
+									variant="outlined"
+									disabled={true}
+									value={buku.penerbit}
+								/>
+							</Grid>
+							<Grid
+								item
+								md={12}
+								xs={12}
+							>
+								<TextField
+									fullWidth
+									label="Jumlah Buku"
+									InputLabelProps={{ shrink: true }}
+									margin="dense"
+									name="jumlah"
+									onChange={handleChange}
+									type="number"
+									variant="outlined"
+									disabled={true}
+									value={buku.jumlah}
+								/>
+							</Grid>
+							<Grid
+								item
+								md={12}
+								xs={12}
+							>
+								<TextField
+									fullWidth
+									label="Jenis Buku"
+									InputLabelProps={{ shrink: true }}
+									margin="dense"
+									name="id_jenis_buku"
+									onChange={handleChange}
+									variant="outlined"
+									disabled={true}
+									value={getJenisBuku()}
+								/>
+							</Grid>
 						</Grid>
-						<Grid
-							item
-							md={12}
-							xs={12}
-						>
-							<TextField
-								fullWidth
-								label="Pengarang"
-								InputLabelProps={{ shrink: true }}
-								margin="dense"
-								name="pengarang"
-								onChange={handleChange}
-								variant="outlined"
-								disabled={true}
-								value={buku.pengarang}
-							/>
-						</Grid>
-						<Grid
-							item
-							md={12}
-							xs={12}
-						>
-							<TextField
-								fullWidth
-								label="Penerbit"
-								InputLabelProps={{ shrink: true }}
-								margin="dense"
-								name="penerbit"
-								onChange={handleChange}
-								variant="outlined"
-								disabled={true}
-								value={buku.penerbit}
-							/>
-						</Grid>
-						<Grid
-							item
-							md={12}
-							xs={12}
-						>
-							<TextField
-								fullWidth
-								label="Jumlah Buku"
-								InputLabelProps={{ shrink: true }}
-								margin="dense"
-								name="jumlah"
-								onChange={handleChange}
-								type="number"
-								variant="outlined"
-								disabled={true}
-								value={buku.jumlah}
-							/>
-						</Grid>
-						<Grid
-							item
-							md={12}
-							xs={12}
-						>
-							<TextField
-								fullWidth
-								label="Jenis Buku"
-								InputLabelProps={{ shrink: true }}
-								margin="dense"
-								name="id_jenis_buku"
-								onChange={handleChange}
-								variant="outlined"
-								disabled={true}
-								value={getJenisBuku()}
-							/>
-						</Grid>
-					</Grid>
-				</CardContent>
+					</CardContent>
 				<Divider />
-				<CardActions>
-					<Button
-						className={classes.btn}
-						variant="contained"
-						onClick={handleSubmit}
-						disabled={outOfStock === true}
-					>
-						PINJAM
-					</Button>
-				</CardActions>
+				{ btnBorrow() }
 			</form>
 		</Card>
 	);
