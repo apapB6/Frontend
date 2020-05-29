@@ -59,12 +59,13 @@ const AccountDetails = props => {
 		if (value.id === 2) {
 			setAvatar('/images/avatars/ambar.jpg')
 		} else {
-			setOutOfStock('/images/avatars/social.png')
+			setAvatar('/images/avatars/social.png')
 		}
 	}
 	
 	useEffect(() => {
 		refreshProfile()
+		img()
 	}, [])
 
 	const refreshProfile = () => {
