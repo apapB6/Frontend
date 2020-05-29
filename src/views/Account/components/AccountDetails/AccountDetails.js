@@ -42,11 +42,26 @@ const AccountDetails = props => {
 	const classes = useStyles();
 
 	const [values, setValues] = useState({});
-
-	//const [avatar, setAvatar] = useState('/images/avatars/avatar_11.png')
 	
-	const ambar = '/images/avatars/ambar.jpg'
-	const imgUrl = '/images/avatars/social.png'
+	const [avatar, setAvatar] = useState('/images/avatars/social.png')
+	
+	const cannotEdit = (index) => {
+		if (PeminjamanList[index].status === 1) {
+			setisDisabled(true)
+		} else if (PeminjamanList[index].status === 4) {
+			setisDisabled(true)
+		} else {
+			setisDisabled(false)
+		}
+	}
+	
+	const img = () => {
+		if (value.id === 2) {
+			setAvatar('/images/avatars/ambar.jpg')
+		} else {
+			setOutOfStock('/images/avatars/social.png')
+		}
+	}
 	
 	useEffect(() => {
 		refreshProfile()
@@ -66,17 +81,10 @@ const AccountDetails = props => {
 				noValidate
 			>
 				<CardContent>
-				if(values.id === 2){
 					<Avatar
 						className={classes.avatar}
-						src={ambar}
+						src={img()}
 					/>
-				} else{
-					<Avatar
-						className={classes.avatar}
-						src={imgUrl}
-					/>
-				}
 					<Typography variant="h4" className={classes.username}>
 						{values.username}
 					</Typography>
