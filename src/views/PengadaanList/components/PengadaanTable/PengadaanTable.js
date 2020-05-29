@@ -72,17 +72,17 @@ const PengadaanTable = props => {
 	const cannotDelete = (index) => {
 		if (JSON.parse(Cookies.get('user')).role === 5) {
 			if (pengadaanList[index].status === 0) {
-				setisDisabled(false)
-			} else if (pengadaanList[index].status === 1) {
-				setisDisabled(false)
-			} else {
 				setisDisabled(true)
+			} else if (pengadaanList[index].status === 1) {
+				setisDisabled(true)
+			} else {
+				setisDisabled(false)
 			}
 		} else{
 			if (pengadaanList[index].status === 0) {
-				setisDisabled(false)
-			} else {
 				setisDisabled(true)
+			} else {
+				setisDisabled(false)
 			}
 		}
 	}
@@ -93,7 +93,7 @@ const PengadaanTable = props => {
 				return (
 					<DeleteIcon
 						style={{ color: '#A9A9A9' }}
-						disabled={isDisabled === false}
+						disabled={isDisabled === true}
 					/>
 				)
 			} else {
@@ -101,7 +101,7 @@ const PengadaanTable = props => {
 					<RouterLink to={`/pengadaan/delete/${id}`}>
 						<DeleteIcon
 							style={{ color: '#000000' }}
-							disabled={isDisabled === true}
+							disabled={isDisabled === false}
 						/>
 					</RouterLink>
 				)
@@ -111,7 +111,7 @@ const PengadaanTable = props => {
 				return (
 					<DeleteIcon
 						style={{ color: '#A9A9A9' }}
-						disabled={isDisabled === false}
+						disabled={isDisabled === true}
 					/>
 				)
 			} else {
@@ -119,7 +119,7 @@ const PengadaanTable = props => {
 					<RouterLink to={`/pengadaan/delete/${id}`}>
 						<DeleteIcon
 							style={{ color: '#000000' }}
-							disabled={isDisabled === true}
+							disabled={isDisabled === false}
 						/>
 					</RouterLink>
 				)
