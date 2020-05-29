@@ -46,7 +46,7 @@ const AccountDetails = props => {
 	const [avatar, setAvatar] = useState('/images/avatars/social.png')
 	
 	const img = () => {
-		if (value.id === 2) {
+		if (values.id === 2) {
 			setAvatar('/images/avatars/ambar.jpg')
 		} else {
 			setAvatar('/images/avatars/social.png')
