@@ -8,8 +8,7 @@ import {
 	CardContent,
 	Grid,
 	Typography,
-	Avatar,
-	LinearProgress
+	Avatar
 } from '@material-ui/core';
 import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';

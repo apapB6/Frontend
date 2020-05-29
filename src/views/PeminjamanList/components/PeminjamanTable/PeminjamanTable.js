@@ -8,19 +8,15 @@ import {
 	Card,
 	CardActions,
 	CardContent,
-	Avatar,
 	Table,
 	TableBody,
 	TableCell,
 	TableHead,
 	TableRow,
-	Typography,
 	TablePagination
 } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
-import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import { getInitials } from 'helpers';
 import { StatusBullet } from 'components';
 import PeminjamanListService from './PeminjamanListService';
 
