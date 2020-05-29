@@ -97,7 +97,7 @@ const PengadaanTable = props => {
 				)
 			} else {
 				return (
-					<RouterLink to={`/peminjaman/edit/${id}`}>
+					<RouterLink to={`/pengadaan/delete/${id}`}>
 						<DeleteIcon
 							style={{ color: '#000000' }}
 							disabled={isDisabled === true}
@@ -105,6 +105,25 @@ const PengadaanTable = props => {
 					</RouterLink>
 				)
 			}
+		} else {
+			if (status === 0) {
+				return (
+					<DeleteIcon
+						style={{ color: '#A9A9A9' }}
+						disabled={isDisabled === false}
+					/>
+				)
+			} else {
+				return (
+					<RouterLink to={`/pengadaan/delete/${id}`}>
+						<DeleteIcon
+							style={{ color: '#000000' }}
+							disabled={isDisabled === true}
+						/>
+					</RouterLink>
+				)
+			}
+		}
 	}
 
 
