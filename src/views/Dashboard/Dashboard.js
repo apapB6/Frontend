@@ -30,7 +30,7 @@ const Dashboard = (props) => {
 					xl={4}
 					xs={12}
 				>
-					<TotalPengadaan />
+					<TotalUsers />
 				</Grid>
 			)
 		} else {
@@ -61,7 +61,7 @@ const Dashboard = (props) => {
 					xl={4}
 					xs={12}
 				>
-					<TotalUsers />
+					<TotalPengadaan />
 				</Grid>
 				{viewAccess()}
 				<Grid
