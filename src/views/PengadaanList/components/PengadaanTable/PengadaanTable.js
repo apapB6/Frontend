@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
+import Cookies from 'js-cookie'
 import {
 	Card,
 	CardActions,
@@ -70,15 +71,15 @@ const PengadaanTable = props => {
 	
 	const cannotDelete = (index) => {
 		if (JSON.parse(Cookies.get('user')).role === 5) {
-			if (PengadaanList[index].status === 0) {
+			if (pengadaanList[index].status === 0) {
 				setisDisabled(false)
-			} else if (PengadaanList[index].status === 1) {
+			} else if (pengadaanList[index].status === 1) {
 				setisDisabled(false)
 			} else {
 				setisDisabled(true)
 			}
 		} else{
-			if (PengadaanList[index].status === 0) {
+			if (pengadaanList[index].status === 0) {
 				setisDisabled(false)
 			} else {
 				setisDisabled(true)
@@ -209,7 +210,7 @@ const PengadaanTable = props => {
 												<RouterLink to={`/pengadaan/detail/${pengadaan.id}`}>
 													<VisibilityIcon style={{ color: '#000000' }} />
 												</RouterLink>
-												{disableDelete(peminjaman.status, peminjaman.id)}
+												{disableDelete(pengadaan.status, pengadaan.id)}
 											</div>
 										</TableCell>
 									</TableRow>
