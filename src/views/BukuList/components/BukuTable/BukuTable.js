@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
+import Cookies from 'js-cookie'
 import {
 	Card,
 	CardActions,
@@ -103,6 +104,26 @@ const BukuTable = props => {
 		}
 	}
 
+	const btnEdit = (id) => {
+		if(JSON.parse(Cookies.get('user')).role === 5){
+			return(
+				<RouterLink to={`/buku/edit/${id}`}>
+					<CreateIcon style={{ color: '#000000' }} />
+				</RouterLink>
+			)
+		}
+	}
+
+	const btnDelete = (id) => {
+		if(JSON.parse(Cookies.get('user')).role === 5){
+			return(
+				<RouterLink to={`/buku/delete/${id}`}>
+					<DeleteIcon style={{ color: '#000000' }} />
+				</RouterLink>
+			)
+		}
+	}
+
 	return (
 		<Card
 			{...rest}
@@ -119,6 +140,7 @@ const BukuTable = props => {
 									<TableCell width="20%">Judul</TableCell>
 									<TableCell>Pengarang</TableCell>
 									<TableCell width="20%">Penerbit</TableCell>
+									<TableCell>Jumlah</TableCell>
 									<TableCell>Status</TableCell>
 									<TableCell style={{ textAlign: 'center' }}>Aksi</TableCell>
 								</TableRow>
@@ -140,18 +162,15 @@ const BukuTable = props => {
 										<TableCell width="20%">{buku.judul}</TableCell>
 										<TableCell>{buku.pengarang}</TableCell>
 										<TableCell width="20%">{buku.penerbit}</TableCell>
+										<TableCell>{buku.jumlah}</TableCell>
 										<TableCell>{statusOption(BukuList.indexOf(buku))}</TableCell>
 										<TableCell>
 											<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
 												<RouterLink to={`/buku/${buku.id}`}>
 													<VisibilityIcon style={{ color: '#000000' }} />
 												</RouterLink>
-												<RouterLink to={`/buku/edit/${buku.id}`}>
-													<CreateIcon style={{ color: '#000000' }} />
-												</RouterLink>
-												<RouterLink to={`/buku/delete/${buku.id}`}>
-													<DeleteIcon style={{ color: '#000000' }} />
-												</RouterLink>
+												{ btnEdit(buku.id) }
+												{ btnDelete(buku.id) }
 											</div>
 										</TableCell>
 									</TableRow>
