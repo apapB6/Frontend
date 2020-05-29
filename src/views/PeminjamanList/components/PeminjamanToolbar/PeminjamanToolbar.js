@@ -40,14 +40,7 @@ const PeminjamanToolbar = props => {
 			{...rest}
 			className={clsx(classes.root, className)}
 		>
-			{/* <div className={classes.row}>
-				<Button
-					variant="contained"
-					className={classes.btn}
-				>
-					Tambah Peminjaman
-        </Button>
-			</div> */}
+			
 		</div>
 	);
 };
