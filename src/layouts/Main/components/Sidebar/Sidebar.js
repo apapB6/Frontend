@@ -40,7 +40,6 @@ const Sidebar = props => {
 	const classes = useStyles();
 
 	const pages = [
-	if (JSON.parse(Cookies.get('user')).role === 5) {
 		{
 			title: 'Beranda',
 			href: '/dashboard',
@@ -65,27 +64,6 @@ const Sidebar = props => {
 			title: 'Pengguna',
 			href: '/users',
 			icon: <PeopleIcon />
-		}
-	}else{
-		{
-			title: 'Beranda',
-			href: '/dashboard',
-			icon: <HomeIcon />
-		},
-		{
-			title: 'Buku',
-			href: '/buku',
-			icon: <CollectionsBookmarkIcon />
-		},
-		{
-			title: 'Peminjaman',
-			href: '/peminjaman',
-			icon: <BookIcon />
-		},
-		{
-			title: 'Pengadaan',
-			href: '/pengadaan',
-			icon: <PostAddIcon />
 		}
 	];
 
