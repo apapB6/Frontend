@@ -66,6 +66,16 @@ const PengadaanTable = props => {
 	const handleRowsPerPageChange = event => {
 		setRowsPerPage(event.target.value);
 	};
+	
+	const cannotEdit = (index) => {
+		if (PengadaanList[index].status === 1) {
+			setisDisabled(true)
+		} else if (PengadaanList[index].status === 4) {
+			setisDisabled(true)
+		} else {
+			setisDisabled(false)
+		}
+	}
 
 	const statusOption = (index) => {
 		if (pengadaanList[index].status === 0) {

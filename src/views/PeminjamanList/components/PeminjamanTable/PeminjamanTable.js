@@ -54,7 +54,6 @@ const PeminjamanTable = props => {
 
 	useEffect(() => {
 		refreshPeminjaman()
-		//cannotEdit(index)
 	}, [])
 
 	const cannotEdit = (index) => {
