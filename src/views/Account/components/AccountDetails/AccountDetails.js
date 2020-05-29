@@ -45,17 +45,8 @@ const AccountDetails = props => {
 	
 	const [avatar, setAvatar] = useState('/images/avatars/social.png')
 	
-//	const img = () => {
-//		if (values.id === 2) {
-//			setAvatar('/images/avatars/ambar.jpg')
-//		} else {
-//			setAvatar('/images/avatars/social.png')
-//		}
-//	}
-	
 	useEffect(() => {
 		refreshProfile()
-		img()
 	}, [])
 
 	const refreshProfile = () => {
