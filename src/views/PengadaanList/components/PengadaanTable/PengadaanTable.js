@@ -50,6 +50,7 @@ const PengadaanTable = props => {
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [page, setPage] = useState(0);
 	const [pengadaanList, setPengadaanList] = useState([]);
+	const [isDisabled, setisDisabled] = useState(false)
 
 	useEffect(() => {
 		refreshPengadaan()
@@ -67,15 +68,45 @@ const PengadaanTable = props => {
 		setRowsPerPage(event.target.value);
 	};
 	
-	const cannotEdit = (index) => {
-		if (PengadaanList[index].status === 1) {
-			setisDisabled(true)
-		} else if (PengadaanList[index].status === 4) {
-			setisDisabled(true)
-		} else {
-			setisDisabled(false)
+	const cannotDelete = (index) => {
+		if (JSON.parse(Cookies.get('user')).role === 5) {
+			if (PengadaanList[index].status === 0) {
+				setisDisabled(false)
+			} else if (PengadaanList[index].status === 1) {
+				setisDisabled(false)
+			} else {
+				setisDisabled(true)
+			}
+		} else{
+			if (PengadaanList[index].status === 0) {
+				setisDisabled(false)
+			} else {
+				setisDisabled(true)
+			}
 		}
 	}
+	
+	const disableDelete = (status, id) => {
+		if (JSON.parse(Cookies.get('user')).role === 5) {
+			if (status === 0 || status === 1) {
+				return (
+					<DeleteIcon
+						style={{ color: '#A9A9A9' }}
+						disabled={isDisabled === false}
+					/>
+				)
+			} else {
+				return (
+					<RouterLink to={`/peminjaman/edit/${id}`}>
+						<DeleteIcon
+							style={{ color: '#000000' }}
+							disabled={isDisabled === true}
+						/>
+					</RouterLink>
+				)
+			}
+	}
+
 
 	const statusOption = (index) => {
 		if (pengadaanList[index].status === 0) {
@@ -159,9 +190,7 @@ const PengadaanTable = props => {
 												<RouterLink to={`/pengadaan/detail/${pengadaan.id}`}>
 													<VisibilityIcon style={{ color: '#000000' }} />
 												</RouterLink>
-												<RouterLink to={`/pengadaan/delete/${pengadaan.id}`}>
-													<DeleteIcon style={{ color: '#000000' }} />
-												</RouterLink>
+												{disableDelete(peminjaman.status, peminjaman.id)}
 											</div>
 										</TableCell>
 									</TableRow>
