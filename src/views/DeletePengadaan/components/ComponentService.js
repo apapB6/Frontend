@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Variable } from 'components'
+import Cookies from 'js-cookie'
 
 const DELETEPENGADAAN_API_URL = `${Variable}/pengadaan/delete/`;
 
