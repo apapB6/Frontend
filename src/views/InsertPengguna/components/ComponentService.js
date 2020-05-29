@@ -5,7 +5,11 @@ const INSERTPENGGUNA_API_URL = `${Variable}/pengguna/add`;
 
 class ComponentService {
 	insertPengguna(pengguna) {
-		return axios.post(`${INSERTPENGGUNA_API_URL}`, pengguna)
+		return axios.post(`${INSERTPENGGUNA_API_URL}`, pengguna, {
+			headers: {
+				'Authorization': 'Bearer ' + JSON.parse(Cookies.get('user')).token
+			}
+		})
 	}
 }
 

@@ -5,7 +5,11 @@ const DETAILPENGADAAN_API_URL = `${Variable}/pengadaan/detail/`;
 
 class ComponentService {
 	detailPengadaan(pengadaanId) {
-		return axios.get(`${DETAILPENGADAAN_API_URL}` + pengadaanId)
+		return axios.get(`${DETAILPENGADAAN_API_URL}` + pengadaanId, {
+			headers: {
+				'Authorization': 'Bearer ' + JSON.parse(Cookies.get('user')).token
+			}
+		})
 	}
 }
 
