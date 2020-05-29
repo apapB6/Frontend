@@ -45,13 +45,13 @@ const AccountDetails = props => {
 	
 	const [avatar, setAvatar] = useState('/images/avatars/social.png')
 	
-	const img = () => {
-		if (values.id === 2) {
-			setAvatar('/images/avatars/ambar.jpg')
-		} else {
-			setAvatar('/images/avatars/social.png')
-		}
-	}
+//	const img = () => {
+//		if (values.id === 2) {
+//			setAvatar('/images/avatars/ambar.jpg')
+//		} else {
+//			setAvatar('/images/avatars/social.png')
+//		}
+//	}
 	
 	useEffect(() => {
 		refreshProfile()
@@ -74,7 +74,7 @@ const AccountDetails = props => {
 				<CardContent>
 					<Avatar
 						className={classes.avatar}
-						src={img()}
+						src={avatar}
 					/>
 					<Typography variant="h4" className={classes.username}>
 						{values.username}
