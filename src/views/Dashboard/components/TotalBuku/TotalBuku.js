@@ -84,7 +84,7 @@ const TotalBuku = props => {
 					</Grid>
 					<Grid item>
 						<Avatar className={classes.avatar}>
-							<CollectionsBookmarkIcon className={classes.icon} />
+							<MenuBookIcon className={classes.icon} />
 						</Avatar>
 					</Grid>
 				</Grid>

@@ -44,7 +44,9 @@ const AccountDetails = props => {
 	const [values, setValues] = useState({});
 
 	const [avatar, setAvatar] = useState('/images/avatars/avatar_11.png')
-
+	
+	const imgUrl = '/images/avatars/buku.jpg'
+	
 	useEffect(() => {
 		refreshProfile()
 	}, [])
