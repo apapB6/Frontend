@@ -49,17 +49,17 @@ const Sidebar = props => {
 		{
 			title: 'Buku',
 			href: '/buku',
-			icon: <CollectionsBookmarkIcon />
+			icon: <MenuBookIcon />
 		},
 		{
 			title: 'Peminjaman',
 			href: '/peminjaman',
-			icon: <BookIcon />
+			icon: <PostAddIcon />
 		},
 		{
 			title: 'Pengadaan',
 			href: '/pengadaan',
-			icon: <PostAddIcon />
+			icon: <ShoppingCartIcon />
 		}
 	]
 
