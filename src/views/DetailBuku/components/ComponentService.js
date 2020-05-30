@@ -18,8 +18,7 @@ class ComponentService {
 			headers: {
 				'Authorization': 'Bearer ' + JSON.parse(Cookies.get('user')).token,
 				'Content-Type': 'text/plain'
-			},
-			responseType: 'text'
+			}
 		})
 	}
 }
