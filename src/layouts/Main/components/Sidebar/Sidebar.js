@@ -3,10 +3,10 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Divider, Drawer } from '@material-ui/core';
-import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
-import BookIcon from '@material-ui/icons/Book';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import Cookies from 'js-cookie'
 
