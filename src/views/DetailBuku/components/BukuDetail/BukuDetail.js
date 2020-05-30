@@ -70,7 +70,7 @@ const BukuDetail = props => {
 	useEffect(() => {
 		refreshBuku(id)
 		cannotBorrow()
-	})
+	}, [id])
 
 	const refreshBuku = id => {
 		ComponentService.detailBuku(id).then(response => setBuku(response.data))
@@ -88,7 +88,9 @@ const BukuDetail = props => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		ComponentService.addPeminjaman(id).then(response => setOpenModal(true))
+		const uuid_user = JSON.parse(Cookies.get('user')).uuid
+
+		ComponentService.addPeminjaman(id, uuid_user).then(response => setOpenModal(true))
 
 	}
 
@@ -119,8 +121,8 @@ const BukuDetail = props => {
 	}
 
 	const btnBorrow = () => {
-		if(JSON.parse(Cookies.get('user')).role === (3 || 4)){
-			return(
+		if (JSON.parse(Cookies.get('user')).role === 3 || JSON.parse(Cookies.get('user')).role === 4) {
+			return (
 				<CardActions>
 					<Button
 						className={classes.btn}
@@ -173,101 +175,101 @@ const BukuDetail = props => {
 					title="Data Detail Buku"
 				/>
 				<Divider />
-					<CardContent>
+				<CardContent>
+					<Grid
+						container
+						spacing={3}
+					>
 						<Grid
-							container
-							spacing={3}
+							item
+							md={12}
+							xs={12}
 						>
-							<Grid
-								item
-								md={12}
-								xs={12}
-							>
-								<TextField
-									fullWidth
-									label="Judul Buku"
-									InputLabelProps={{ shrink: true }}
-									margin="dense"
-									name="judul"
-									onChange={handleChange}
-									variant="outlined"
-									disabled={true}
-									value={buku.judul}
-								/>
-							</Grid>
-							<Grid
-								item
-								md={12}
-								xs={12}
-							>
-								<TextField
-									fullWidth
-									label="Pengarang"
-									InputLabelProps={{ shrink: true }}
-									margin="dense"
-									name="pengarang"
-									onChange={handleChange}
-									variant="outlined"
-									disabled={true}
-									value={buku.pengarang}
-								/>
-							</Grid>
-							<Grid
-								item
-								md={12}
-								xs={12}
-							>
-								<TextField
-									fullWidth
-									label="Penerbit"
-									InputLabelProps={{ shrink: true }}
-									margin="dense"
-									name="penerbit"
-									onChange={handleChange}
-									variant="outlined"
-									disabled={true}
-									value={buku.penerbit}
-								/>
-							</Grid>
-							<Grid
-								item
-								md={12}
-								xs={12}
-							>
-								<TextField
-									fullWidth
-									label="Jumlah Buku"
-									InputLabelProps={{ shrink: true }}
-									margin="dense"
-									name="jumlah"
-									onChange={handleChange}
-									type="number"
-									variant="outlined"
-									disabled={true}
-									value={buku.jumlah}
-								/>
-							</Grid>
-							<Grid
-								item
-								md={12}
-								xs={12}
-							>
-								<TextField
-									fullWidth
-									label="Jenis Buku"
-									InputLabelProps={{ shrink: true }}
-									margin="dense"
-									name="id_jenis_buku"
-									onChange={handleChange}
-									variant="outlined"
-									disabled={true}
-									value={getJenisBuku()}
-								/>
-							</Grid>
+							<TextField
+								fullWidth
+								label="Judul Buku"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="judul"
+								onChange={handleChange}
+								variant="outlined"
+								disabled={true}
+								value={buku.judul}
+							/>
 						</Grid>
-					</CardContent>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Pengarang"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="pengarang"
+								onChange={handleChange}
+								variant="outlined"
+								disabled={true}
+								value={buku.pengarang}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Penerbit"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="penerbit"
+								onChange={handleChange}
+								variant="outlined"
+								disabled={true}
+								value={buku.penerbit}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Jumlah Buku"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="jumlah"
+								onChange={handleChange}
+								type="number"
+								variant="outlined"
+								disabled={true}
+								value={buku.jumlah}
+							/>
+						</Grid>
+						<Grid
+							item
+							md={12}
+							xs={12}
+						>
+							<TextField
+								fullWidth
+								label="Jenis Buku"
+								InputLabelProps={{ shrink: true }}
+								margin="dense"
+								name="id_jenis_buku"
+								onChange={handleChange}
+								variant="outlined"
+								disabled={true}
+								value={getJenisBuku()}
+							/>
+						</Grid>
+					</Grid>
+				</CardContent>
 				<Divider />
-				{ btnBorrow() }
+				{btnBorrow()}
 			</form>
 		</Card>
 	);

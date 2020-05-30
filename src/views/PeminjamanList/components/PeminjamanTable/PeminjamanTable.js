@@ -51,21 +51,10 @@ const PeminjamanTable = props => {
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [page, setPage] = useState(0);
 	const [PeminjamanList, setPeminjamanList] = useState([]);
-	const [isDisabled, setisDisabled] = useState(false)
 
 	useEffect(() => {
 		refreshPeminjaman()
 	}, [])
-
-	const cannotEdit = (index) => {
-		if (PeminjamanList[index].status === 1) {
-			setisDisabled(true)
-		} else if (PeminjamanList[index].status === 4) {
-			setisDisabled(true)
-		} else {
-			setisDisabled(false)
-		}
-	}
 
 	const refreshPeminjaman = () => {
 		PeminjamanListService.getAllPeminjaman().then(response => {
@@ -151,22 +140,24 @@ const PeminjamanTable = props => {
 	}
 
 	const disableEdit = (status, id) => {
-		if (status === 4 || status === 1) {
-			return (
-				<CreateIcon
-					style={{ color: '#A9A9A9' }}
-					disabled={isDisabled === true}
-				/>
-			)
-		} else {
-			return (
-				<RouterLink to={`/peminjaman/edit/${id}`}>
+		if (JSON.parse(Cookies.get('user')).role === 5) {
+			if (status === 4 || status === 1) {
+				return (
 					<CreateIcon
-						style={{ color: '#000000' }}
-						disabled={isDisabled === true}
+						style={{ color: '#A9A9A9' }}
 					/>
-				</RouterLink>
-			)
+				)
+			} else {
+				return (
+					<RouterLink to={`/peminjaman/edit/${id}`}>
+						<CreateIcon
+							style={{ color: '#000000' }}
+						/>
+					</RouterLink>
+				)
+			}
+		} else {
+			return ''
 		}
 	}
 
@@ -182,7 +173,7 @@ const PeminjamanTable = props => {
 							<TableHead>
 								<TableRow>
 									<TableCell>No</TableCell>
-									<TableCell>Judul Buku</TableCell>
+									<TableCell width="20%">Judul Buku</TableCell>
 									<TableCell>Tanggal Peminjaman</TableCell>
 									<TableCell>Tanggal Pengembalian</TableCell>
 									<TableCell>Status</TableCell>
@@ -197,7 +188,7 @@ const PeminjamanTable = props => {
 										key={peminjaman.id}
 									>
 										<TableCell>{PeminjamanList.indexOf(peminjaman) + 1}</TableCell>
-										<TableCell>{peminjaman.nama_buku}</TableCell>
+										<TableCell width="20%">{peminjaman.nama_buku}</TableCell>
 										<TableCell>{peminjaman.tanggal_peminjaman}</TableCell>
 										<TableCell>{peminjaman.tanggal_pengembalian}</TableCell>
 										<TableCell>{statusOption(PeminjamanList.indexOf(peminjaman))}</TableCell>

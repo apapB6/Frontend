@@ -13,11 +13,13 @@ class ComponentService {
 			}
 		})
 	}
-	addPeminjaman(bukuId) {
-		return axios.post(`${ADDPEMINJAMAN_API_URL}` + bukuId, null, {
+	addPeminjaman(bukuId, uuid_user) {
+		return axios.post(`${ADDPEMINJAMAN_API_URL}` + bukuId, uuid_user, {
 			headers: {
-				'Authorization': 'Bearer ' + JSON.parse(Cookies.get('user')).token
-			}
+				'Authorization': 'Bearer ' + JSON.parse(Cookies.get('user')).token,
+				'Content-Type': 'text/plain'
+			},
+			responseType: 'text'
 		})
 	}
 }
