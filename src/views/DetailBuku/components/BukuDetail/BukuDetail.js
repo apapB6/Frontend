@@ -122,18 +122,33 @@ const BukuDetail = props => {
 
 	const btnBorrow = () => {
 		if (JSON.parse(Cookies.get('user')).role === 3 || JSON.parse(Cookies.get('user')).role === 4) {
+			if (buku.jumlah === 0) {
 			return (
 				<CardActions>
 					<Button
 						className={classes.btn}
 						variant="contained"
 						onClick={handleSubmit}
-						disabled={outOfStock}
+						disabled={outOfStock === false}
 					>
 						PINJAM
 					</Button>
 				</CardActions>
-			)
+				)
+			} else{
+				return (
+				<CardActions>
+					<Button
+						className={classes.btn}
+						variant="contained"
+						onClick={handleSubmit}
+						disabled={outOfStock === true}
+					>
+						PINJAM
+					</Button>
+				</CardActions>
+				)
+			}
 		}
 	}
 
