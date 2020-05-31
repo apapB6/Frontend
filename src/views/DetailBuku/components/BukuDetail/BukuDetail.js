@@ -128,7 +128,7 @@ const BukuDetail = props => {
 						className={classes.btn}
 						variant="contained"
 						onClick={handleSubmit}
-						disabled={outOfStock === true}
+						disabled={outOfStock}
 					>
 						PINJAM
 					</Button>
