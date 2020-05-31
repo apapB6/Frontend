@@ -120,7 +120,37 @@ const PeminjamanDetail = props => {
 			setisOverdue(false)
 		}
 	}
-
+	
+	const btnCreate = () => {
+		if (peminjaman.status === 5) {
+		return (
+			<CardActions>
+				<Button
+					className={classes.btn}
+					variant="contained"
+					onClick={handleSubmit}
+					disabled={isOverdue === true}
+				>
+					BUAT SURAT
+				</Button>
+			</CardActions>
+			)
+		} else{
+			return (
+			<CardActions>
+				<Button
+					className={classes.btn}
+					variant="contained"
+					onClick={handleSubmit}
+					disabled={isOverdue === false}
+				>
+					BUAT SURAT
+				</Button>
+			</CardActions>
+			)
+		}
+	}
+	
 	const body = (
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
@@ -269,16 +299,7 @@ const PeminjamanDetail = props => {
 					</Grid>
 				</CardContent>
 				<Divider />
-				<CardActions>
-					<Button
-						className={classes.btn}
-						variant="contained"
-						onClick={handleSubmit}
-						disabled={isOverdue === false}
-					>
-						BUAT SURAT
-					</Button>
-				</CardActions>
+				{btnCreate()}
 			</form>
 		</Card>
 	);
