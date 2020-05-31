@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
-import Color from 'theme/palette'
 import { makeStyles } from '@material-ui/styles';
 import {
 	Card,
@@ -20,6 +19,7 @@ import {
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { StatusBullet } from 'components';
 import ComponentService from '../ComponentService'
+import Cookies from 'js-cookie'
 
 const useStyles = makeStyles(theme => ({
 	root: {},
@@ -52,10 +52,9 @@ const LatestOrders = props => {
 	const { className, ...rest } = props;
 
 	const classes = useStyles();
-	const [data, setData] = useState({})
 	const [peminjamanList, setPeminjamanList] = useState([])
-	const [judulBuku, setJudulBuku] = useState([])
-	const [namaPeminjam, setNamaPeminjam] = useState([])
+	// const [judulBuku, setJudulBuku] = useState([])
+	// const [namaPeminjam, setNamaPeminjam] = useState([])
 
 	useEffect(() => {
 		refreshPeminjamanList()
@@ -64,19 +63,22 @@ const LatestOrders = props => {
 	const refreshPeminjamanList = () => {
 		ComponentService.getBeranda()
 			.then(response => {
-				setData(response.data)
-				setPeminjamanList(response.data.peminjaman)
+				if (JSON.parse(Cookies.get('user')).role === 5) {
+					setPeminjamanList(response.data.peminjaman)
+				} else {
+					const filteredList = response.data.peminjaman.filter(x => x.uuid_user === JSON.parse(Cookies.get('user')).uuid)
+					setPeminjamanList(filteredList)
+				}
 			})
 	}
 
-	const getNamaPeminjam = (index) => {
-		return data.nama_peminjam[index].nama
-	}
+	// const getNamaPeminjam = (index) => {
+	// 	return data.nama_peminjam[index].nama
+	// }
 
-	const getNamaBuku = (index) => {
-		return data.nama_buku[index].judul
-	}
-
+	// const getNamaBuku = (index) => {
+	// 	return data.nama_buku[index].judul
+	// }
 
 	return (
 		<Card
@@ -111,8 +113,8 @@ const LatestOrders = props => {
 										key={peminjaman.id}
 									>
 										<TableCell>{peminjamanList.indexOf(peminjaman) + 1}</TableCell>
-										<TableCell>{getNamaPeminjam(peminjamanList.indexOf(peminjaman))}</TableCell>
-										<TableCell>{getNamaBuku(peminjamanList.indexOf(peminjaman))}</TableCell>
+										<TableCell>{peminjaman.nama_peminjam}</TableCell>
+										<TableCell>{peminjaman.nama_buku}</TableCell>
 										<TableCell>
 											<div className={classes.statusContainer}>
 												<StatusBullet
