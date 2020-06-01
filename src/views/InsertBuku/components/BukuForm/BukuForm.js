@@ -15,6 +15,7 @@ import {
 	Modal
 } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import CancelIcon from '@material-ui/icons/Cancel';
 import ComponentService from '../ComponentService'
 
 
