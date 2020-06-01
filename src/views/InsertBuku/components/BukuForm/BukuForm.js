@@ -87,8 +87,11 @@ const BukuForm = props => {
 
 	}
 
-	const handleClose = () => {
-		setOpenModal(false)
+	const handleCloseSuccess = () => {
+		setOpenModalSuccess(false)
+	}
+	const handleCloseFailed = () => {
+		setOpenModalFailed(false)
 	}
 
 	const jenisBuku = [
