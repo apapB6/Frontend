@@ -63,10 +63,13 @@ const PeminjamanEdit = props => {
 
 	const [peminjaman, setPeminjaman] = useState({});
 
+	const [jenisStatus, setJenisStatus] = useState([])
+
 	const { id } = useParams();
 
 	useEffect(() => {
 		refreshPeminjaman(id)
+		optStatus()
 	}, [id])
 
 	const refreshPeminjaman = id => {
@@ -93,33 +96,47 @@ const PeminjamanEdit = props => {
 		setOpenModal(false)
 	}
 
-	const jenisStatus = [
-		{
-			value: 0,
-			label: 'Menunggu Persetujuan'
-		},
-		{
-			value: 1,
-			label: 'Ditolak'
-		},
-		{
-			value: 2,
-			label: 'Disetujui'
-		},
-		{
-			value: 3,
-			label: 'Sudah Diambil'
-		},
-		{
-			value: 4,
-			label: 'Sudah Dikembalikan'
-		},
-		{
-			value: 5,
-			label: 'Overdue'
+	const optStatus = () => {
+		if(peminjaman.status === 0){
+			setJenisStatus([
+				{
+					value: 1,
+					label: 'Ditolak'
+				},
+				{
+					value: 2,
+					label: 'Disetujui'
+				}
+			])
+		}else if( peminjaman.status === 2){
+			setJenisStatus([
+				{
+					value: 3,
+					label: 'Sudah Diambil'
+				}
+			])
+		}else if(peminjaman.status === 3){
+			setJenisStatus([
+				{
+					value: 4,
+					label: 'Sudah Dikembalikan'
+				},
+				{
+					value: 5,
+					label: 'Overdue'
+				}
+			])
+		}else if(peminjaman.status === 5){
+			setJenisStatus([
+				{
+					value: 4,
+					label: 'Sudah Dikembalikan'
+				}
+			])
 		}
-	];
+	}
 
+	
 	const body = (
 		<div style={modalStyle} className={classes.paper}>
 			<CheckCircleOutlineIcon style={{ color: '#6C987B' }} id="modal-logo" className={classes.success} />
