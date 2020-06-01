@@ -194,7 +194,7 @@ const PeminjamanDetails = props => {
 								name="nama_peminjam"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={peminjaman.nama_peminjam}
 							/>
 						</Grid>
@@ -211,7 +211,7 @@ const PeminjamanDetails = props => {
 								name="nama_buku"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={peminjaman.nama_buku}
 							/>
 						</Grid>
@@ -228,7 +228,7 @@ const PeminjamanDetails = props => {
 								name="tanggal_peminjaman"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={peminjaman.tanggal_peminjaman}
 							/>
 						</Grid>
@@ -245,7 +245,7 @@ const PeminjamanDetails = props => {
 								name="tanggal_pengembalian"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={peminjaman.tanggal_pengembalian}
 							/>
 						</Grid>
@@ -262,7 +262,7 @@ const PeminjamanDetails = props => {
 								name="denda"
 								onChange={handleChange}
 								variant="outlined"
-								disabled="true"
+								disabled={true}
 								value={'Rp ' + peminjaman.denda}
 							/>
 						</Grid>
