@@ -16,6 +16,7 @@ import {
 	Modal
 } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import CancelIcon from '@material-ui/icons/Cancel';
 import ComponentService from '../ComponentService'
 
 
@@ -59,7 +60,8 @@ const BukuDelete = props => {
 	const { className, ...rest } = props;
 
 	const [values, setValues] = useState({});
-	const [openModal, setOpenModal] = useState(false)
+	const [openModalSuccess, setOpenModalSuccess] = useState(false)
+	const [openModalFailed, setOpenModalFailed] = useState(false)
 	const [modalStyle] = useState(getModalStyle);
 
 	const [buku, setBuku] = useState({});
@@ -82,16 +84,26 @@ const BukuDelete = props => {
 			[event.target.name]: event.target.value
 		});
 	};
-
+	
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		ComponentService.deleteBukuPost(id).then(response => setOpenModal(true))
+		ComponentService.deleteBukuPost(id).then(response => {
+			if (response.data === true) {
+				setOpenModalSuccess(true)
+			} else {
+				setOpenModalFailed(true)
+			}
+		}
+		)
 
 	}
-
-	const handleClose = () => {
-		setOpenModal(false)
+	
+	const handleCloseSuccess = () => {
+		setOpenModalSuccess(false)
+	}
+	const handleCloseFailed = () => {
+		setOpenModalFailed(false)
 	}
 
 	const getJenisBuku = () => {
@@ -124,6 +136,23 @@ const BukuDelete = props => {
 			</RouterLink>
 		</div>
 	)
+	
+	const bodyFailed = (
+		<div style={modalStyle} className={classes.paper}>
+			<CancelIcon style={{ color: '#FF0000' }} id="modal-logo" className={classes.failed} />
+			<p id="modal-description">
+				Tidak dapat menghapus buku, buku sedang dalam peminjaman
+			</p>
+			<RouterLink to='/buku'>
+				<Button
+					className={classes.btn}
+					variant="contained"
+				>
+					Oke
+			</Button>
+			</RouterLink>
+		</div>
+	)
 
 	return (
 		<Card
@@ -131,12 +160,20 @@ const BukuDelete = props => {
 			className={clsx(classes.root, className)}
 		>
 			<Modal
-				open={openModal}
-				onClose={handleClose}
+				open={openModalSuccess}
+				onClose={handleCloseSuccess}
 				aria-labelledby="modal-logo"
 				aria-describedby="modal-description"
 			>
 				{body}
+			</Modal>
+			<Modal
+				open={openModalFailed}
+				onClose={handleCloseFailed}
+				aria-labelledby="modal-logo"
+				aria-describedby="modal-description"
+			>
+				{bodyFailed}
 			</Modal>
 			<form
 				autoComplete="off"
