@@ -138,18 +138,43 @@ const BukuForm = props => {
 		</div>
 	)
 
+	const bodyFailed = (
+		<div style={modalStyle} className={classes.paper}>
+			<CancelIcon style={{ color: '#FF0000' }} id="modal-logo" className={classes.failed} />
+			<p id="modal-description">
+				Tidak dapat menghapus buku, buku sedang dalam peminjaman
+			</p>
+			<RouterLink to='/pengguna/add'>
+				<Button
+					className={classes.btn}
+					variant="contained"
+				>
+					Oke
+			</Button>
+			</RouterLink>
+		</div>
+	)
+
 	return (
 		<Card
 			{...rest}
 			className={clsx(classes.root, className)}
 		>
 			<Modal
-				open={openModal}
-				onClose={handleClose}
+				open={openModalSuccess}
+				onClose={handleCloseSuccess}
 				aria-labelledby="modal-logo"
 				aria-describedby="modal-description"
 			>
 				{body}
+			</Modal>
+			<Modal
+				open={openModalFailed}
+				onClose={handleCloseFailed}
+				aria-labelledby="modal-logo"
+				aria-describedby="modal-description"
+			>
+				{bodyFailed}
 			</Modal>
 			<form
 				autoComplete="off"
