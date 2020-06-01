@@ -198,7 +198,8 @@ const SignIn = props => {
 			...error,
 			username: false,
 			password: false,
-			isValid: error.password !== '' && error.username !== '' ? true : false
+			isValid: error.password !== '' && error.username !== '' ? true : false,
+			isNull : dataState.username === '' || dataState.password === '' ? true : false
 		})
 	};
 
@@ -262,6 +263,10 @@ const SignIn = props => {
 								<TextField
 									className={classes.textField}
 									fullWidth
+									error={error.username}
+									helperText={
+										error.message !== '' && !error.isValid ? error.message : ''
+									}
 									label="Username"
 									name="email"
 									type="text"
@@ -292,7 +297,7 @@ const SignIn = props => {
 								<Button
 									className={classes.signInButton}
 									fullWidth
-									disabled={!error.isValid || postLoading}
+									disabled={!error.isValid || postLoading || error.isNull}
 									size="large"
 									type="submit"
 									variant="contained"
