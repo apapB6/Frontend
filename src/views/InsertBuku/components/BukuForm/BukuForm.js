@@ -58,7 +58,8 @@ const BukuForm = props => {
 	const { className, ...rest } = props;
 
 	const [values, setValues] = useState({});
-	const [openModal, setOpenModal] = useState(false)
+	cconst [openModalSuccess, setOpenModalSuccess] = useState(false)
+	const [openModalFailed, setOpenModalFailed] = useState(false)
 	const [modalStyle] = useState(getModalStyle);
 
 	const classes = useStyles();
@@ -69,13 +70,20 @@ const BukuForm = props => {
 			[event.target.name]: event.target.value
 		});
 	};
-
+	
 	const handleSubmit = event => {
 		event.preventDefault();
 
 		const buku = values
 
-		ComponentService.insertBuku(buku).then(response => setOpenModal(true))
+		ComponentService.insertBuku(buku).then(response => {
+			if (response.data === true) {
+				setOpenModalSuccess(true)
+			} else {
+				setOpenModalFailed(true)
+			}
+		}
+		)
 
 	}
 
