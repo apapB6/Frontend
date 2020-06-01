@@ -58,7 +58,7 @@ const BukuForm = props => {
 	const { className, ...rest } = props;
 
 	const [values, setValues] = useState({});
-	cconst [openModalSuccess, setOpenModalSuccess] = useState(false)
+	const [openModalSuccess, setOpenModalSuccess] = useState(false)
 	const [openModalFailed, setOpenModalFailed] = useState(false)
 	const [modalStyle] = useState(getModalStyle);
 
