@@ -198,8 +198,7 @@ const SignIn = props => {
 			...error,
 			username: false,
 			password: false,
-			isValid: error.password !== '' && error.username !== '' ? true : false,
-			isNull : dataState.username === '' || dataState.password === '' ? true : false
+			isValid: error.password !== '' && error.username !== '' ? true : false
 		})
 	};
 
@@ -274,7 +273,7 @@ const SignIn = props => {
 									onFocus={() => onFocus()}
 									onHover={() => onHover()}
 									onChange={e => handleChange('username', e)}
-									value={dataState.username || ''}
+									value={dataState.username}
 									style={{ outlineColor: formState.outlineColor }}
 								/>
 								<TextField
@@ -289,7 +288,7 @@ const SignIn = props => {
 									type="password"
 									onChange={e => handleChange('password', e)}
 									variant="outlined"
-									value={dataState.password || ''}
+									value={dataState.password}
 									onFocus={() => onFocus()}
 									onHover={() => onHover()}
 									style={{ outlineColor: formState.outlineColor }}
@@ -297,7 +296,7 @@ const SignIn = props => {
 								<Button
 									className={classes.signInButton}
 									fullWidth
-									disabled={!error.isValid || postLoading || error.isNull}
+									disabled={!error.isValid || postLoading || (dataState.username === '' || dataState.password === '')}
 									size="large"
 									type="submit"
 									variant="contained"
