@@ -104,6 +104,32 @@ const BukuTable = props => {
 		}
 	}
 
+	const headJumlahStatus = () => {
+		if(JSON.parse(Cookies.get('user')).role === 5){
+			return(
+				<TableCell>Jumlah</TableCell>
+			)
+		}else{
+			return(
+				<TableCell>Status</TableCell>
+			)
+		}
+	}
+
+	const bodyJumlahStatus = (buku) => {
+		if(JSON.parse(Cookies.get('user')).role === 5){
+			return(
+				<TableCell>{buku.jumlah}</TableCell>
+			)
+		}else{
+			return(
+				<TableCell>{statusOption(BukuList.indexOf(buku))}</TableCell>
+			)
+		}
+	}
+
+	
+
 	const btnEdit = (id) => {
 		if(JSON.parse(Cookies.get('user')).role === 5){
 			return(
@@ -136,12 +162,11 @@ const BukuTable = props => {
 							<TableHead>
 								<TableRow>
 									<TableCell>No</TableCell>
-									<TableCell width="5%">Gambar</TableCell>
+									<TableCell>Gambar</TableCell>
 									<TableCell width="20%">Judul</TableCell>
 									<TableCell>Pengarang</TableCell>
 									<TableCell width="20%">Penerbit</TableCell>
-									<TableCell>Jumlah</TableCell>
-									<TableCell>Status</TableCell>
+									{headJumlahStatus()}
 									<TableCell style={{ textAlign: 'center' }}>Aksi</TableCell>
 								</TableRow>
 							</TableHead>
@@ -153,7 +178,7 @@ const BukuTable = props => {
 										key={buku.id}
 									>
 										<TableCell>{BukuList.indexOf(buku) + 1}</TableCell>
-										<TableCell width="5%">
+										<TableCell>
 											<img
 												src={imgUrl}
 												className={classes.img}
@@ -162,8 +187,8 @@ const BukuTable = props => {
 										<TableCell width="20%">{buku.judul}</TableCell>
 										<TableCell>{buku.pengarang}</TableCell>
 										<TableCell width="20%">{buku.penerbit}</TableCell>
-										<TableCell>{buku.jumlah}</TableCell>
-										<TableCell>{statusOption(BukuList.indexOf(buku))}</TableCell>
+										{bodyJumlahStatus(buku)}
+										
 										<TableCell>
 											<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
 												<RouterLink to={`/buku/${buku.id}`}>
