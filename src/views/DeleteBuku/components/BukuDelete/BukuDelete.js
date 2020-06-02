@@ -145,7 +145,6 @@ const BukuDelete = props => {
 		<div style={modalStyle} className={classes.paper}>
 			<CancelIcon style={{ color: '#FF0000' }} id="modal-logo" className={classes.failed} />
 			<p id="modal-description">
-				Tidak dapat menghapus buku <br/> 
 				Buku sedang dalam peminjaman
 			</p>
 			<RouterLink to='/buku'>
