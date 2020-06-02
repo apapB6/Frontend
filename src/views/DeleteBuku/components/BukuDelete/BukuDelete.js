@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 	success: {
 		fontSize: '80px',
 		margin: '0 0 20px'
-	}
+	},
 	failed: {
 		fontSize: '80px',
 		margin: '0 0 20px'
