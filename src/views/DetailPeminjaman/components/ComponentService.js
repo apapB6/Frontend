@@ -3,7 +3,7 @@ import { Variable } from 'components'
 import Cookies from 'js-cookie'
 
 const DETAILPEMINJAMAN_API_URL = `${Variable}/peminjaman/detail/`;
-const INSERTSURAT_API_URL = `${Variable}/surat/add`;
+const INSERTSURAT_API_URL = `${Variable}/perpustakaan/api/add-surat`;
 
 class ComponentService {
 	detailPeminjaman(peminjamanId) {
