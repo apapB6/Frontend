@@ -53,6 +53,10 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: '80px',
 		margin: '0 0 20px'
 	}
+	failed: {
+		fontSize: '80px',
+		margin: '0 0 20px'
+	}
 }));
 
 const BukuDelete = props => {
