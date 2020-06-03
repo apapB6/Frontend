@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Variable } from 'components'
 import Cookies from 'js-cookie'
 
-const INSERTPENGADAAN_API_URL = `${Variable}/pengadaan/add`;
+const INSERTPENGADAAN_API_URL = `${Variable}/api/add-pengadaan`;
 
 class ComponentService {
 	insertPengadaan(pengadaan) {
