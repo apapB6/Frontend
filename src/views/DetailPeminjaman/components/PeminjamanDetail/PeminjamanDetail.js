@@ -3,6 +3,7 @@ import { Link as RouterLink, withRouter, useHistory, useParams } from 'react-rou
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import Cookies from 'js-cookie'
 import {
 	Card,
 	CardHeader,
@@ -122,7 +123,7 @@ const PeminjamanDetail = props => {
 	}
 	
 	const btnCreate = () => {
-		if (peminjaman.status === 5) {
+		if (JSON.parse(Cookies.get('user')).role === 5 && peminjaman.status === 5) {
 		return (
 			<CardActions>
 				<Button
@@ -130,19 +131,6 @@ const PeminjamanDetail = props => {
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={isOverdue === true}
-				>
-					BUAT SURAT
-				</Button>
-			</CardActions>
-			)
-		} else{
-			return (
-			<CardActions>
-				<Button
-					className={classes.btn}
-					variant="contained"
-					onClick={handleSubmit}
-					disabled={isOverdue === false}
 				>
 					BUAT SURAT
 				</Button>
