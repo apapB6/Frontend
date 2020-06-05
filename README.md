@@ -5,55 +5,39 @@
 - [Riska Kurnia Dewi](https://github.com/riskakrndw/) - 1806269801
 - [Shafira Fauzia](https://github.com/shafickr/) - 1806269814
 
-Our Jobdesk is available at [Jobdesk]
+Our Jobdesk is available at [Jobdesk](JOBDESK.md)
 
-## Installing
-Install `java` at least version `1.8.0`, follow [this instruction](https://www.java.com/en/download/help/download_options.xml) to install Java 1.8 JDK.
+## URL List
+| Desc. | URL |
+|-----|--------------|
+| Github Frontend SI - Perpustakaan | https://github.com/apapB6/Frontend |
+| Github Backend SI - Perpustakaan | https://github.com/apapB6/tugas-akhir-apap-b6 |
 
-After Java installed, Follow this instructions
-```bash
-$ git clone https://github.com/apapB6/tugas-akhir-apap-b6.git
-$ cd Backend/finalproject_B6-master
-$ ./mvnw install
-$ ./mvnw build
-$ ./mwnw spring-boot:run
-```
-Go to `http://localhost:8080/` to [start this application.](http://localhost:8080/)
+## Tools
+Spring Boot + React + PostgreSQL + Heroku,  Deployed at https://si-perpus-b6-frontend.herokuapp.com/
 
-## Deployment
-Once `spring-boot-maven-plugin` has been included in your `pom.xml`, it automatically tries to rewrite archives to make them executable by using the `spring-boot:repackage` goal.
-You should configure your project to build a jar or war (as appropriate) by using the usual packaging element, as shown in the following example:
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<!-- ... -->
-	<packaging>jar</packaging>
-	<!-- ... -->
-</project>
-```
-[See more](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#build-tool-plugins-maven-packaging)
-
+## Documentation
+Our Application Programming Interface is available at [API page.](API.md)
 
 ## Features
-- [ ] Halaman Utama
-- [ ] Login
-- [ ] Logout
-- [ ] Menambah Buku
-- [ ] Menampilkan Detail Buku
-- [ ] Mengubah Jumlah Buku
-- [ ] Menghapus Buku 
-- [ ] Mengajukan Peminjaman
-- [ ] Menampilkan Daftar Pengajuan Peminjaman 
-- [ ] Mengubah Status Pengajuan Peminjaman
-- [ ] Mengajukan Pengadaan 
-- [ ] Menampilkan Daftar Pengajuan Pengadaan
-- [ ] Menghapus Pengajuan Pengadaan 
-- [ ] [Web Service, GET] Daftar User untuk SI-TU
-- [ ] [Web Service, POST] Membuat Surat Peringatan Overdue ke SI-TU 
-- [ ] [Web Service, GET] Menampilkan User Profile
-- [ ] [Web Service, POST] Menambah User 
-- [ ] Menampilkan Daftar Buku
-- [ ] Menampilkan Detail Pengadaan 
-- [ ] Menampilkan Detail peminjaman
+- [x] Halaman Utama
+- [x] Login
+- [x] Logout
+- [x] Menambah Buku
+- [x] Menampilkan Detail Buku
+- [x] Mengubah Jumlah Buku
+- [x] Menghapus Buku 
+- [x] Mengajukan Peminjaman
+- [x] Menampilkan Daftar Pengajuan Peminjaman 
+- [x] Mengubah Status Pengajuan Peminjaman
+- [x] Mengajukan Pengadaan 
+- [x] Menampilkan Daftar Pengajuan Pengadaan
+- [x] Menghapus Pengajuan Pengadaan 
+- [x] Menampilkan Daftar Buku
+- [x] Menampilkan Detail Pengadaan 
+- [x] Menampilkan Detail peminjaman
+- [x] [Web Service, GET] Daftar User untuk SI-TU
+- [x] [Web Service, POST] Membuat Surat Peringatan Overdue ke SI-TU 
+- [x] [Web Service, GET] Menampilkan User Profile
+- [x] [Web Service, POST] Menambah User 
 
