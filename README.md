@@ -5,7 +5,7 @@
 - [Riska Kurnia Dewi](https://github.com/riskakrndw/) - 1806269801
 - [Shafira Fauzia](https://github.com/shafickr/) - 1806269814
 
-Our Jobdesk is available at [Jobdesk](JOBDESK.md)
+Our Jobdesk is available at [Jobdesk Page](JOBDESK.md)
 
 ## URL List
 | Desc. | URL |
