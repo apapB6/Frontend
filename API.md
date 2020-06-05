@@ -35,7 +35,7 @@
 ### Response
 ```json
 {
-    "nomor_surat": "-",
+        "nomor_surat": "-",
 	"tanggal_pengajuan": "2020-05-06",
 	"tanggal_disetujui": null,
 	"keterangan":"Overdue Peminjaman Buku",
@@ -52,16 +52,16 @@
 ```json
 {
     "id": 1,
-	"nama": "Shafira Fauzia",
-	"uuid": "8b4304d55be44583be9ae3e957e5d996",
-	"nip":"P26061996b43804d55be44583be9ae3e957e5d996",
+"nama": "Shafira Fauzia",
+"uuid": "8b4304d55be44583be9ae3e957e5d996",
+"nip":"P26061996b43804d55be44583be9ae3e957e5d996",
     "tempat_lahir": "Bogor",
     "tanggal_lahir": "1996-06-26",
     "alamat": "Bogor",
     "telepon": "08222919199",
     "username": "shafickr",
     "password": "4695486786b27a4036f0e7bfb19545ba",
-	"id_role": 5
+"id_role": 5
 }
 ```
 
