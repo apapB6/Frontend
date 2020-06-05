@@ -1,6 +1,6 @@
 # Kelompok B6 - SI PERPUSTAKAAN
 
-## Anggota Kelompok
+## Members
 - [Dwi Ana Ambar Rofiqoh](https://github.com/dwianaambarr) - 1806269676
 - [Riska Kurnia Dewi](https://github.com/riskakrndw/) - 1806269801
 - [Shafira Fauzia](https://github.com/shafickr/) - 1806269814
