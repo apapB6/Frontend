@@ -5,7 +5,7 @@
 |----|-------------|--------|-----|
 | 1 | Daftar User untuk SI-TU | GET | [https://si-perpus-b6.herokuapp.com/api/employees](#apicheckstatus) |
 | 2 | Membuat Surat Peringatan Overdue ke SI-TU | POST | [https://si-perpus-b6.herokuapp.com/api/add-surat](#apicheckstatus) |
-| 3 | Menampilkan User Profile | GET | [https://si-perpus-b6.herokuapp.com//api/user-profile/{uuid}](#apicheckstatus) |
+| 3 | Menampilkan User Profile | GET | [https://si-perpus-b6.herokuapp.com/api/user-profile/{uuid}](#apicheckstatus) |
 | 4 | Menambah User | POST | [https://si-perpus-b6.herokuapp.com/api/add-user](#apicheckstatus) |
 
 #### URL : `https://si-perpus-b6.herokuapp.com/api/employees`
@@ -45,22 +45,22 @@
 }
 ```
 
-#### URL : `https://si-perpus-b6.herokuapp.com//api/user-profile/{uuid}`
+#### URL : `https://si-perpus-b6.herokuapp.com/api/user-profile/{uuid}`
 #### Method : `GET`
 
 ### Response
 ```json
 {
     "id": 1,
-    "nama": "Shafira Fauzia",
-    "uuid": "8b4304d55be44583be9ae3e957e5d996",
-    "nip":"P26061996b43804d55be44583be9ae3e957e5d996",
-    "tempat_lahir": "Bogor",
-    "tanggal_lahir": "1996-06-26",
-    "alamat": "Bogor",
-    "telepon": "08222919199",
-    "username": "shafickr",
-    "password": "4695486786b27a4036f0e7bfb19545ba",
+    "nama": "Pustakawan",
+    "uuid": "1d70a533237046b69c78a03503f9517d",
+    "nip":"P010119961d70a533237046b69c78a03503f9517d",
+    "tempat_lahir": "Jakarta",
+    "tanggal_lahir": "1996-01-01",
+    "alamat": "Jakarta",
+    "telepon": "085691123456",
+    "username": "pustakawan",
+    "password": "$2a$10$LDHouLTuAnqyHeW80eh2NuDs/8B.OgZlN1Q0XZGB6vkanet/zbH5W",
     "id_role": 5
 }
 ```
@@ -71,6 +71,6 @@
 ### Response
 ```json
 {
-	body: false
+	body: true
 }
 ```
